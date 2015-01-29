@@ -1,0 +1,12 @@
+<div class="col-lg-2 col-md-3 col-sm-4 col-xs-6" ng-repeat="item in list">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a ui-sref="base.category.books({id: item.id})">{{::item.sort}}</a>
+            </h2>
+        </div>
+        <div class="panel-body">
+            <span class="badge bottomright">{{::item.count}}</span>
+        </div>
+    </div>
+</div>

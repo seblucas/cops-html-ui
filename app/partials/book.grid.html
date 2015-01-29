@@ -1,0 +1,21 @@
+<pagination total-items="totalItems" items-per-page="itemsPerPage" max-size="maxSize" ng-model="currentPage" ng-change="pageChanged()"></pagination>
+<br />
+<div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 books" ng-repeat="book in books">
+    <div class="panel panel-default" style="height: 320px;">
+      <div class="panel-heading">
+        <h2 class="panel-title"><a href="#">{{::book.title}}</a></h2>
+      </div>
+      <div class="panel-body">
+        <div class="cover-image">
+            <a href="/ncops/databases/{{::db}}/books/{{::book.id}}/cover" ng-show="book.hasCover == 1">
+                <img ng-src="/ncops/databases/{{::db}}/books/{{::book.id}}/cover" />
+            </a>
+        </div>
+        <div class="ellipsis"><span class="glyphicon glyphicon-user"></span> {{book.authorsName}}</div>
+        <div class="ellipsis" ng-show="book.tagsName"><span class="glyphicon glyphicon-tag"></span> {{book.tagsName}}</div>
+        <div class="ellipsis" ng-show="book.seriesName"><span class="glyphicon glyphicon-list"></span> {{book.seriesName}} ({{book.seriesIndex}})</div>
+        <div class="text-center bottomright">
+        </div>
+      </div>
+    </div>
+</div>

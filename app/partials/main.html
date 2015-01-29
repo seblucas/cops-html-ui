@@ -1,0 +1,13 @@
+<h1>All</h1>
+<div class="col-lg-2 col-md-3 col-sm-4 col-xs-4" ng-repeat="database in databases" ng-controller="databaseDetail">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <a ui-sref="base.database({ db: database.id })">{{::database.name}}</a>
+            </h2>
+        </div>
+        <div class="panel-body">
+            <span class="badge bottomright">{{bookCount}}</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="btn-group btn-group-lg pull-right">
+<button type="button" class="btn btn-default" ng-class="{active: currentTemplate == 'partials/category.grid.html'}" ng-click="toggleGrid()">
+  <span class="glyphicon glyphicon-th"></span>
+</button>
+<button type="button" class="btn btn-default" ng-class="{active: currentTemplate == 'partials/category.list.html'}" ng-click="toggleList()">
+  <span class="glyphicon glyphicon-list"></span>
+</button>
+</div>
+<h1>{{title}}</h1>
+<pagination total-items="totalItems" items-per-page="itemsPerPage" max-size="maxSize" ng-model="currentPage" ng-change="pageChanged()"></pagination>
+<ul class="pagination pull-right">
+<li ng-repeat="itemValue in itemsPerPageList" ng-class="{active: itemsPerPage == itemValue}"><a href="" ng-click="selectItemPerPage(itemValue)">{{itemValue}}</a></li>
+<li class="disabled"><a href="">Total : {{totalItems}}</a></li>
+</ul>
+<br />
+<div ng-include src="currentTemplate" scope="" onload=""></div>
