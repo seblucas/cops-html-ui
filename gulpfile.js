@@ -102,7 +102,9 @@ gulp.task('html', function() {
 
 gulp.task('other', ['index', 'lang', 'html']);
 
-gulp.task('default', ['bower', 'css', 'js', 'other'], function() {
+gulp.task('default', ['bower', 'css', 'js', 'other']);
+
+gulp.task('watch', ['default'], function() {
   gulp.watch(cssSources, ['css']);
   gulp.watch(jsSources, ['js']);
   gulp.watch(htmlSources, ['html']);
