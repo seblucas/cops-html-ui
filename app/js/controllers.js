@@ -28,6 +28,59 @@ angular.module('Cops.controllers', [])
     $scope.isLanguageActive = function(language) {
       return $translate.use() == language;
     }
+
+    var copsAuthorTypeahead = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      limit: 30,
+      remote: {
+                  url: '/ncops/databases/0/authors?q=%QUERY&per_page=5'
+              }
+    });
+
+    copsAuthorTypeahead.initialize();
+
+    var copsBookTypeahead = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      limit: 30,
+      remote: {
+                  url: '/ncops/databases/0/series?q=%QUERY&per_page=5'
+              }
+    });
+
+    copsBookTypeahead.initialize();
+
+    $scope.copsAuthorDataset = {
+      displayKey: 'name',
+      source: copsAuthorTypeahead.ttAdapter()
+    };
+
+    $scope.multiCops = [
+      {
+        name: 'Authors',
+        displayKey: 'name',
+        source: copsAuthorTypeahead.ttAdapter(),
+        templates: {
+          header: '<h3>Authors</h3>'
+        }
+      },
+      {
+        name: 'Book',
+        displayKey: 'name',
+        source: copsBookTypeahead.ttAdapter(),
+        templates: {
+          header: '<h3>Series</h3>'
+        }
+      }
+    ];
+
+    // Typeahead options object
+    $scope.exampleOptions = {
+      highlight: true,
+      minLength: 3
+    };
+
   }])
   .directive('numberPerPage', function() {
     return {

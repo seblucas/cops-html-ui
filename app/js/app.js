@@ -9,6 +9,7 @@ angular.module('Cops', [
   'Cops.services',
   'ui.bootstrap',
   'pascalprecht.translate',
+  'siyfion.sfTypeahead',
   'restangular'
 ]).
 factory('$exceptionHandler', function () {
