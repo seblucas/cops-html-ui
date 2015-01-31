@@ -2,3 +2,4 @@
   <li ng-repeat="itemValue in itemsPerPageList" ng-class="{active: itemsPerPage == itemValue}"><a href="" ng-click="selectItemPerPage(itemValue)">{{itemValue}}</a></li>
   <li class="disabled"><a href="">Total : {{totalItems}}</a></li>
 </ul>
+<span>{{itemsPerPage}}</span>

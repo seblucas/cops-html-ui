@@ -32,18 +32,23 @@ angular.module('Cops.controllers', [])
   .directive('numberPerPage', function() {
     return {
       restrict: 'E',
+      require: '^ngModel',
       scope: {
         itemsPerPageList: '=',
-        itemsPerPage: '=',
         totalItems: '=',
-        changeEvent: '='
       },
       templateUrl: 'partials/numberPerPage.html',
-      link: function(scope) {
+      link: function(scope, element, attrs, ngModel) {
+        ngModel.$viewChangeListeners.push(function() {
+            scope.$eval(attrs.ngChange);
+        });
+        ngModel.$render = function() {
+            scope.itemsPerPage = ngModel.$modelValue;
+        };
         scope.selectItemPerPage = function(value) {
           if (scope.itemsPerPage !== value) {
             scope.itemsPerPage = value;
-            scope.changeEvent();
+            ngModel.$setViewValue(value);
           }
         };
       }
@@ -113,12 +118,12 @@ angular.module('Cops.controllers', [])
     $scope.currentPage = 1;
     $scope.db = $stateParams.db;
     $scope.books = [];
-    var params = {page: $scope.currentPage, per_page: $scope.itemsPerPage, authors: 1, tags: 1, series: 1};
-    if ($stateParams.letter) {
-      params.letter = $stateParams.letter;
-    }
 
     $scope.pageChanged = function() {
+      var params = {page: $scope.currentPage, per_page: $scope.itemsPerPage, authors: 1, tags: 1, series: 1};
+      if ($stateParams.letter) {
+        params.letter = $stateParams.letter;
+      }
       Restangular.one("databases", $stateParams.db)
                  .getList("books", params)
                  .then(function(list) {
