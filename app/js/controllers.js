@@ -34,6 +34,11 @@ angular.module('Cops.controllers', [])
       $scope.multiCops = ds;
     });
 
+    $scope.$on("typeahead:selected", function(evt, data, datasetName) {
+      $scope.$state.go('base.category.books', {cat: datasetName, id: data.id});
+      $scope.query = null;
+    })
+
     // Typeahead options object
     $scope.exampleOptions = {
       highlight: true,
