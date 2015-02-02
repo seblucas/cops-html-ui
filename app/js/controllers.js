@@ -3,7 +3,7 @@
 /* Controllers */
 
 angular.module('Cops.controllers', [])
-  .controller('navbar', ['$scope', '$translate', function($scope, $translate) {
+  .controller('navbar', ['$scope', '$translate', 'typeaheadServices', function($scope, $translate, typeaheadServices) {
     $scope.languageList = [
       { code: "ca", name: "Català"},
       { code: "cs", name: "Čeština"},
@@ -29,46 +29,25 @@ angular.module('Cops.controllers', [])
       return $translate.use() == language;
     }
 
-    var copsAuthorTypeahead = new Bloodhound({
-      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
-      queryTokenizer: Bloodhound.tokenizers.whitespace,
-      limit: 30,
-      remote: {
-                  url: '/ncops/databases/0/authors?q=%QUERY&per_page=5'
-              }
+    var bloodhound = [];
+    angular.forEach(["authors", "series"], function(value, key) {
+      bloodhound[key] = typeaheadServices.getBloodhound (0, value);
+      bloodhound[key].initialize();
     });
-
-    copsAuthorTypeahead.initialize();
-
-    var copsBookTypeahead = new Bloodhound({
-      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
-      queryTokenizer: Bloodhound.tokenizers.whitespace,
-      limit: 30,
-      remote: {
-                  url: '/ncops/databases/0/series?q=%QUERY&per_page=5'
-              }
-    });
-
-    copsBookTypeahead.initialize();
-
-    $scope.copsAuthorDataset = {
-      displayKey: 'name',
-      source: copsAuthorTypeahead.ttAdapter()
-    };
 
     $scope.multiCops = [
       {
         name: 'Authors',
         displayKey: 'name',
-        source: copsAuthorTypeahead.ttAdapter(),
+        source: bloodhound[0].ttAdapter(),
         templates: {
           header: '<h3>Authors</h3><hr />'
         }
       },
       {
-        name: 'Book',
+        name: 'Series',
         displayKey: 'name',
-        source: copsBookTypeahead.ttAdapter(),
+        source: bloodhound[1].ttAdapter(),
         templates: {
           header: '<h3>Series</h3><hr />'
         }
