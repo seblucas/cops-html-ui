@@ -29,30 +29,7 @@ angular.module('Cops.controllers', [])
       return $translate.use() == language;
     }
 
-    var bloodhound = [];
-    angular.forEach(["authors", "series"], function(value, key) {
-      bloodhound[key] = typeaheadServices.getBloodhound (0, value);
-      bloodhound[key].initialize();
-    });
-
-    $scope.multiCops = [
-      {
-        name: 'Authors',
-        displayKey: 'name',
-        source: bloodhound[0].ttAdapter(),
-        templates: {
-          header: '<h4>Authors</h4><hr />'
-        }
-      },
-      {
-        name: 'Series',
-        displayKey: 'name',
-        source: bloodhound[1].ttAdapter(),
-        templates: {
-          header: '<h4>Series</h4><hr />'
-        }
-      }
-    ];
+    $scope.multiCops = typeaheadServices.getDatasets(0, ["authors", "series"]);
 
     // Typeahead options object
     $scope.exampleOptions = {

@@ -16,6 +16,25 @@ copsServices.factory('typeaheadServices', function() {
                     url: bhUrl
                 }
       });
+    },
+    getDatasets: function (db, categories) {
+      var bloodhounds = [];
+      var datasets = [];
+      var localGetBloodhound = this.getBloodhound // Helper
+      angular.forEach(categories, function(value, key) {
+        bloodhounds[key] = localGetBloodhound (db, value);
+        bloodhounds[key].initialize();
+        var headerTemplate = '<h4>' + value + '</h4><hr />'
+        datasets[key] = {
+          name: value,
+          displayKey: 'name',
+          source: bloodhounds[key].ttAdapter(),
+          templates: {
+            header: headerTemplate
+          }
+        }
+      });
+      return datasets;
     }
   };
 });
