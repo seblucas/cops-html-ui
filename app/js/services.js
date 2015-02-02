@@ -24,7 +24,7 @@ copsServices.factory('typeaheadServices', ['$q', '$translate', function($q, $tra
       angular.forEach(categories, function(value, key) {
         bloodhounds[key] = localGetBloodhound (db, value);
         bloodhounds[key].initialize();
-        var headerTemplate = '<h4>' + translations[key] + '</h4><hr />'
+        var headerTemplate = '<span class="tt-header">' + translations[key] + '</span>'
         datasets[key] = {
           name: value,
           displayKey: 'name',
