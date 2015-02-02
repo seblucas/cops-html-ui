@@ -29,7 +29,10 @@ angular.module('Cops.controllers', [])
       return $translate.use() == language;
     }
 
-    $scope.multiCops = typeaheadServices.getDatasets(0, ["authors", "series"]);
+    $scope.multiCops = [];
+    typeaheadServices.getDatasets(0, ["authors", "series"]).then(function(ds) {
+      $scope.multiCops = ds;
+    });
 
     // Typeahead options object
     $scope.exampleOptions = {
