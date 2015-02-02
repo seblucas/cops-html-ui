@@ -41,7 +41,7 @@ angular.module('Cops.controllers', [])
         displayKey: 'name',
         source: bloodhound[0].ttAdapter(),
         templates: {
-          header: '<h3>Authors</h3><hr />'
+          header: '<h4>Authors</h4><hr />'
         }
       },
       {
@@ -49,7 +49,7 @@ angular.module('Cops.controllers', [])
         displayKey: 'name',
         source: bloodhound[1].ttAdapter(),
         templates: {
-          header: '<h3>Series</h3><hr />'
+          header: '<h4>Series</h4><hr />'
         }
       }
     ];
