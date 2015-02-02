@@ -62,7 +62,7 @@ angular.module('Cops.controllers', [])
         displayKey: 'name',
         source: copsAuthorTypeahead.ttAdapter(),
         templates: {
-          header: '<h3>Authors</h3>'
+          header: '<h3>Authors</h3><hr />'
         }
       },
       {
@@ -70,7 +70,7 @@ angular.module('Cops.controllers', [])
         displayKey: 'name',
         source: copsBookTypeahead.ttAdapter(),
         templates: {
-          header: '<h3>Series</h3>'
+          header: '<h3>Series</h3><hr />'
         }
       }
     ];
