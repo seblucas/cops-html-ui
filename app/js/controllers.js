@@ -30,7 +30,7 @@ angular.module('Cops.controllers', [])
     }
 
     $scope.multiCops = [];
-    typeaheadServices.getDatasets(0, ["authors", "series"]).then(function(ds) {
+    typeaheadServices.getDatasets(0, ["authors", "series", "books"]).then(function(ds) {
       $scope.multiCops = ds;
     });
 

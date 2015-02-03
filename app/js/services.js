@@ -21,13 +21,16 @@ copsServices.factory('typeaheadServices', ['$q', '$translate', function($q, $tra
       var bloodhounds = [];
       var datasets = [];
       var localGetBloodhound = getBloodhound; // Helper
+      var name;
       angular.forEach(categories, function(value, key) {
+        name = "name";
+        if (value === "books") { name = "title"; }
         bloodhounds[key] = localGetBloodhound (db, value);
         bloodhounds[key].initialize();
         var headerTemplate = '<span class="tt-header">' + translations[key] + '</span>'
         datasets[key] = {
           name: value,
-          displayKey: 'name',
+          displayKey: name,
           source: bloodhounds[key].ttAdapter(),
           templates: {
             header: headerTemplate
