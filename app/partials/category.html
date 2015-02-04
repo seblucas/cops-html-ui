@@ -7,7 +7,7 @@
 </button>
 </div>
 <h1 translate>{{$stateParams.cat + '.title'}}</h1>
-<h1 ng-if="$stateParams.letter" translate="splitByLetter.letter" translate-values="{ category: $stateParams.cat + '.title' | translate, letter: $stateParams.letter }"></h1>
+<h1 ng-if="$stateParams.letter" translate="splitByLetter.letter" translate-value-category="{{$stateParams.cat + '.title' | translate}}" translate-value-letter="{{$stateParams.letter}}" }"></h1>
 <pagination total-items="totalItems" items-per-page="itemsPerPage" max-size="maxSize" ng-model="currentPage" ng-change="pageChanged()"></pagination>
 <ul class="pagination pull-right">
 <li ng-repeat="itemValue in itemsPerPageList" ng-class="{active: itemsPerPage == itemValue}"><a href="" ng-click="selectItemPerPage(itemValue)">{{itemValue}}</a></li>
