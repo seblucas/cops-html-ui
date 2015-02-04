@@ -1,13 +1,17 @@
 <div class="btn-group btn-group-lg pull-right">
-<button type="button" class="btn btn-default" ng-class="{active: currentTemplate == 'partials/category.grid.html'}" ng-click="toggleGrid()">
-  <span class="glyphicon glyphicon-th"></span>
-</button>
-<button type="button" class="btn btn-default" ng-class="{active: currentTemplate == 'partials/category.list.html'}" ng-click="toggleList()">
-  <span class="glyphicon glyphicon-list"></span>
-</button>
+  <button type="button" class="btn btn-default" ng-class="{active: currentTemplate == 'partials/category.grid.html'}" ng-click="toggleGrid()">
+    <span class="glyphicon glyphicon-th"></span>
+  </button>
+  <button type="button" class="btn btn-default" ng-class="{active: currentTemplate == 'partials/category.list.html'}" ng-click="toggleList()">
+    <span class="glyphicon glyphicon-list"></span>
+  </button>
 </div>
-<h1 translate>{{$stateParams.cat + '.title'}}</h1>
-<h1 ng-if="$stateParams.letter" translate="splitByLetter.letter" translate-value-category="{{$stateParams.cat + '.title' | translate}}" translate-value-letter="{{$stateParams.letter}}" }"></h1>
+<ng-switch on="$state.current.name">
+  <h1 ng-switch-when="base.category.list" translate>{{$stateParams.cat + '.title'}}
+  </h1>
+  <h1 ng-switch-when="base.category.listByLetter" translate="splitByLetter.letter" translate-value-category="{{$stateParams.cat + '.title' | translate}}" translate-value-letter="{{$stateParams.letter}}">
+  </h1>
+</ng-switch>
 <pagination total-items="totalItems" items-per-page="itemsPerPage" max-size="maxSize" ng-model="currentPage" ng-change="pageChanged()"></pagination>
 <ul class="pagination pull-right">
 <li ng-repeat="itemValue in itemsPerPageList" ng-class="{active: itemsPerPage == itemValue}"><a href="" ng-click="selectItemPerPage(itemValue)">{{itemValue}}</a></li>

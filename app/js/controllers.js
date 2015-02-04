@@ -90,12 +90,11 @@ angular.module('Cops.controllers', [])
       $scope.database = list;
     });
   }])
-.controller('authorList', ['$scope', '$stateParams', 'dataService', 'method', 'title', function($scope, $stateParams, dataService, method, title) {
+.controller('authorList', ['$scope', '$stateParams', 'Restangular', function($scope, $stateParams, Restangular) {
     $scope.itemsPerPage = 48;
     $scope.itemsPerPageList = [24, 48, 96, 192];
     $scope.maxSize = 10;
     $scope.currentPage = 1;
-    $scope.title = title;
     $scope.list = [];
     $scope.currentTemplate = "partials/category.list.html";
 
@@ -121,7 +120,9 @@ angular.module('Cops.controllers', [])
         params.q = $stateParams.q;
       }
 
-      dataService.getList(method, params).then(function(list) {
+      Restangular.one("databases", $stateParams.db)
+                 .getList($stateParams.cat, params)
+                 .then(function(list) {
         // Ugly hack to get the paging metadata
         $scope.totalItems = list[0].metadata;
         delete list[0].metadata;

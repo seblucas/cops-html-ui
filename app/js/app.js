@@ -140,22 +140,29 @@ config(function($stateProvider, $urlRouterProvider) {
       abstract: true
     })
     .state('base.category.list', {
-      url: "?letter&q",
+      url: "",
       views: {
         "@": {
           templateUrl: "partials/category.html",
           controller: "authorList"
         }
-      },
-      resolve: {
-        dataService: function (Restangular, $stateParams) {
-          return Restangular.one("databases", $stateParams.db);
-        },
-        method: function ($stateParams) {
-          return $stateParams.cat;
-        },
-        title: function ($stateParams, $translate) {
-          return $translate($stateParams.cat + ".title");
+      }
+    })
+    .state('base.category.listByLetter', {
+      url: "/firstletter?letter",
+      views: {
+        "@": {
+          templateUrl: "partials/category.html",
+          controller: "authorList"
+        }
+      }
+    })
+    .state('base.category.listBySearch', {
+      url: "/search?q",
+      views: {
+        "@": {
+          templateUrl: "partials/category.html",
+          controller: "authorList"
         }
       }
     })
