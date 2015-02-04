@@ -76,7 +76,7 @@
 "seriesword.one":"1 series",
 "sort.alternate":"Sort",
 "splitByLetter.book.other":"Other books",
-"splitByLetter.letter":"{0} starting with {1}",
+"splitByLetter.letter":"{{category}} starting with {{letter}}",
 "tags.alphabetical.many":"Alphabetical index of the {0} tags",
 "tags.alphabetical.none":"Alphabetical index of absolutely no tags",
 "tags.alphabetical.one":"Alphabetical index of the single tag",

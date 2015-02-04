@@ -138,7 +138,7 @@ config(function($stateProvider, $urlRouterProvider) {
       abstract: true
     })
     .state('base.category.list', {
-      url: "?letter",
+      url: "?letter&q",
       views: {
         "@": {
           templateUrl: "partials/category.html",

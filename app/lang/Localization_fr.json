@@ -76,7 +76,7 @@
 "seriesword.one":"1 collection",
 "sort.alternate":"Trier",
 "splitByLetter.book.other":"Autres livres",
-"splitByLetter.letter":"{0} débutant par {1}",
+"splitByLetter.letter":"{{category}} débutant par {{letter}}",
 "tags.alphabetical.many":"Index alphabétique des {0} étiquettes",
 "tags.alphabetical.none":"Index alphabétique - aucune étiquette",
 "tags.alphabetical.one":"Index alphabétique - Une seule étiquette",

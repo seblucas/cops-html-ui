@@ -117,6 +117,9 @@ angular.module('Cops.controllers', [])
       if ($stateParams.letter) {
         params.letter = $stateParams.letter;
       }
+      if ($stateParams.q) {
+        params.q = $stateParams.q;
+      }
 
       dataService.getList(method, params).then(function(list) {
         // Ugly hack to get the paging metadata
