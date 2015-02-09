@@ -2,11 +2,13 @@
 
 /* Services */
 
+/*global Bloodhound */
+
 var copsServices = angular.module('Cops.services', []);
 
 copsServices.factory('typeaheadServices', ['$q', '$translate', function($q, $translate) {
   var getBloodhound = function (db, category) {
-      var bhUrl = '/ncops/databases/' + db + '/' + category + '?q=%QUERY&per_page=5'
+      var bhUrl = '/ncops/databases/' + db + '/' + category + '?q=%QUERY&per_page=5';
       return new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -23,11 +25,11 @@ copsServices.factory('typeaheadServices', ['$q', '$translate', function($q, $tra
       var localGetBloodhound = getBloodhound; // Helper
       var name;
       angular.forEach(categories, function(value, key) {
-        name = "name";
-        if (value === "books") { name = "title"; }
+        name = 'name';
+        if (value === 'books') { name = 'title'; }
         bloodhounds[key] = localGetBloodhound (db, value);
         bloodhounds[key].initialize();
-        var headerTemplate = '<span class="tt-header">' + translations[key] + '</span>'
+        var headerTemplate = '<span class=\'tt-header\'>' + translations[key] + '</span>';
         datasets[key] = {
           name: value,
           displayKey: name,
@@ -35,7 +37,7 @@ copsServices.factory('typeaheadServices', ['$q', '$translate', function($q, $tra
           templates: {
             header: headerTemplate
           }
-        }
+        };
       });
       return datasets;
   };
@@ -45,8 +47,8 @@ copsServices.factory('typeaheadServices', ['$q', '$translate', function($q, $tra
       var deferred = $q.defer();
       var promises = [];
       // Get all the promises
-      angular.forEach(categories, function(value, key) {
-        promises.push($translate(value + ".title"));
+      angular.forEach(categories, function(value) {
+        promises.push($translate(value + '.title'));
       });
       $q.all(promises).then(function(results) {
         deferred.resolve(getDatasetsSync(db, categories, results));
