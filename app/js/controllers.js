@@ -5,39 +5,39 @@
 angular.module('Cops.controllers', [])
   .controller('navbar', ['$scope', '$translate', 'typeaheadServices', function($scope, $translate, typeaheadServices) {
     $scope.languageList = [
-      { code: "ca", name: "Català"},
-      { code: "cs", name: "Čeština"},
-      { code: "de", name: "Deutsch"},
-      { code: "en", name: "English"},
-      { code: "es", name: "Español"},
-      { code: "eu", name: "Euskara"},
-      { code: "fr", name: "Français"},
-      { code: "ht", name: "Haitian"},
-      { code: "it", name: "Italiano"},
-      { code: "nb", name: "Norsk bokmål"},
-      { code: "nl", name: "Nederlands"},
-      { code: "pl", name: "Polski"},
-      { code: "pt", name: "Português"},
-      { code: "ru", name: "Русский"},
-      { code: "sv", name: "Svenska"},
-      { code: "zh", name: "简体中文"}
+      { code: 'ca', name: 'Català'},
+      { code: 'cs', name: 'Čeština'},
+      { code: 'de', name: 'Deutsch'},
+      { code: 'en', name: 'English'},
+      { code: 'es', name: 'Español'},
+      { code: 'eu', name: 'Euskara'},
+      { code: 'fr', name: 'Français'},
+      { code: 'ht', name: 'Haitian'},
+      { code: 'it', name: 'Italiano'},
+      { code: 'nb', name: 'Norsk bokmål'},
+      { code: 'nl', name: 'Nederlands'},
+      { code: 'pl', name: 'Polski'},
+      { code: 'pt', name: 'Português'},
+      { code: 'ru', name: 'Русский'},
+      { code: 'sv', name: 'Svenska'},
+      { code: 'zh', name: '简体中文'}
     ];
     $scope.setLanguage = function(language) {
       $translate.use(language);
-    }
+    };
     $scope.isLanguageActive = function(language) {
-      return $translate.use() == language;
-    }
+      return $translate.use() === language;
+    };
 
     $scope.multiCops = [];
-    typeaheadServices.getDatasets(0, ["authors", "series", "books"]).then(function(ds) {
+    typeaheadServices.getDatasets(0, ['authors', 'series', 'books']).then(function(ds) {
       $scope.multiCops = ds;
     });
 
-    $scope.$on("typeahead:selected", function(evt, data, datasetName) {
+    $scope.$on('typeahead:selected', function(evt, data, datasetName) {
       $scope.$state.go('base.category.books', {cat: datasetName, id: data.id});
       $scope.query = null;
-    })
+    });
 
     // Typeahead options object
     $scope.exampleOptions = {
@@ -72,21 +72,21 @@ angular.module('Cops.controllers', [])
     };
   })
   .controller('main', ['$scope', 'Restangular', function($scope, Restangular) {
-    Restangular.all("databases")
+    Restangular.all('databases')
                .getList()
                .then(function(list) {
       $scope.databases = list;
     });
   }])
   .controller('databaseDetail', ['$scope', '$filter', 'Restangular', function($scope, $filter, Restangular) {
-    $scope.bookCount = "Calcul en cours";
-    Restangular.one("databases", $scope.database.id).get().then(function(db) {
+    $scope.bookCount = 'Calcul en cours';
+    Restangular.one('databases', $scope.database.id).get().then(function(db) {
       var cat = $filter('filter')(db.categories, {name: 'books'}, true);
       $scope.bookCount = cat[0].count;
     });
   }])
   .controller('database', ['$scope', '$stateParams', 'Restangular', function($scope, $stateParams, Restangular) {
-    Restangular.one("databases", $stateParams.db).get().then(function(list) {
+    Restangular.one('databases', $stateParams.db).get().then(function(list) {
       $scope.database = list;
     });
   }])
@@ -96,15 +96,15 @@ angular.module('Cops.controllers', [])
     $scope.maxSize = 10;
     $scope.currentPage = 1;
     $scope.list = [];
-    $scope.currentTemplate = "partials/category.list.html";
+    $scope.currentTemplate = 'partials/category.list.html';
 
     $scope.toggleList = function() {
-      $scope.currentTemplate = "partials/category.list.html";
-    }
+      $scope.currentTemplate = 'partials/category.list.html';
+    };
 
     $scope.toggleGrid = function() {
-      $scope.currentTemplate = "partials/category.grid.html";
-    }
+      $scope.currentTemplate = 'partials/category.grid.html';
+    };
 
     $scope.selectItemPerPage = function(value) {
       $scope.itemsPerPage = value;
@@ -120,7 +120,7 @@ angular.module('Cops.controllers', [])
         params.q = $stateParams.q;
       }
 
-      Restangular.one("databases", $stateParams.db)
+      Restangular.one('databases', $stateParams.db)
                  .getList($stateParams.cat, params)
                  .then(function(list) {
         // Ugly hack to get the paging metadata
@@ -145,8 +145,8 @@ angular.module('Cops.controllers', [])
       if ($stateParams.letter) {
         params.letter = $stateParams.letter;
       }
-      Restangular.one("databases", $stateParams.db)
-                 .getList("books", params)
+      Restangular.one('databases', $stateParams.db)
+                 .getList('books', params)
                  .then(function(list) {
         // Ugly hack to get the paging metadata
         $scope.totalItems = list[0].metadata;
@@ -164,14 +164,14 @@ angular.module('Cops.controllers', [])
     $scope.db = $stateParams.db;
     $scope.books = [];
 
-    Restangular.one("databases", $stateParams.db).one($stateParams.cat, $stateParams.id).get().then(function(cat) {
+    Restangular.one('databases', $stateParams.db).one($stateParams.cat, $stateParams.id).get().then(function(cat) {
       $scope.title = cat.name;
     });
 
     $scope.pageChanged = function() {
-      Restangular.one("databases", $stateParams.db)
+      Restangular.one('databases', $stateParams.db)
                  .one($stateParams.cat, $stateParams.id)
-                 .getList("books", {page: $scope.currentPage, per_page: $scope.itemsPerPage, authors: 1, tags: 1, series: 1})
+                 .getList('books', {page: $scope.currentPage, per_page: $scope.itemsPerPage, authors: 1, tags: 1, series: 1})
                  .then(function(list) {
         // Ugly hack to get the paging metadata
         $scope.totalItems = list[0].metadata;
@@ -184,17 +184,17 @@ angular.module('Cops.controllers', [])
   }])
   .controller('bookFirstLetter', ['$scope', '$stateParams', 'Restangular', function($scope, $stateParams, Restangular) {
     $scope.letters = [];
-    Restangular.one("databases", $stateParams.db)
-               .one("books", "letter")
+    Restangular.one('databases', $stateParams.db)
+               .one('books', 'letter')
                .getList()
                .then(function(list) {
       $scope.letters = list;
     });
   }])
   .controller('listLetter', ['$scope', '$stateParams', 'Restangular', function($scope, $stateParams, Restangular) {
-    $scope.title = $stateParams.cat + ".title";
-    Restangular.one("databases", $stateParams.db)
-               .one($stateParams.cat, "letter")
+    $scope.title = $stateParams.cat + '.title';
+    Restangular.one('databases', $stateParams.db)
+               .one($stateParams.cat, 'letter')
                .getList()
                .then(function(list) {
       $scope.letters = list;
