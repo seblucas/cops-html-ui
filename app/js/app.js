@@ -78,7 +78,7 @@ config(function($translateProvider) {
   // To be safe we take only the language and don't care about the country
   var getLocaleWithLanguageOnly = function() {
     return getFirstBrowserLanguage().substr(0, 2);
-  }
+  };
 
   $translateProvider.determinePreferredLanguage(getLocaleWithLanguageOnly);
   $translateProvider.fallbackLanguage('en');
@@ -95,92 +95,92 @@ config(['$httpProvider', function ($httpProvider) {
 }]).
 config(function($stateProvider, $urlRouterProvider) {
   // For any unmatched url, redirect to /
-  $urlRouterProvider.otherwise("/");
+  $urlRouterProvider.otherwise('/');
 
   $stateProvider
     .state('databases', {
-      url: "/",
-      templateUrl: "partials/main.html",
-      controller: "main"
+      url: '/',
+      templateUrl: 'partials/main.html',
+      controller: 'main'
     })
     .state('base', {
       abstract: true,
-      url: "/:db",
+      url: '/:db',
       template: '<div ui-view></div>'
     })
     .state('base.database', {
-      url: "",
-      templateUrl: "partials/database.html",
-      controller: "database"
+      url: '',
+      templateUrl: 'partials/database.html',
+      controller: 'database'
     })
     .state('base.book', {
-      url: "/books",
+      url: '/books',
       abstract: true
     })
     .state('base.book.list', {
-      url: "?letter",
+      url: '?letter',
       views: {
-        "@": {
-          templateUrl: "partials/book.html",
-          controller: "bookList"
+        '@': {
+          templateUrl: 'partials/book.html',
+          controller: 'bookList'
         }
       }
     })
     .state('base.book.firstLetter', {
-      url: "/letter",
+      url: '/letter',
       views: {
-        "@": {
-          templateUrl: "partials/booksByLetter.html",
-          controller: "bookFirstLetter"
+        '@': {
+          templateUrl: 'partials/booksByLetter.html',
+          controller: 'bookFirstLetter'
         }
       }
     })
     .state('base.category', {
-      url: "/{cat:(?:authors|series|tags|publishers|ratings)}",
+      url: '/{cat:(?:authors|series|tags|publishers|ratings)}',
       abstract: true
     })
     .state('base.category.list', {
-      url: "",
+      url: '',
       views: {
-        "@": {
-          templateUrl: "partials/category.html",
-          controller: "authorList"
+        '@': {
+          templateUrl: 'partials/category.html',
+          controller: 'authorList'
         }
       }
     })
     .state('base.category.listByLetter', {
-      url: "/firstletter?letter",
+      url: '/firstletter?letter',
       views: {
-        "@": {
-          templateUrl: "partials/category.html",
-          controller: "authorList"
+        '@': {
+          templateUrl: 'partials/category.html',
+          controller: 'authorList'
         }
       }
     })
     .state('base.category.listBySearch', {
-      url: "/search?q",
+      url: '/search?q',
       views: {
-        "@": {
-          templateUrl: "partials/category.html",
-          controller: "authorList"
+        '@': {
+          templateUrl: 'partials/category.html',
+          controller: 'authorList'
         }
       }
     })
     .state('base.category.books', {
-      url: "/{id:[0-9]{1,8}}",
+      url: '/{id:[0-9]{1,8}}',
       views: {
-        "@": {
-          templateUrl: "partials/bookByCategory.html",
-          controller: "bookListCategory"
+        '@': {
+          templateUrl: 'partials/bookByCategory.html',
+          controller: 'bookListCategory'
         }
       }
     })
     .state('base.category.firstLetter', {
-      url: "/letter",
+      url: '/letter',
       views: {
-        "@": {
-          templateUrl: "partials/listByLetter.html",
-          controller: "listLetter"
+        '@': {
+          templateUrl: 'partials/listByLetter.html',
+          controller: 'listLetter'
         }
       }
     });
