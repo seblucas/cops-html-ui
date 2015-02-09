@@ -46,31 +46,6 @@ angular.module('Cops.controllers', [])
     };
 
   }])
-  .directive('numberPerPage', function() {
-    return {
-      restrict: 'E',
-      require: '^ngModel',
-      scope: {
-        itemsPerPageList: '=',
-        totalItems: '=',
-      },
-      templateUrl: 'partials/numberPerPage.html',
-      link: function(scope, element, attrs, ngModel) {
-        ngModel.$viewChangeListeners.push(function() {
-            scope.$eval(attrs.ngChange);
-        });
-        ngModel.$render = function() {
-            scope.itemsPerPage = ngModel.$modelValue;
-        };
-        scope.selectItemPerPage = function(value) {
-          if (scope.itemsPerPage !== value) {
-            scope.itemsPerPage = value;
-            ngModel.$setViewValue(value);
-          }
-        };
-      }
-    };
-  })
   .controller('main', ['$scope', 'Restangular', function($scope, Restangular) {
     Restangular.all('databases')
                .getList()

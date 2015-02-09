@@ -1,5 +1,5 @@
 <h1 translate>books.title</h1>
 <pagination total-items="totalItems" items-per-page="itemsPerPage" max-size="maxSize" ng-model="currentPage" ng-change="pageChanged()"></pagination>
-<number-per-page total-items="totalItems" ng-model="itemsPerPage" ng-change="pageChanged()" items-per-page-list="itemsPerPageList"></number-per-page>
+<sl-page-size-changer total-items="totalItems" ng-model="itemsPerPage" ng-change="pageChanged()" items-per-page-list="itemsPerPageList"></sl-page-size-changer>
 <br />
 <div ng-include src="'partials/book.grid.html'" scope="" onload=""></div>

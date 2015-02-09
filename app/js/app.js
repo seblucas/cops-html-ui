@@ -10,6 +10,7 @@ angular.module('Cops', [
   'ui.bootstrap',
   'pascalprecht.translate',
   'siyfion.sfTypeahead',
+  'seblucas.slPageSizeChanger',
   'restangular'
 ]).
 run([ '$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
