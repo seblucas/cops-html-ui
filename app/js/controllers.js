@@ -65,11 +65,8 @@ angular.module('Cops.controllers', [])
       $scope.database = list;
     });
   }])
-.controller('authorList', ['$scope', '$stateParams', 'Restangular', function($scope, $stateParams, Restangular) {
-    $scope.itemsPerPage = 48;
-    $scope.itemsPerPageList = [24, 48, 96, 192];
-    $scope.maxSize = 10;
-    $scope.currentPage = 1;
+.controller('authorList', ['$scope', '$stateParams', 'Restangular', 'controllerHelperServices', function($scope, $stateParams, Restangular, controllerHelperServices) {
+    controllerHelperServices.initController($scope, true);
     $scope.list = [];
     $scope.currentTemplate = 'partials/category.list.html';
 
@@ -94,11 +91,8 @@ angular.module('Cops.controllers', [])
 
     $scope.pageChanged ();
   }])
-.controller('bookList', ['$scope', '$stateParams', 'Restangular', function($scope, $stateParams, Restangular) {
-    $scope.itemsPerPage = 48;
-    $scope.itemsPerPageList = [24, 48, 96, 192];
-    $scope.maxSize = 10;
-    $scope.currentPage = 1;
+.controller('bookList', ['$scope', '$stateParams', 'Restangular', 'controllerHelperServices', function($scope, $stateParams, Restangular, controllerHelperServices) {
+    controllerHelperServices.initController($scope, true);
     $scope.db = $stateParams.db;
     $scope.books = [];
 
@@ -119,10 +113,8 @@ angular.module('Cops.controllers', [])
 
     $scope.pageChanged ();
   }])
-.controller('bookListCategory', ['$scope', '$stateParams', 'Restangular', function($scope, $stateParams, Restangular) {
-    $scope.itemsPerPage = 50;
-    $scope.maxSize = 10;
-    $scope.currentPage = 1;
+.controller('bookListCategory', ['$scope', '$stateParams', 'Restangular', 'controllerHelperServices', function($scope, $stateParams, Restangular, controllerHelperServices) {
+    controllerHelperServices.initController($scope, true);
     $scope.db = $stateParams.db;
     $scope.books = [];
 
