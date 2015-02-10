@@ -12,9 +12,6 @@
   </h1>
 </ng-switch>
 <pagination total-items="totalItems" items-per-page="itemsPerPage" max-size="maxSize" ng-model="currentPage" ng-change="pageChanged()"></pagination>
-<ul class="pagination pull-right">
-<li ng-repeat="itemValue in itemsPerPageList" ng-class="{active: itemsPerPage == itemValue}"><a href="" ng-click="selectItemPerPage(itemValue)">{{itemValue}}</a></li>
-<li class="disabled"><a href="">Total : {{totalItems}}</a></li>
-</ul>
+<sl-page-size-changer total-items="totalItems" ng-model="itemsPerPage" ng-change="pageChanged()" items-per-page-list="itemsPerPageList"></sl-page-size-changer>
 <br />
 <div ng-include src="currentTemplate" scope="" onload=""></div>
