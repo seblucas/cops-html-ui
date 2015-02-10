@@ -30,13 +30,26 @@ angular.module('Cops.controllers', [])
     };
 
     $scope.multiCops = [];
-    typeaheadServices.getDatasets(0, ['authors', 'series', 'books']).then(function(ds) {
-      $scope.multiCops = ds;
-    });
 
     $scope.$on('typeahead:selected', function(evt, data, datasetName) {
       $scope.$state.go('base.category.books', {cat: datasetName, id: data.id});
       $scope.query = null;
+    });
+
+    $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
+      if (angular.isDefined(toParams.db) &&
+          angular.isDefined(fromParams.db) &&
+          $scope.multiCops !== [] &&
+          toParams.db === fromParams.db) {
+        return;
+      }
+      if (angular.isDefined(toParams.db)) {
+        typeaheadServices.getDatasets(toParams.db, ['authors', 'series', 'books']).then(function(ds) {
+          $scope.multiCops = ds;
+        });
+      } else {
+        $scope.multiCops = [];
+      }
     });
 
     // Typeahead options object
