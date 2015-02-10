@@ -1,8 +1,4 @@
-<div class="btn-group btn-group-lg pull-right">
-  <button ng-repeat="item in toggles" type="button" class="btn btn-default" ng-class="{active: isTemplateActive(item)}" ng-click="toggleTemplate(item)">
-    <span class="glyphicon glyphicon-{{item}}"></span>
-  </button>
-</div>
+<sl-grid-list-toggle ng-model="currentTemplate" template-prefix="'partials/category.'"></sl-grid-list-toggle>
 <ng-switch on="$state.current.name">
   <h1 ng-switch-when="base.category.list" translate>{{$stateParams.cat + '.title'}}</h1>
   <h1 ng-switch-when="base.category.listByLetter" translate="splitByLetter.letter" translate-value-category="{{$stateParams.cat + '.title' | translate}}" translate-value-letter="{{$stateParams.letter}}">

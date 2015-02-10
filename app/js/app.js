@@ -11,6 +11,7 @@ angular.module('Cops', [
   'pascalprecht.translate',
   'siyfion.sfTypeahead',
   'seblucas.slPageSizeChanger',
+  'seblucas.slGridListToggle',
   'restangular'
 ]).
 run([ '$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
