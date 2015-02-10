@@ -71,14 +71,16 @@ angular.module('Cops.controllers', [])
     $scope.maxSize = 10;
     $scope.currentPage = 1;
     $scope.list = [];
+    $scope.prefix = 'partials/category.';
+    $scope.toggles = ['th', 'list'];
     $scope.currentTemplate = 'partials/category.list.html';
 
-    $scope.toggleList = function() {
-      $scope.currentTemplate = 'partials/category.list.html';
+    $scope.toggleTemplate = function(value) {
+      $scope.currentTemplate = $scope.prefix + value +'.html';
     };
 
-    $scope.toggleGrid = function() {
-      $scope.currentTemplate = 'partials/category.grid.html';
+    $scope.isTemplateActive = function(value) {
+      return $scope.currentTemplate.indexOf (value) > 0;
     };
 
     $scope.selectItemPerPage = function(value) {
