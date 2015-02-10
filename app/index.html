@@ -27,6 +27,12 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" ui-sref="databases()">COPS</a>
+          <form id="searchForm" class="navbar-form pull-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search here" name="query" sf-typeahead datasets="multiCops" options="exampleOptions" ng-model="query">
+            </div>
+            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+          </form>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -38,14 +44,6 @@
                 <ul class="dropdown-menu">
                     <li ng-class='{active: isLanguageActive(lang.code)}' ng-repeat="lang in languageList"><a href="" ng-click="setLanguage(lang.code)">{{lang.name}}</a></li>
                 </ul>
-            </li>
-            <li>
-              <form id="searchForm" class="navbar-form navbar-right" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search here" name="query" sf-typeahead datasets="multiCops" options="exampleOptions" ng-model="query">
-              </div>
-              <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-              </form>
             </li>
           </ul>
         </div><!--/.nav-collapse -->
