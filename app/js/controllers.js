@@ -110,6 +110,7 @@ angular.module('Cops.controllers', [])
     controllerHelperServices.initController($scope, true);
     $scope.db = $stateParams.db;
     $scope.books = [];
+    $scope.currentTemplate = 'partials/book.th.html';
 
     $scope.pageChanged = function() {
       var params = {page: $scope.currentPage, per_page: $scope.itemsPerPage, authors: 1, tags: 1, series: 1};
@@ -132,6 +133,7 @@ angular.module('Cops.controllers', [])
     controllerHelperServices.initController($scope, true);
     $scope.db = $stateParams.db;
     $scope.books = [];
+    $scope.currentTemplate = 'partials/book.th.html';
 
     Restangular.one('databases', $stateParams.db).one($stateParams.cat, $stateParams.id).get().then(function(cat) {
       $scope.title = cat.name;
