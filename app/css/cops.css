@@ -45,31 +45,30 @@
     opacity: 1;*/
 
 
-.tt-dropdown-menu {
-      width: 322px;
-      text-align: left;
-      margin-top: 6px;
-      /*color: #000066;*/
-      padding: 4px 0;
-      background-color: #fff;
-      border: 1px solid #DDD;
-    }
 
-    .tt-header {
-        border-bottom: 1px solid #DDD;
-        font-weight: bold;
-    }
 
-    .tt-suggestion {
-      padding: 3px 20px;
-      line-height: 14px;
-    }
+.glyphicon-spin {
+    -webkit-animation: spin 1000ms infinite linear;
+    animation: spin 1000ms infinite linear;
+}
 
-    .tt-suggestion.tt-cursor {
-      /*color: #1c1c1c;*/
-      background-color: #EEE;
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
     }
-
-    .tt-suggestion p {
-      margin: 0;
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
     }
+}
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
