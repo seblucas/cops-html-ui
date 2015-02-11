@@ -6,6 +6,11 @@
     color: white;
 }
 
+.ellipsis {
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    display:block;
+}
+
 .ng-enter,
 .ng-leave {
     transition-timing-function: ease;
