@@ -12,6 +12,7 @@ angular.module('Cops', [
   'siyfion.sfTypeahead',
   'seblucas.slPageSizeChanger',
   'seblucas.slGridListToggle',
+  'seblucas.slSpinner',
   'restangular'
 ]).
 run([ '$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {

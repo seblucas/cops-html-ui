@@ -78,12 +78,13 @@ angular.module('Cops.controllers', [])
       $scope.database = list;
     });
   }])
-.controller('authorList', ['$scope', '$stateParams', 'Restangular', 'controllerHelperServices', function($scope, $stateParams, Restangular, controllerHelperServices) {
+.controller('authorList', ['$scope', '$stateParams', 'Restangular', 'controllerHelperServices', 'spinnerService', function($scope, $stateParams, Restangular, controllerHelperServices, spinnerService) {
     controllerHelperServices.initController($scope, true);
     $scope.list = [];
     $scope.currentTemplate = 'partials/category.list.html';
 
     $scope.pageChanged = function() {
+      spinnerService.show('mainSpinner', 'Loading stuff...');
       var params = {page: $scope.currentPage, per_page: $scope.itemsPerPage};
       if ($stateParams.letter) {
         params.letter = $stateParams.letter;
@@ -99,6 +100,7 @@ angular.module('Cops.controllers', [])
         $scope.totalItems = list[0].metadata;
         delete list[0].metadata;
         $scope.list = list;
+        spinnerService.hide('mainSpinner', 'Loading stuff...');
       });
     };
 
