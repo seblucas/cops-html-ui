@@ -116,7 +116,7 @@ angular.module('seblucas.slSpinner', [])
 .directive('spinner', function () {
   return {
     restrict: 'E',
-    template: '<span class="glyphicon glyphicon-refresh" ng-class="{\'glyphicon-spin\': showSpinner}"></span>',
+    template: '<span class="glyphicon glyphicon-refresh" ng-class="{\'glyphicon-spin\': showSpinner, invisible: !showSpinner}"></span>',
     replace: true,
     scope: {
       id: '@',

@@ -29,13 +29,14 @@
           </button>
           <a class="navbar-brand" ui-sref="databases()">COPS</a>
           <form id="searchForm" class="navbar-form pull-left" role="search">
-            <div class="input-group">
+            <div class="input-group hidden-xs">
               <div class="input-group-btn">
                 <button class="btn btn-link">
-                <!--<span class="glyphicon glyphicon-refresh glyphicon-Xspin"></span>-->
-                <spinner id="mainSpinner"></spinner>
+                  <spinner id="mainSpinner"></spinner>
                 </button>
               </div>
+            </div>
+            <div class="input-group">
               <input type="text" class="form-control" placeholder="Search here" name="query" sf-typeahead datasets="multiCops" options="exampleOptions" ng-model="query">
               <div class="input-group-btn">
                 <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span></button>
