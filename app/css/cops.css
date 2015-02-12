@@ -15,6 +15,13 @@ li.media {
     border-bottom: 1px solid #ccc;
 }
 
+@media (max-width: 767px) {
+    .navbar-form-margin {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+}
+
 .ng-enter,
 .ng-leave {
     transition-timing-function: ease;
