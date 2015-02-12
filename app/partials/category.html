@@ -4,7 +4,13 @@
   <h1 ng-switch-when="base.category.listByLetter" translate="splitByLetter.letter" translate-value-category="{{$stateParams.cat + '.title' | translate}}" translate-value-letter="{{$stateParams.letter}}">
   </h1>
 </ng-switch>
-<pagination total-items="totalItems" items-per-page="itemsPerPage" max-size="maxSize" ng-model="currentPage" ng-change="pageChanged()"></pagination>
+<pagination total-items="totalItems"
+            items-per-page="itemsPerPage"
+            max-size="maxSize"
+            ng-model="currentPage"
+            ng-change="pageChanged()"
+            next-text="{{ 'paging.next.alternate' | translate}}"
+            previous-text="{{ 'paging.previous.alternate' | translate}}"></pagination>
 <sl-page-size-changer total-items="totalItems" ng-model="itemsPerPage" ng-change="pageChanged()" items-per-page-list="itemsPerPageList"></sl-page-size-changer>
 <br />
 <div ng-include src="currentTemplate" scope="" onload=""></div>
