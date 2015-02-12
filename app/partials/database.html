@@ -1,5 +1,5 @@
 <h1>{{::database.name}}</h1>
-<div class="col-lg-2 col-md-3 col-sm-4 col-xs-4" ng-repeat="category in database.categories">
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" ng-repeat="category in database.categories">
     <div class="panel panel-default">
         <div class="panel-heading" ng-if="category.count > 0" ng-switch on="category.name">
             <h2 class="panel-title" ng-switch-when="books">
