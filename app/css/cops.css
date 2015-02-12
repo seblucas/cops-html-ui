@@ -11,6 +11,10 @@
     display:block;
 }
 
+li.media {
+    border-bottom: 1px solid #ccc;
+}
+
 .ng-enter,
 .ng-leave {
     transition-timing-function: ease;
