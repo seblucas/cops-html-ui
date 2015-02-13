@@ -1,17 +1,24 @@
 <div class="container">
-  <ul class="media-list">
-    <li class="media" ng-repeat="book in books">
-      <div class="media-left">
-        <a href="/ncops/databases/{{::db}}/books/{{::book.id}}/cover" ng-show="book.hasCover == 1">
-            <img class="media-object" ng-src="/ncops/databases/{{::db}}/books/{{::book.id}}/cover" style="width: 64px;" />
-        </a>
-      </div>
-      <div class="media-body">
-        <h4 class="media-heading">{{::book.title}}</h4>
-        <div class="ellipsis"><span class="glyphicon glyphicon-user"></span> {{book.authorsName}}</div>
-        <div class="ellipsis" ng-show="book.tagsName"><span class="glyphicon glyphicon-tag"></span> {{book.tagsName}}</div>
-        <div class="ellipsis" ng-show="book.seriesName"><span class="glyphicon glyphicon-list"></span> {{book.seriesName}} ({{book.seriesIndex}})</div>
-      </div>
-    </li>
-  </ul>
+  <div class="row">
+    <ul class="media-list">
+      <li class="media" ng-repeat="book in books">
+        <div class="media-left media-middle">
+          <a href="/ncops/databases/{{::db}}/books/{{::book.id}}/cover" ng-show="book.hasCover == 1">
+              <img class="media-object" ng-src="/ncops/databases/{{::db}}/books/{{::book.id}}/cover" style="width: 64px;" />
+          </a>
+        </div>
+        <div class="media-body">
+          <div class="btn-group-vertical pull-right" role="group" aria-label="format">
+            <button type="button" class="btn btn-default">EPUB</button>
+            <br />
+            <button type="button" class="btn btn-default">MOBI</button>
+          </div>
+          <h4 class="media-heading">{{::book.title}}</h4>
+          <div class="ellipsis"><span class="glyphicon glyphicon-user"></span> {{book.authorsName}}</div>
+          <div class="ellipsis" ng-show="book.tagsName"><span class="glyphicon glyphicon-tag"></span> {{book.tagsName}}</div>
+          <div class="ellipsis" ng-show="book.seriesName"><span class="glyphicon glyphicon-list"></span> {{book.seriesName}} ({{book.seriesIndex}})</div>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>
