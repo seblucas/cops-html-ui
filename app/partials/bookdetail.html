@@ -1,0 +1,29 @@
+<div class="row">
+<div class="col-md-offset-2 col-md-2 col-sm-12">
+        <div class="cover-image">
+            <a href="/ncops/databases/{{::db}}/books/{{::book.id}}/cover" ng-show="book.hasCover == 1">
+                <img ng-src="/ncops/databases/{{::db}}/books/{{::book.id}}/cover" />
+            </a>
+        </div>
+</div>
+<div class="col-md-4 text-center">
+    <h1><a rel="bookmark" ui-sref="base.book.detail()">
+        <span class="glyphicon glyphicon-link"></span></a>{{ book.title }}
+    </h1>
+    <h4>{{ 'authors.title' | translate }}:
+      <span ng-repeat="author in authors">
+      <span ng-if="!$first">, </span><a ui-sref="base.category.books({cat: 'authors', id: author.id})">{{ author.name }}</a>
+      </span>
+    </h4>
+    <h4>{{ 'tags.title' | translate }}:
+      <span ng-repeat="tag in tags">
+      <span ng-if="!$first">, </span><a ui-sref="base.category.books({cat: 'tags', id: tag.id})">{{ tag.name }}</a>
+      </span>
+    </h4>
+    <h4 ng-if="series.length" ng-repeat="serie in series">
+      {{ 'series.title' | translate }}: <a ui-sref="base.category.books({cat: 'series', id: serie.id})"
+                                           translate-value-number="{{ ::book.seriesIndex }}"
+                                           translate-value-name="{{ ::serie.name }}"
+                                           translate>content.series.data</a>
+    </h4>
+</div>

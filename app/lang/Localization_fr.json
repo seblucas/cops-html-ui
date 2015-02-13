@@ -19,7 +19,7 @@
 "books.title":"Livres",
 "cog.alternate":"Recherche, tri et filtres",
 "content.series":"Collection:",
-"content.series.data":"Livre {0} dans la collection {1}",
+"content.series.data":"Livre {{number}} dans la collection {{name}}",
 "content.summary":"Résumé:",
 "customize.email":"Adresse email (pour l'envoi automatique de livres)",
 "customize.fancybox":"Utiliser une Lightbox",

@@ -120,6 +120,15 @@ config(function($stateProvider, $urlRouterProvider) {
       url: '/books',
       abstract: true
     })
+    .state('base.book.detail', {
+      url: '/{id:[0-9]{1,8}}',
+      views: {
+        '@': {
+          templateUrl: 'partials/bookdetail.html',
+          controller: 'bookCtrl'
+        }
+      }
+    })
     .state('base.book.list', {
       url: '?letter',
       views: {
