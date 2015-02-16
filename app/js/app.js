@@ -13,6 +13,7 @@ angular.module('Cops', [
   'seblucas.slPageSizeChanger',
   'seblucas.slGridListToggle',
   'seblucas.slSpinner',
+  'seblucas.slStaticInclude',
   'restangular'
 ]).
 run([ '$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
