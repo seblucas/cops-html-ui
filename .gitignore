@@ -3,3 +3,4 @@ app/angular/**
 app/bower_components/**
 app/bower-angular-translate-handler-log-2.4.2/**
 node_modules/**
+public/**
