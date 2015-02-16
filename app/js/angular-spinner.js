@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('seblucas.slSpinner', [])
-.factory('spinnerService', function () {  
+.factory('spinnerService', function () {
   var cache = {};
   return {
 

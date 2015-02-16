@@ -19,7 +19,7 @@
 "books.title":"Books",
 "cog.alternate":"Search, sort and filters",
 "content.series":"Series:",
-"content.series.data":"Book {0} in the {1} series",
+"content.series.data":"Book {{number}} in the {{name}} series",
 "content.summary":"Summary",
 "customize.email":"Set your email (to allow book emailing)",
 "customize.fancybox":"Use Lightbox (books load in floating frame)",
