@@ -44,3 +44,17 @@ gulp.task('bower', function() {
         .pipe(fontFilter)
         .pipe(gulp.dest(dist.font));
 });
+
+gulp.task('js', function() {
+    return gulp.src([source + '**/*.js', '!' + source + 'bower_components/**/*.js'])
+        .pipe(concat('cops.js'))
+        .pipe(gulp.dest(dist.js));
+});
+
+gulp.task('css', function() {
+    return gulp.src([source + '**/*.css', '!' + source + 'bower_components/**/*.css'])
+        .pipe(concat('cops.css'))
+        .pipe(gulp.dest(dist.css));
+});
+
+gulp.task('default', ['bower', 'css', 'js']); // development
