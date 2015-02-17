@@ -7,17 +7,16 @@ var jshint = require('gulp-jshint');
 var mainBowerFiles = require('main-bower-files');
 var concat = require('gulp-concat');
 var gulpFilter = require('gulp-filter');
-var rename = require('gulp-rename');
 
 var source = 'app/';
 
 var publishdir = 'public';
 var dist = {
-all: [publishdir + '/**/*'],
 css: publishdir + '/css/',
 js: publishdir + '/js/',
-font: publishdir + '/fonts/',
-vendor: publishdir + '/static/'
+fonts: publishdir + '/fonts/',
+lang: publishdir + '/lang/',
+partials: publishdir + '/partials/'
 };
 // Define tasks
 
@@ -42,7 +41,7 @@ gulp.task('bower', function() {
         .pipe(gulp.dest(dist.css))
         .pipe(cssFilter.restore())
         .pipe(fontFilter)
-        .pipe(gulp.dest(dist.font));
+        .pipe(gulp.dest(dist.fonts));
 });
 
 gulp.task('js', function() {
@@ -57,4 +56,21 @@ gulp.task('css', function() {
         .pipe(gulp.dest(dist.css));
 });
 
-gulp.task('default', ['bower', 'css', 'js']); // development
+gulp.task('index', function() {
+    return gulp.src([source + 'index_prod.html'])
+        .pipe(gulp.dest(publishdir));
+});
+
+gulp.task('lang', function() {
+    return gulp.src([source + 'lang/*'])
+        .pipe(gulp.dest(dist.lang));
+});
+
+gulp.task('partials', function() {
+    return gulp.src([source + 'partials/*'])
+        .pipe(gulp.dest(dist.partials));
+});
+
+gulp.task('other', ['index', 'lang', 'partials']);
+
+gulp.task('default', ['bower', 'css', 'js', 'other']); // development
