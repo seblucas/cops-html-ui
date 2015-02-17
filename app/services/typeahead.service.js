@@ -1,12 +1,10 @@
 'use strict';
 
-/* Services */
-
 /*global Bloodhound */
 
-var copsServices = angular.module('Cops.services', []);
+var app = angular.module('Cops.services');
 
-copsServices.factory('typeaheadServices', ['$q', '$translate', function($q, $translate) {
+app.factory('typeaheadServices', ['$q', '$translate', function($q, $translate) {
   var getBloodhound = function (db, category) {
       var bhUrl = '/ncops/databases/' + db + '/' + category + '?q=%QUERY&per_page=5';
       return new Bloodhound({
@@ -58,27 +56,3 @@ copsServices.factory('typeaheadServices', ['$q', '$translate', function($q, $tra
     }
   };
 }]);
-
-copsServices.factory('genericServices', function() {
-  return {
-    stringFormat: function (input) {
-      var args = arguments;
-      return input.replace(/\{(\d+)\}/g, function (match, capture) {
-        return args[1*capture + 1];
-      });
-    }
-  };
-});
-
-copsServices.factory('controllerHelperServices', function() {
-  return {
-    initController: function (scope, withPaging) {
-      if (withPaging) {
-        scope.itemsPerPage = 48;
-        scope.itemsPerPageList = [24, 48, 96, 192];
-        scope.maxSize = 10;
-        scope.currentPage = 1;
-      }
-    }
-  };
-});
