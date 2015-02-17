@@ -45,7 +45,11 @@ gulp.task('bower', function() {
 });
 
 gulp.task('js', function() {
-    return gulp.src([source + '**/*.js', '!' + source + 'bower_components/**/*.js'])
+    return gulp.src([source + 'app.module.js',
+                     source + 'app.config.js',
+                     source + 'app.route.js',
+                     source + '**/*.js',
+                     '!' + source + 'bower_components/**/*.js'])
         .pipe(concat('cops.js'))
         .pipe(gulp.dest(dist.js));
 });
