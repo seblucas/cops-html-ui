@@ -24,12 +24,6 @@ run([ '$rootScope', '$state', '$stateParams', function ($rootScope, $state, $sta
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]).
-factory('$exceptionHandler', function () {
-  return function (exception, cause) {
-    exception.message += ' (caused by "' + cause + '")';
-    throw exception;
-  };
-}).
 config(function(RestangularProvider) {
     RestangularProvider.setBaseUrl('/ncops');
 
