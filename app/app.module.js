@@ -6,6 +6,7 @@ angular.module('Cops', [
   'ui.router',
   'ngAnimate',
   'Cops.controllers',
+  'Cops.category',
   'Cops.services',
   'ui.bootstrap',
   'pascalprecht.translate',

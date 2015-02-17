@@ -64,7 +64,7 @@ config(function($stateProvider, $urlRouterProvider) {
       views: {
         '@': {
           templateUrl: 'partials/category.html',
-          controller: 'authorList'
+          controller: 'categoryListController'
         }
       }
     })
@@ -73,7 +73,7 @@ config(function($stateProvider, $urlRouterProvider) {
       views: {
         '@': {
           templateUrl: 'partials/category.html',
-          controller: 'authorList'
+          controller: 'categoryListController'
         }
       }
     })
@@ -82,7 +82,7 @@ config(function($stateProvider, $urlRouterProvider) {
       views: {
         '@': {
           templateUrl: 'partials/category.html',
-          controller: 'authorList'
+          controller: 'categoryListController'
         }
       }
     })
