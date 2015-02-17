@@ -7,7 +7,6 @@ var jshint = require('gulp-jshint');
 var mainBowerFiles = require('main-bower-files');
 var concat = require('gulp-concat');
 var gulpFilter = require('gulp-filter');
-var debug = require('gulp-debug');
 
 var source = 'app/';
 
@@ -34,7 +33,6 @@ gulp.task('bower', function() {
     var fontFilter = gulpFilter(['*.eot', '*.woff', '*.svg', '*.ttf']);
     return gulp.src(mainBowerFiles())
         .pipe(jsFilter)
-        .pipe(debug())
         .pipe(concat('vendor.js'))
         .pipe(gulp.dest(dist.js))
         .pipe(jsFilter.restore())
