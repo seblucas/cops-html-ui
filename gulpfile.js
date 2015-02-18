@@ -49,7 +49,8 @@ gulp.task('js', function() {
                      source + 'app.config.js',
                      source + 'app.route.js',
                      source + '**/*.js',
-                     '!' + source + 'bower_components/**/*.js'])
+                     '!' + source + 'bower_components/**/*.js',
+                     '!' + source + '**/*.spec.js'])
         .pipe(concat('cops.js'))
         .pipe(gulp.dest(dist.js));
 });
