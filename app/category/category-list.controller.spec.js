@@ -4,7 +4,7 @@ describe('categoryListController', function(){
 
   beforeEach(module('restangular'));
   beforeEach(module('Cops.category'), function(RestangularProvider) {
-    RestangularProvider.setBaseUrl('http://phoenix');
+    RestangularProvider.setBaseUrl('http://xxx');
   });
 
   //beforeEach(angular.mock.module('Cops.category'));
