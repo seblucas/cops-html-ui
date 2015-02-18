@@ -83,4 +83,18 @@ describe('categoryListController', function(){
     expect(scope.list.length).toBe(2);
   });
 
+  it('should have Lewis Carroll on the first page', function() {
+    httpBackend.flush();
+    expect(scope.list[0].name).toBe('Lewis Carroll');
+  });
+
+  it('should have Alexandre Dumas on the second page', function() {
+    httpBackend.flush();
+    httpBackend.expectGET('/databases/0/authors?page=2&per_page=2').respond(authorsJson2);
+    scope.currentPage = 2;
+    scope.pageChanged();
+    httpBackend.flush();
+    expect(scope.list[0].name).toBe('Alexandre Dumas');
+  });
+
 });
