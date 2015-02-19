@@ -25,8 +25,6 @@ config(function($translateProvider) {
     suffix: '.json'
   });
 
-  $translateProvider.useMissingTranslationHandlerLog();
-
   // Direct copy from angular-translate source
   var getFirstBrowserLanguage = function() {
     var nav = window.navigator,
