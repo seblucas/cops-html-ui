@@ -1,0 +1,19 @@
+{
+  "name": "ncops-angular",
+  "version": "0.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-jshint": "^1.9.2",
+    "gulp-filter": "^2.0.2",
+    "main-bower-files": "^2.5.0",
+    "gulp-concat": "^2.5.0",
+    "gulp-karma": "^0.0.4"
+  }
+}
