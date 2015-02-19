@@ -33,7 +33,7 @@ partials: publishdir + '/partials/'
 
 // Lint Task
 gulp.task('lint', function () {
-    gulp.src(source + 'js/*.js')
+    gulp.src(jsSources)
         .pipe(jshint())
         .pipe(jshint.reporter('default'));
 });
