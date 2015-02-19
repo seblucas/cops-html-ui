@@ -7,8 +7,6 @@ describe('categoryListController', function(){
     RestangularProvider.setBaseUrl('http://xxx');
   });
 
-  //beforeEach(angular.mock.module('Cops.category'));
-
   var authorsJson1 = [
     {
         id: '3',
@@ -50,8 +48,8 @@ describe('categoryListController', function(){
           show: function() {}
         };
         httpBackend = _$httpBackend_;
-        httpBackend.expectGET('/databases/0/authors?page=1&per_page=2').respond(authorsJson1);
-        //httpBackend.expectGET('/databases/0/authors?page=2&per_page=2').respond(authorsJson2);
+        httpBackend.when('GET', '/databases/0/authors?page=1&per_page=2').respond(authorsJson1);
+        httpBackend.when('GET', '/databases/0/authors?page=2&per_page=2').respond(authorsJson2);
         Restangular = _Restangular_;
         stateParams = {db: 0, cat : 'authors'};
         scope = $rootScope.$new();
@@ -89,8 +87,6 @@ describe('categoryListController', function(){
   });
 
   it('should have Alexandre Dumas on the second page', function() {
-    httpBackend.flush();
-    httpBackend.expectGET('/databases/0/authors?page=2&per_page=2').respond(authorsJson2);
     scope.currentPage = 2;
     scope.pageChanged();
     httpBackend.flush();
