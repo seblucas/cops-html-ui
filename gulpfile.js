@@ -7,6 +7,7 @@ var jshint = require('gulp-jshint');
 var mainBowerFiles = require('main-bower-files');
 var concat = require('gulp-concat');
 var gulpFilter = require('gulp-filter');
+var karma = require('gulp-karma');
 
 var source = 'app/';
 
@@ -79,3 +80,15 @@ gulp.task('partials', function() {
 gulp.task('other', ['index', 'lang', 'partials']);
 
 gulp.task('default', ['bower', 'css', 'js', 'other']); // development
+
+gulp.task('test', function() {
+  return gulp.src('./idontexist') // All the files are defined in karma.conf.js so use a dummy file
+    .pipe(karma({
+      configFile: 'karma.conf.js',
+      action: 'run'
+    }))
+    .on('error', function(err) {
+      // Make sure failed tests cause gulp to exit non-zero
+      throw err;
+    });
+});
