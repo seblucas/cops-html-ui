@@ -37,7 +37,7 @@ describe('categoryListController', function(){
     }
   ];
 
-  var scope, ListCtrl, httpBackend, stateParams, Restangular;
+  var scope, getController, httpBackend, stateParams, Restangular;
 
   beforeEach(inject(function ($controller, _$httpBackend_, $rootScope, _Restangular_) {
         var controllerHelperServices = {
@@ -57,13 +57,15 @@ describe('categoryListController', function(){
         scope.itemsPerPageList = [2, 3];
         scope.maxSize = 10;
         scope.currentPage = 1;
-        ListCtrl = $controller('categoryListController', {
+        getController = function () {
+          return $controller('categoryListController', {
             $scope: scope,
             $stateParams: stateParams,
             Restangular: Restangular,
             controllerHelperServices: controllerHelperServices,
             spinnerService: spinnerService
           });
+        };
       }));
   afterEach(function () {
     httpBackend.verifyNoOutstandingExpectation();
@@ -72,23 +74,26 @@ describe('categoryListController', function(){
 
 
   it('should start with the list (and not the grid)', function() {
+    getController();
     httpBackend.flush();
     expect(scope.currentTemplate).toBe('partials/category.list.html');
   });
 
   it('should create "list" model with 2 authors', function() {
+    getController();
     httpBackend.flush();
     expect(scope.list.length).toBe(2);
   });
 
   it('should have Lewis Carroll on the first page', function() {
+    getController();
     httpBackend.flush();
     expect(scope.list[0].name).toBe('Lewis Carroll');
   });
 
   it('should have Alexandre Dumas on the second page', function() {
     scope.currentPage = 2;
-    scope.pageChanged();
+    getController();
     httpBackend.flush();
     expect(scope.list[0].name).toBe('Alexandre Dumas');
   });
