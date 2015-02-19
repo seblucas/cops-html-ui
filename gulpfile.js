@@ -11,6 +11,16 @@ var karma = require('gulp-karma');
 
 var source = 'app/';
 
+var jsSources = [source + 'app.module.js',
+                 source + 'app.config.js',
+                 source + 'app.route.js',
+                 source + '**/*.js',
+                 '!' + source + 'bower_components/**/*.js',
+                 '!' + source + '**/*.spec.js'];
+
+var cssSources = [source + '**/*.css',
+                  '!' + source + 'bower_components/**/*.css'];
+
 var publishdir = 'public';
 var dist = {
 css: publishdir + '/css/',
@@ -46,18 +56,13 @@ gulp.task('bower', function() {
 });
 
 gulp.task('js', function() {
-    return gulp.src([source + 'app.module.js',
-                     source + 'app.config.js',
-                     source + 'app.route.js',
-                     source + '**/*.js',
-                     '!' + source + 'bower_components/**/*.js',
-                     '!' + source + '**/*.spec.js'])
+    return gulp.src(jsSources)
         .pipe(concat('cops.js'))
         .pipe(gulp.dest(dist.js));
 });
 
 gulp.task('css', function() {
-    return gulp.src([source + '**/*.css', '!' + source + 'bower_components/**/*.css'])
+    return gulp.src(cssSources)
         .pipe(concat('cops.css'))
         .pipe(gulp.dest(dist.css));
 });
@@ -79,7 +84,10 @@ gulp.task('partials', function() {
 
 gulp.task('other', ['index', 'lang', 'partials']);
 
-gulp.task('default', ['bower', 'css', 'js', 'other']); // development
+gulp.task('default', ['bower', 'css', 'js', 'other'], function() {
+  gulp.watch(cssSources, ['css']);
+  gulp.watch(jsSources, ['js']);
+}); // development
 
 gulp.task('test', function() {
   return gulp.src('./idontexist') // All the files are defined in karma.conf.js so use a dummy file
