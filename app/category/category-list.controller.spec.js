@@ -96,6 +96,7 @@ describe('categoryListController', function(){
   });
 
   it('should have Lewis Carroll on the first page', function() {
+    httpBackend.expectGET('/databases/0/authors?page=1&per_page=2');
     getController();
     httpBackend.flush();
     expect(scope.list[0].name).toBe('Lewis Carroll');
@@ -103,6 +104,7 @@ describe('categoryListController', function(){
 
   it('should have Alexandre Dumas on the second page', function() {
     scope.currentPage = 2;
+    httpBackend.expectGET('/databases/0/authors?page=2&per_page=2');
     getController();
     httpBackend.flush();
     expect(scope.list[0].name).toBe('Alexandre Dumas');
@@ -110,6 +112,7 @@ describe('categoryListController', function(){
 
   it('should return Arthur Conan Doyle when querying', function() {
     stateParams.q = 'doyle';
+    httpBackend.expectGET('/databases/0/authors?page=1&per_page=2&q=doyle');
     getController();
     httpBackend.flush();
     expect(scope.list[0].name).toBe('Arthur Conan Doyle');
