@@ -37,6 +37,15 @@ describe('categoryListController', function(){
     }
   ];
 
+  var authorsJsonQuery = [
+    {
+        id: '1',
+        name: 'Arthur Conan Doyle',
+        sort: 'Doyle, Arthur Conan',
+        count: '8'
+    }
+  ];
+
   var scope, getController, httpBackend, stateParams, Restangular;
 
   beforeEach(inject(function ($controller, _$httpBackend_, $rootScope, _Restangular_) {
@@ -50,6 +59,7 @@ describe('categoryListController', function(){
         httpBackend = _$httpBackend_;
         httpBackend.when('GET', '/databases/0/authors?page=1&per_page=2').respond(authorsJson1);
         httpBackend.when('GET', '/databases/0/authors?page=2&per_page=2').respond(authorsJson2);
+        httpBackend.when('GET', '/databases/0/authors?page=1&per_page=2&q=doyle').respond(authorsJsonQuery);
         Restangular = _Restangular_;
         stateParams = {db: 0, cat : 'authors'};
         scope = $rootScope.$new();
@@ -96,6 +106,13 @@ describe('categoryListController', function(){
     getController();
     httpBackend.flush();
     expect(scope.list[0].name).toBe('Alexandre Dumas');
+  });
+
+  it('should return Arthur Conan Doyle when querying', function() {
+    stateParams.q = 'doyle';
+    getController();
+    httpBackend.flush();
+    expect(scope.list[0].name).toBe('Arthur Conan Doyle');
   });
 
 });
