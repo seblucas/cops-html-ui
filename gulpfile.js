@@ -8,6 +8,7 @@ var mainBowerFiles = require('main-bower-files');
 var concat = require('gulp-concat');
 var gulpFilter = require('gulp-filter');
 var karma = require('gulp-karma');
+var templateCache = require('gulp-angular-templatecache');
 
 var source = 'app/';
 
@@ -78,8 +79,10 @@ gulp.task('lang', function() {
 });
 
 gulp.task('partials', function() {
-    return gulp.src([source + 'partials/*'])
-        .pipe(gulp.dest(dist.partials));
+  return gulp.src([source + '**/*.html',
+                   '!' + source + 'index*.html'])
+        .pipe(templateCache('templates.js', { standalone: true }))
+        .pipe(gulp.dest(dist.js));
 });
 
 gulp.task('other', ['index', 'lang', 'partials']);

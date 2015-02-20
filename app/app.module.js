@@ -9,6 +9,7 @@ angular.module('Cops', [
   'Cops.category',
   'Cops.layout',
   'Cops.services',
+  'templates',
   'ui.bootstrap',
   'pascalprecht.translate',
   'siyfion.sfTypeahead',

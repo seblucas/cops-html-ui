@@ -14,6 +14,7 @@
     "gulp-filter": "^2.0.2",
     "main-bower-files": "^2.5.0",
     "gulp-concat": "^2.5.0",
+    "gulp-angular-templatecache": "^1.5.0",
     "gulp-karma": "^0.0.4"
   }
 }
