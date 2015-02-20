@@ -22,6 +22,9 @@ var jsSources = [source + 'app.module.js',
 var cssSources = [source + '**/*.css',
                   '!' + source + 'bower_components/**/*.css'];
 
+var htmlSources = [source + '**/*.html',
+                   '!' + source + 'index*.html'];
+
 var publishdir = 'public';
 var dist = {
 css: publishdir + '/css/',
@@ -78,18 +81,18 @@ gulp.task('lang', function() {
         .pipe(gulp.dest(dist.lang));
 });
 
-gulp.task('partials', function() {
-  return gulp.src([source + '**/*.html',
-                   '!' + source + 'index*.html'])
+gulp.task('html', function() {
+  return gulp.src(htmlSources)
         .pipe(templateCache('templates.js', { standalone: true }))
         .pipe(gulp.dest(dist.js));
 });
 
-gulp.task('other', ['index', 'lang', 'partials']);
+gulp.task('other', ['index', 'lang', 'html']);
 
 gulp.task('default', ['bower', 'css', 'js', 'other'], function() {
   gulp.watch(cssSources, ['css']);
   gulp.watch(jsSources, ['js']);
+  gulp.watch(htmlSources, ['html']);
 }); // development
 
 gulp.task('test', function() {
