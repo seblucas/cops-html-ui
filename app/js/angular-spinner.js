@@ -133,8 +133,6 @@ angular.module('seblucas.slSpinner', [])
       // Invoke the onRegisterComplete expression, if any.
       // Expose the spinner service for easy access.
       $scope.onRegisterComplete({ $spinnerService: spinnerService });
-    },
-    link: function (scope, elem, attrs) {
     }
   };
 });
