@@ -30,8 +30,7 @@ var dist = {
 css: publishdir + '/css/',
 js: publishdir + '/js/',
 fonts: publishdir + '/fonts/',
-lang: publishdir + '/lang/',
-partials: publishdir + '/partials/'
+lang: publishdir + '/lang/'
 };
 // Define tasks
 
