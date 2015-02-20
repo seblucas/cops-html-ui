@@ -1,4 +1,4 @@
-<sl-grid-list-toggle ng-model="currentTemplate" template-prefix="'partials/category.'"></sl-grid-list-toggle>
+<sl-grid-list-toggle ng-model="currentTemplate" template-prefix="'category/category.'"></sl-grid-list-toggle>
 <ng-switch on="$state.current.name">
   <h1 ng-switch-when="base.category.list" translate>{{$stateParams.cat + '.title'}}</h1>
   <h1 ng-switch-when="base.category.listByLetter" translate="splitByLetter.letter" translate-value-category="{{$stateParams.cat + '.title' | translate}}" translate-value-letter="{{$stateParams.letter}}">

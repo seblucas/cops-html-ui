@@ -6,7 +6,7 @@ app
 .controller('categoryListController', ['$scope', '$stateParams', 'Restangular', 'controllerHelperServices', 'spinnerService', function($scope, $stateParams, Restangular, controllerHelperServices, spinnerService) {
     controllerHelperServices.initController($scope, true);
     $scope.list = [];
-    $scope.currentTemplate = 'partials/category.list.html';
+    $scope.currentTemplate = 'category/category.list.html';
 
     $scope.pageChanged = function() {
       spinnerService.show('mainSpinner', 'Loading stuff...');
