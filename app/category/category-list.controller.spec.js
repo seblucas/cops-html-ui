@@ -46,6 +46,15 @@ describe('categoryListController', function(){
     }
   ];
 
+  var authorsJsonLetterW = [
+    {
+        id: '4',
+        name: 'H. G. Wells',
+        sort: 'Wells, H. G.',
+        count: '1'
+    }
+  ];
+
   var scope, getController, httpBackend, stateParams, Restangular;
 
   beforeEach(inject(function ($controller, _$httpBackend_, $rootScope, _Restangular_) {
@@ -60,6 +69,7 @@ describe('categoryListController', function(){
         httpBackend.when('GET', '/databases/0/authors?page=1&per_page=2').respond(authorsJson1);
         httpBackend.when('GET', '/databases/0/authors?page=2&per_page=2').respond(authorsJson2);
         httpBackend.when('GET', '/databases/0/authors?page=1&per_page=2&q=doyle').respond(authorsJsonQuery);
+        httpBackend.when('GET', '/databases/0/authors?letter=W&page=1&per_page=2').respond(authorsJsonLetterW);
         Restangular = _Restangular_;
         stateParams = {db: 0, cat : 'authors'};
         scope = $rootScope.$new();
@@ -118,4 +128,11 @@ describe('categoryListController', function(){
     expect(scope.list[0].name).toBe('Arthur Conan Doyle');
   });
 
+  it('should return H. G. Wells when filtering by author starting by a W', function() {
+    stateParams.letter = 'W';
+    httpBackend.expectGET('/databases/0/authors?letter=W&page=1&per_page=2');
+    getController();
+    httpBackend.flush();
+    expect(scope.list[0].name).toBe('H. G. Wells');
+  });
 });
