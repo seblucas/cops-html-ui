@@ -63,7 +63,7 @@ config(function($stateProvider, $urlRouterProvider) {
       url: '',
       views: {
         '@': {
-          templateUrl: 'category/category.html',
+          templateUrl: 'category/category-list.html',
           controller: 'categoryListController'
         }
       }
@@ -72,7 +72,7 @@ config(function($stateProvider, $urlRouterProvider) {
       url: '/firstletter?letter',
       views: {
         '@': {
-          templateUrl: 'category/category.html',
+          templateUrl: 'category/category-list.html',
           controller: 'categoryListController'
         }
       }
@@ -81,7 +81,7 @@ config(function($stateProvider, $urlRouterProvider) {
       url: '/search?q',
       views: {
         '@': {
-          templateUrl: 'category/category.html',
+          templateUrl: 'category/category-list.html',
           controller: 'categoryListController'
         }
       }
