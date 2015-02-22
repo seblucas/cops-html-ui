@@ -22,7 +22,7 @@ config(function($stateProvider, $urlRouterProvider) {
     })
     .state('base', {
       abstract: true,
-      url: '/:db',
+      url: '/{db:[0-9]{1,8}}',
       template: '<div ui-view></div>'
     })
     .state('base.database', {

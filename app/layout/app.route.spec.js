@@ -27,4 +27,20 @@ describe('routes', function () {
       expect($state.current.name).toEqual('databases');
     });
   });
+
+  describe('with database', function () {
+    beforeEach(function() {
+      mockTemplate('partials/database.html');
+      mockTemplate('partials/main.html');
+    });
+    it('should show the database detail', function () {
+      goTo('0');
+      expect($state.current.name).toEqual('base.database');
+    });
+    it('should fail if not numeric', function () {
+      goTo('a');
+      expect($state.current.name).toEqual('databases');
+    });
+
+  });
 });
