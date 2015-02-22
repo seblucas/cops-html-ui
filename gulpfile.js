@@ -14,7 +14,6 @@ var source = 'app/';
 
 var jsSources = [source + 'app.module.js',
                  source + 'app.config.js',
-                 source + 'app.route.js',
                  source + '**/*.js',
                  '!' + source + 'bower_components/**/*.js',
                  '!' + source + '**/*.spec.js'];
