@@ -17,7 +17,8 @@ module.exports = function(config) {
     files: [
       '../public/js/vendor.js',
       'bower_components/angular-mocks/angular-mocks.js',
-      'category/*.js'
+      'category/*.js',
+      'app.route*.js'
     ],
 
 
