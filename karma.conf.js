@@ -18,6 +18,8 @@ module.exports = function(config) {
       '../public/js/vendor.js',
       'bower_components/angular-mocks/angular-mocks.js',
       'category/*.js',
+      'book/*.js',
+      'services/*.js',
       'layout/*.js'
     ],
 
