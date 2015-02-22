@@ -32,8 +32,8 @@ config(function($stateProvider, $urlRouterProvider) {
       url: '/{id:[0-9]{1,8}}',
       views: {
         '@': {
-          templateUrl: 'partials/bookdetail.html',
-          controller: 'bookCtrl'
+          templateUrl: 'book/bookdetail.html',
+          controller: 'bookDetailController'
         }
       }
     })

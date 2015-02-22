@@ -7,6 +7,7 @@ angular.module('Cops', [
   'ngAnimate',
   'Cops.controllers',
   'Cops.category',
+  'Cops.book',
   'Cops.layout',
   'Cops.services',
   'templates',
