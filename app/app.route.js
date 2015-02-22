@@ -32,7 +32,7 @@ config(function($stateProvider, $urlRouterProvider) {
       url: '/{id:[0-9]{1,8}}',
       views: {
         '@': {
-          templateUrl: 'book/bookdetail.html',
+          templateUrl: 'book/book-detail.html',
           controller: 'bookDetailController'
         }
       }
