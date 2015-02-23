@@ -6,6 +6,9 @@ angular.module('Cops.book', [])
 
     Restangular.one('databases', $stateParams.db).one('books', $stateParams.id).get().then(function(book) {
       $scope.book = book;
+
+      // If the publication date starts with 01 then it's NULL -> not OK
+      $scope.isPublicationDateOk = $scope.book.pubdate.indexOf('01') !== 0;
     });
 
     Restangular.one('databases', $stateParams.db).one('books', $stateParams.id).getList('authors').then(function(list) {

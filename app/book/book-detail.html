@@ -33,3 +33,15 @@
       </div>
   </div>
 </div>
+<div class="row">
+  <div class="col-md-offset-2 col-md-8 col-sm-12">
+      <div ng-if="isPublicationDateOk">
+          <h4 translate>pubdate.title</h4>{{ book.pubdate | limitTo:4 }} / {{ isPublicationDateOk }}
+      </div>
+      <div ng-if="book.content">
+        <br />
+        <h4 translate>content.summary</h4>
+        <div>{{ book.content }}</div>
+      </div>
+  </div>
+</div>
