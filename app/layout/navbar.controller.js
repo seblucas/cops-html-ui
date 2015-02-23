@@ -32,7 +32,11 @@ app
     $scope.multiCops = [];
 
     $scope.$on('typeahead:selected', function(evt, data, datasetName) {
-      $scope.$state.go('base.category.books', {cat: datasetName, id: data.id});
+      if (datasetName === 'books') {
+        $scope.$state.go('base.book.detail', {id: data.id});
+      } else {
+        $scope.$state.go('base.category.books', {cat: datasetName, id: data.id});
+      }
       $scope.query = null;
     });
 
