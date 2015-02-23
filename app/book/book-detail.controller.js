@@ -20,5 +20,9 @@ angular.module('Cops.book', [])
       $scope.series = list;
     });
 
+    Restangular.one('databases', $stateParams.db).one('books', $stateParams.id).getList('datas').then(function(list) {
+      $scope.datas = list;
+    });
+
 
   }]);
