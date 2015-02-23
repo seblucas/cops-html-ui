@@ -38,10 +38,10 @@
       <div ng-if="isPublicationDateOk">
           <h4 translate>pubdate.title</h4>{{ book.pubdate | limitTo:4 }} / {{ isPublicationDateOk }}
       </div>
-      <div ng-if="book.content">
+      <div ng-if="book.comment">
         <br />
         <h4 translate>content.summary</h4>
-        <div>{{ book.content }}</div>
+        <div ng-bind-html="trustedComment"></div>
       </div>
   </div>
 </div>

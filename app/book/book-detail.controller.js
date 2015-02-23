@@ -1,14 +1,15 @@
 'use strict';
 
 angular.module('Cops.book', [])
-  .controller('bookDetailController', ['$scope', '$stateParams', 'Restangular', function($scope, $stateParams, Restangular) {
+  .controller('bookDetailController', ['$scope', '$stateParams', 'Restangular', '$sce', function($scope, $stateParams, Restangular, $sce) {
     $scope.db = $stateParams.db;
 
-    Restangular.one('databases', $stateParams.db).one('books', $stateParams.id).get().then(function(book) {
+    Restangular.one('databases', $stateParams.db).one('books', $stateParams.id).get({ comments: 1}).then(function(book) {
       $scope.book = book;
 
       // If the publication date starts with 01 then it's NULL -> not OK
       $scope.isPublicationDateOk = $scope.book.pubdate.indexOf('01') !== 0;
+      $scope.trustedComment = $sce.trustAsHtml(book.comment);
     });
 
     Restangular.one('databases', $stateParams.db).one('books', $stateParams.id).getList('authors').then(function(list) {
