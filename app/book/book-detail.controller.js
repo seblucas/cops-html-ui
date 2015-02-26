@@ -2,7 +2,7 @@
 
 angular.module('Cops.book', [])
   .controller('bookDetailController', ['$scope', '$stateParams', 'Restangular', '$sce', function($scope, $stateParams, Restangular, $sce) {
-    $scope.db = $stateParams.db;
+    $scope.coverUrl = Restangular.one('databases', $stateParams.db).one('books', $stateParams.id).getRequestedUrl() + '/cover';
 
     Restangular.one('databases', $stateParams.db).one('books', $stateParams.id).get({ comments: 1}).then(function(book) {
       $scope.book = book;
