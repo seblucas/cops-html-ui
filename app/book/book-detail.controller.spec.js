@@ -49,14 +49,28 @@ describe('categoryListController', function(){
     }
   ];
 
+  var datasJson = [
+    {
+        id: '3',
+        bookId: '4',
+        name: 'The Adventures of Sherlock Holmes - Arthur Conan Doyle',
+        format: 'EPUB',
+        uncompressed_size: '791008'
+    }
+  ];
+
   var scope, getController, httpBackend, stateParams, Restangular;
 
-  beforeEach(inject(function ($controller, _$httpBackend_, $rootScope, _Restangular_) {
+  beforeEach(inject(function ($controller, _$httpBackend_, $rootScope, _Restangular_, _$sce_) {
+        var downloadableHelper = {
+          getCoverUrl: function() { return 'url';}
+        };
         httpBackend = _$httpBackend_;
-        httpBackend.when('GET', '/databases/0/books/4').respond(bookJson);
+        httpBackend.when('GET', '/databases/0/books/4?comments=1').respond(bookJson);
         httpBackend.when('GET', '/databases/0/books/4/authors').respond(authorsJson);
         httpBackend.when('GET', '/databases/0/books/4/tags').respond(tagsJson);
         httpBackend.when('GET', '/databases/0/books/4/series').respond(seriesJson);
+        httpBackend.when('GET', '/databases/0/books/4/datas').respond(datasJson);
         Restangular = _Restangular_;
         stateParams = {db: 0, id : 4};
         scope = $rootScope.$new();
@@ -64,7 +78,9 @@ describe('categoryListController', function(){
           return $controller('bookDetailController', {
             $scope: scope,
             $stateParams: stateParams,
-            Restangular: Restangular
+            Restangular: Restangular,
+            downloadableHelperServices: downloadableHelper,
+            $sce: _$sce_
           });
         };
       }));
@@ -75,7 +91,7 @@ describe('categoryListController', function(){
 
 
   it('should have the correct book', function() {
-    httpBackend.expectGET('/databases/0/books/4');
+    httpBackend.expectGET('/databases/0/books/4?comments=1');
     getController();
     httpBackend.flush();
     expect(scope.book.title).toBe('The Adventures of Sherlock Holmes');
@@ -105,5 +121,12 @@ describe('categoryListController', function(){
     expect(scope.series[0].name).toBe('Sherlock Holmes');
   });
 
+  it('should have the correct datas', function() {
+    httpBackend.expectGET('/databases/0/books/4/datas');
+    getController();
+    httpBackend.flush();
+    expect(scope.datas.length).toBe(1);
+    expect(scope.datas[0].name).toBe('The Adventures of Sherlock Holmes - Arthur Conan Doyle');
+  });
 
 });
