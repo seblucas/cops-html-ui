@@ -48,7 +48,7 @@ config(function($stateProvider, $urlRouterProvider) {
       views: {
         '@': {
           templateUrl: 'partials/book.html',
-          controller: 'bookList'
+          controller: 'bookListController'
         }
       }
     })
