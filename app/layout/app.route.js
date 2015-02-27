@@ -97,7 +97,7 @@ config(function($stateProvider, $urlRouterProvider) {
       views: {
         '@': {
           templateUrl: 'partials/bookByCategory.html',
-          controller: 'bookListCategory'
+          controller: 'bookListCategoryController'
         }
       }
     })
