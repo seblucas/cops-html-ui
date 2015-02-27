@@ -47,7 +47,7 @@ config(function($stateProvider, $urlRouterProvider) {
       url: '?letter',
       views: {
         '@': {
-          templateUrl: 'partials/book.html',
+          templateUrl: 'book/book-list.html',
           controller: 'bookListController'
         }
       }
@@ -96,7 +96,7 @@ config(function($stateProvider, $urlRouterProvider) {
       url: '/{id:[0-9]{1,8}}',
       views: {
         '@': {
-          templateUrl: 'partials/bookByCategory.html',
+          templateUrl: 'book/book-list-by-category.html',
           controller: 'bookListCategoryController'
         }
       }

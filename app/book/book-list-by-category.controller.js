@@ -5,7 +5,7 @@ angular.module('Cops.book')
     controllerHelperServices.initController($scope, true);
     $scope.db = $stateParams.db;
     $scope.books = [];
-    $scope.currentTemplate = 'partials/book.th.html';
+    $scope.currentTemplate = 'book/book-list.th.html';
 
     Restangular.one('databases', $stateParams.db).one($stateParams.cat, $stateParams.id).get().then(function(cat) {
       $scope.title = cat.name;
