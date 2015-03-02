@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row">
-    <div class="list-group">
+  <div class="row no-gutters">
+    <div class="list-group col-xs-12">
       <a ui-sref="base.category.books({id: item.id})" class="list-group-item" ng-repeat="item in list">
         {{::item.sort}}<span class="badge">{{::item.count}}</span>
       </a>
