@@ -6,6 +6,7 @@ var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var mainBowerFiles = require('main-bower-files');
 var concat = require('gulp-concat');
+var bootlint = require('gulp-bootlint');
 var gulpFilter = require('gulp-filter');
 var karma = require('gulp-karma');
 var templateCache = require('gulp-angular-templatecache');
@@ -32,6 +33,15 @@ fonts: publishdir + '/fonts/',
 lang: publishdir + '/lang/'
 };
 // Define tasks
+
+// Lint Task
+gulp.task('bootlint', function () {
+    gulp.src([source + '**/*.html'])
+        .pipe(bootlint({
+          disabledIds: ['E001', 'W001', 'W002', 'W003', 'W005']
+        }));
+});
+
 
 // Lint Task
 gulp.task('lint', function () {
