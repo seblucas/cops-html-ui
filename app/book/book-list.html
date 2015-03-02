@@ -1,4 +1,4 @@
-<sl-grid-list-toggle ng-model="currentTemplate" template-prefix="'book/book-list.'"></sl-grid-list-toggle>
+<sl-grid-list-toggle ng-model="currentTemplate" template-prefix="'book/book-list.'" default-template="defaultTemplate"></sl-grid-list-toggle>
 <h1 translate>books.title</h1>
 <div static-include=" 'partials/paginationInclude.html' "></div>
 <div ng-include src="currentTemplate" scope="" onload=""></div>

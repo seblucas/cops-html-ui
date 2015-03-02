@@ -5,7 +5,7 @@ angular.module('Cops.book')
     controllerHelperServices.initController($scope, true);
     $scope.db = $stateParams.db;
     $scope.books = [];
-    $scope.currentTemplate = 'book/book-list.th.html';
+    $scope.defaultTemplate = 'th';
 
     $scope.pageChanged = function() {
       var params = {page: $scope.currentPage, per_page: $scope.itemsPerPage, authors: 1, tags: 1, series: 1};
