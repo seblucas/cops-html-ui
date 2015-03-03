@@ -67,7 +67,7 @@ describe('bookListController', function(){
         hasCover: '1',
         seriesIndex: '1.0'
     }
-]
+];
 
   var scope, getController, httpBackend, stateParams, Restangular;
 
