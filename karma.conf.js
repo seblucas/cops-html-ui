@@ -42,9 +42,16 @@ module.exports = function(config) {
     reporters: ['progress', 'coverage'],
 
     coverageReporter: {
-      type : 'html',
-      dir : '../coverage/',
-      subdir: 'report'
+      reporters: [
+        {
+          type : 'text-summary'
+        },
+        {
+          type : 'html',
+          dir : '../coverage/',
+          subdir: 'report'
+        }
+      ]
     },
 
 
@@ -72,6 +79,6 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
+    singleRun: true
   });
 };
