@@ -53,7 +53,7 @@ gulp.task('lint', function () {
 gulp.task('bower', function() {
     var jsFilter = gulpFilter('**/*.js');
     var cssFilter = gulpFilter('**/*.css');
-    var fontFilter = gulpFilter(['*.eot', '*.woff', '*.svg', '*.ttf']);
+    var fontFilter = gulpFilter(['*.eot', '*.woff', '*.woff2', '*.svg', '*.ttf']);
     return gulp.src(mainBowerFiles())
         .pipe(jsFilter)
         .pipe(concat('vendor.js'))
