@@ -129,4 +129,24 @@ describe('categoryListController', function(){
     expect(scope.datas[0].name).toBe('The Adventures of Sherlock Holmes - Arthur Conan Doyle');
   });
 
+  describe('setPublicationOk', function(){
+    it('should be ok with 2014', function() {
+      getController();
+      httpBackend.flush();
+      expect(scope.setPublicationOk('2014-07-18 22:00:00+00:00')).toBeTruthy();
+    });
+
+    it('should be ok with 1504', function() {
+      getController();
+      httpBackend.flush();
+      expect(scope.setPublicationOk('1504-07-18 22:00:00+00:00')).toBeTruthy();
+    });
+
+    it('shouldn\'t be ok with 0100', function() {
+      getController();
+      httpBackend.flush();
+      expect(scope.setPublicationOk('0100-07-18 22:00:00+00:00')).toBeFalsy();
+    });
+  });
+
 });

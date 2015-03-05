@@ -16,11 +16,15 @@ angular.module('Cops.book', [])
   function($scope, $stateParams, Restangular, downloadableHelperServices, $sce) {
     $scope.coverUrl = downloadableHelperServices.getCoverUrl($stateParams.db, $stateParams.id);
 
+    $scope.setPublicationOk = function(pubdate){
+      // If the publication date starts with 01 then it's NULL -> not OK
+      return pubdate.indexOf('01') !== 0;
+    };
+
     Restangular.one('databases', $stateParams.db).one('books', $stateParams.id).get({ comments: 1}).then(function(book) {
       $scope.book = book;
 
-      // If the publication date starts with 01 then it's NULL -> not OK
-      $scope.isPublicationDateOk = $scope.book.pubdate.indexOf('01') !== 0;
+      $scope.isPublicationDateOk = $scope.setPublicationOk(book.pubdate);
       $scope.trustedComment = $sce.trustAsHtml(book.comment);
     });
 
