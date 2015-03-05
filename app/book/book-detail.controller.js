@@ -1,5 +1,16 @@
 'use strict';
 
+/**
+ * @ngdoc object
+ * @name Cops.book.bookDetailController
+ * @requires $stateParams
+ * @requires Restangular
+ * @requires downloadableHelperServices
+ * @requires $sce
+ *
+ * @description
+ * Get all the data necessary to show the book detail
+ */
 angular.module('Cops.book', [])
   .controller('bookDetailController', ['$scope', '$stateParams', 'Restangular', 'downloadableHelperServices', '$sce',
   function($scope, $stateParams, Restangular, downloadableHelperServices, $sce) {
