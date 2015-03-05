@@ -42,13 +42,13 @@ module.exports = function(config) {
     reporters: ['progress', 'coverage'],
 
     coverageReporter: {
+      dir : '../coverage/',
       reporters: [
         {
           type : 'text-summary'
         },
         {
           type : 'html',
-          dir : '../coverage/',
           subdir: 'report'
         }
       ]
