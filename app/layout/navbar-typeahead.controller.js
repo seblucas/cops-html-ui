@@ -1,34 +1,9 @@
 'use strict';
 
-var app = angular.module('Cops.layout', []);
+var app = angular.module('Cops.layout');
 
 app
-  .controller('navbar', ['$scope', '$translate', 'typeaheadServices', function($scope, $translate, typeaheadServices) {
-    $scope.languageList = [
-      { code: 'ca', name: 'Català'},
-      { code: 'cs', name: 'Čeština'},
-      { code: 'de', name: 'Deutsch'},
-      { code: 'en', name: 'English'},
-      { code: 'es', name: 'Español'},
-      { code: 'eu', name: 'Euskara'},
-      { code: 'fr', name: 'Français'},
-      { code: 'ht', name: 'Haitian'},
-      { code: 'it', name: 'Italiano'},
-      { code: 'nb', name: 'Norsk bokmål'},
-      { code: 'nl', name: 'Nederlands'},
-      { code: 'pl', name: 'Polski'},
-      { code: 'pt', name: 'Português'},
-      { code: 'ru', name: 'Русский'},
-      { code: 'sv', name: 'Svenska'},
-      { code: 'zh', name: '简体中文'}
-    ];
-    $scope.setLanguage = function(language) {
-      $translate.use(language);
-    };
-    $scope.isLanguageActive = function(language) {
-      return $translate.use() === language;
-    };
-
+  .controller('navbarTypeaheadController', ['$scope', 'typeaheadServices', function($scope, typeaheadServices) {
     $scope.multiCops = [];
 
     $scope.$on('typeahead:selected', function(evt, data, datasetName) {
