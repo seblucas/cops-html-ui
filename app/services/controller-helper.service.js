@@ -28,6 +28,9 @@ app.factory('controllerHelperServices', ['$q', 'configurationServices', function
         deferred.resolve(paging);
       });
       return deferred.promise;
+    },
+    setConfigurationValue: function(item, value) {
+      return configurationServices.setValue(item, value);
     }
   };
 }]);

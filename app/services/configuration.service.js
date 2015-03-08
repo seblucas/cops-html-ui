@@ -15,9 +15,36 @@ app
   var current;
   var defaultValues = {
     booksPerPage: 96,
-    categoriesPerPage: 192
+    categoriesPerPage: 192,
+    booksGridList: 'th',
+    categoriesGridList: 'list'
   };
+
+  var _load = function() {
+    var deferred = $q.defer();
+    if (!angular.isDefined(current)) {
+      $localForage.getItem('cops-configuration').then(function(res) {
+        if (!angular.isDefined(res)) {
+          res = defaultValues;
+        }
+        current = res;
+        console.log(current);
+        deferred.resolve(current);
+      });
+    } else {
+      console.log(current);
+      deferred.resolve(current);
+    }
+    return deferred.promise;
+  };
+
   return {
+    constants: {
+      booksPerPage: 'booksPerPage',
+      categoriesPerPage: 'categoriesPerPage',
+      booksGridList: 'booksGridList',
+      categoriesGridList: 'categoriesGridList'
+    },
     getPageSizes: function() {
       return [24, 48, 96, 192, 384];
     },
@@ -29,18 +56,21 @@ app
       return $localForage.setItem('cops-configuration', conf);
     },
     load: function () {
+      return _load();
+    },
+    setValue: function(item, value) {
       var deferred = $q.defer();
-      if (!angular.isDefined(current)) {
-        $localForage.getItem('cops-configuration').then(function(res) {
-          if (!angular.isDefined(res)) {
-            res = defaultValues;
-          }
-          current = res;
-          deferred.resolve(current);
-        });
-      } else {
-        deferred.resolve(current);
-      }
+      _load().then(function(conf) {
+        if (conf[item] !== value) {
+          conf[item] = value;
+          $localForage.setItem('cops-configuration', conf)
+                      .then(function(lconfig) {
+            deferred.resolve(lconfig);
+          });
+        } else {
+          deferred.resolve(conf);
+        }
+      });
       return deferred.promise;
     }
   };

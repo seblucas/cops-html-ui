@@ -4,18 +4,12 @@ var app = angular.module('Cops.category', []);
 
 app
 .controller('categoryListController', ['$scope', '$stateParams', 'Restangular', 'controllerHelperServices', 'spinnerService', function($scope, $stateParams, Restangular, controllerHelperServices, spinnerService) {
-    controllerHelperServices.initControllerWithPaging(false)
-                            .then(function(paging) {
-      $scope.itemsPerPage = paging.itemsPerPage;
-      $scope.itemsPerPageList = paging.itemsPerPageList;
-      $scope.maxSize = paging.maxSize;
-      $scope.currentPage = paging.currentPage;
-    });
     $scope.list = [];
     $scope.currentTemplate = 'category/category-list.list.html';
 
     $scope.pageChanged = function() {
       spinnerService.show('mainSpinner', 'Loading stuff...');
+      controllerHelperServices.setConfigurationValue('categoriesPerPage', $scope.itemsPerPage);
       var params = {page: $scope.currentPage, per_page: $scope.itemsPerPage};
       if ($stateParams.letter) {
         params.letter = $stateParams.letter;
@@ -35,5 +29,13 @@ app
       });
     };
 
-    $scope.pageChanged ();
+    controllerHelperServices.initControllerWithPaging(false)
+                            .then(function(paging) {
+      $scope.itemsPerPage = paging.itemsPerPage;
+      $scope.itemsPerPageList = paging.itemsPerPageList;
+      $scope.maxSize = paging.maxSize;
+      $scope.currentPage = paging.currentPage;
+
+      $scope.pageChanged ();
+    });
   }]);
