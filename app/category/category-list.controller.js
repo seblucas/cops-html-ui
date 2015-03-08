@@ -4,7 +4,13 @@ var app = angular.module('Cops.category', []);
 
 app
 .controller('categoryListController', ['$scope', '$stateParams', 'Restangular', 'controllerHelperServices', 'spinnerService', function($scope, $stateParams, Restangular, controllerHelperServices, spinnerService) {
-    controllerHelperServices.initController($scope, true);
+    controllerHelperServices.initControllerWithPaging(false)
+                            .then(function(paging) {
+      $scope.itemsPerPage = paging.itemsPerPage;
+      $scope.itemsPerPageList = paging.itemsPerPageList;
+      $scope.maxSize = paging.maxSize;
+      $scope.currentPage = paging.currentPage;
+    });
     $scope.list = [];
     $scope.currentTemplate = 'category/category-list.list.html';
 

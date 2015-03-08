@@ -2,7 +2,13 @@
 
 angular.module('Cops.book')
   .controller('bookListController', ['$scope', '$stateParams', 'Restangular', 'controllerHelperServices', function($scope, $stateParams, Restangular, controllerHelperServices) {
-    controllerHelperServices.initController($scope, true);
+    controllerHelperServices.initControllerWithPaging(true)
+                            .then(function(paging) {
+      $scope.itemsPerPage = paging.itemsPerPage;
+      $scope.itemsPerPageList = paging.itemsPerPageList;
+      $scope.maxSize = paging.maxSize;
+      $scope.currentPage = paging.currentPage;
+    });
     $scope.db = $stateParams.db;
     $scope.books = [];
     $scope.defaultTemplate = 'th';
