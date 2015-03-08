@@ -13,6 +13,7 @@ angular.module('Cops.configuration', [])
   function($scope, configurationServices) {
     $scope.conf = {};
     $scope.saving = false;
+    $scope.pageSizes = configurationServices.getPageSizes();
     $scope.driver = configurationServices.getDriver();
 
     configurationServices.load().then(function(conf) {

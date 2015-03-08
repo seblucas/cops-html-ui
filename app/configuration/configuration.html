@@ -5,19 +5,13 @@
       <div class="form-group">
         <label for="booksPerPage" translate>customize.paging</label>
         <select class="form-control" id="booksPerPage" ng-model="conf.booksPerPage">
-          <option>24</option>
-          <option>48</option>
-          <option>96</option>
-          <option>192</option>
+          <option ng-repeat="value in pageSizes">{{ ::value }}</option>
         </select>
       </div>
       <div class="form-group">
         <label for="CategoriesPerPage" translate>customize.paging</label>
         <select class="form-control" id="CategoriesPerPage" ng-model="conf.categoriesPerPage">
-          <option>24</option>
-          <option>48</option>
-          <option>96</option>
-          <option>192</option>
+          <option ng-repeat="value in pageSizes">{{ ::value }}</option>
         </select>
       </div>
       <button type="submit" class="btn btn-default" ng-click="save()">Submit</button>

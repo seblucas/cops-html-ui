@@ -18,6 +18,9 @@ app
     categoriesPerPage: 192
   };
   return {
+    getPageSizes: function() {
+      return [24, 48, 96, 192, 384];
+    },
     getDriver: function() {
       return $localForage.driver();
     },
