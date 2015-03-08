@@ -20,6 +20,11 @@ config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'partials/main.html',
       controller: 'main'
     })
+    .state('configuration', {
+      url: '/config',
+      templateUrl: 'configuration/configuration.html',
+      controller: 'configurationController'
+    })
     .state('base', {
       abstract: true,
       url: '/{db:[0-9]{1,8}}',

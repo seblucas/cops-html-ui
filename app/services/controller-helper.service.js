@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('Cops.services', []);
+var app = angular.module('Cops.services');
 
 app.factory('controllerHelperServices', function() {
   return {
