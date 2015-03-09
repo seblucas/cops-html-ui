@@ -5,6 +5,7 @@ var app = angular.module('Cops.category', []);
 app
 .controller('categoryListController', ['$scope', '$stateParams', 'Restangular', 'controllerHelperServices', 'spinnerService', function($scope, $stateParams, Restangular, controllerHelperServices, spinnerService) {
     $scope.list = [];
+    //$scope.defaultTemplate = 'th';
     $scope.currentTemplate = 'category/category-list.list.html';
 
     $scope.pageChanged = function() {

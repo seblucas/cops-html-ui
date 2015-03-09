@@ -55,11 +55,21 @@ describe('bookListCategoryController', function(){
         count: '2'
     };
 
-  var scope, getController, httpBackend, stateParams, Restangular;
+  var scope, getController, httpBackend, stateParams, Restangular, paging;
 
-  beforeEach(inject(function ($controller, _$httpBackend_, $rootScope, _Restangular_) {
+  beforeEach(inject(function ($q, $controller, _$httpBackend_, $rootScope, _Restangular_) {
+        paging = {
+          itemsPerPage: 2,
+          itemsPerPageList: [2, 3],
+          maxSize: 10,
+          currentPage: 1
+        };
         var controllerHelperServices = {
-          initController: function() {}
+          initControllerWithPaging: function() {
+            var deferred = $q.defer();
+            deferred.resolve(paging);
+            return deferred.promise;
+          }
         };
         httpBackend = _$httpBackend_;
         httpBackend.when('GET', '/databases/0/authors/1/books?authors=1&page=1&per_page=2&series=1&tags=1').respond(booksJson1);
@@ -68,10 +78,6 @@ describe('bookListCategoryController', function(){
         Restangular = _Restangular_;
         stateParams = {db: 0, cat: 'authors', id: 1};
         scope = $rootScope.$new();
-        scope.itemsPerPage = 2;
-        scope.itemsPerPageList = [2, 3];
-        scope.maxSize = 10;
-        scope.currentPage = 1;
         getController = function () {
           return $controller('bookListCategoryController', {
             $scope: scope,
@@ -118,7 +124,7 @@ describe('bookListCategoryController', function(){
   });
 
   it('should have "The Adventures of Sherlock Holmes" on the second page', function() {
-    scope.currentPage = 2;
+    paging.currentPage = 2;
     httpBackend.expectGET('/databases/0/authors/1/books?authors=1&page=2&per_page=2&series=1&tags=1');
     getController();
     httpBackend.flush();
