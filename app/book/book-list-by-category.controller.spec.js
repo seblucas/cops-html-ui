@@ -72,8 +72,8 @@ describe('bookListCategoryController', function(){
           }
         };
         httpBackend = _$httpBackend_;
-        httpBackend.when('GET', '/databases/0/authors/1/books?authors=1&page=1&per_page=2&series=1&tags=1').respond(booksJson1);
-        httpBackend.when('GET', '/databases/0/authors/1/books?authors=1&page=2&per_page=2&series=1&tags=1').respond(booksJson2);
+        httpBackend.when('GET', '/databases/0/authors/1/books?authors=1&page=1&perPage=2&series=1&tags=1').respond(booksJson1);
+        httpBackend.when('GET', '/databases/0/authors/1/books?authors=1&page=2&perPage=2&series=1&tags=1').respond(booksJson2);
         httpBackend.when('GET', '/databases/0/authors/1').respond(authorJson);
         Restangular = _Restangular_;
         stateParams = {db: 0, cat: 'authors', id: 1};
@@ -103,7 +103,7 @@ describe('bookListCategoryController', function(){
     stateParams.cat = 'tags';
     stateParams.id = 5;
     stateParams.db = 4;
-    httpBackend.whenGET('/databases/4/tags/5/books?authors=1&page=1&per_page=2&series=1&tags=1').respond([{t: 1, metadata: 2}]);
+    httpBackend.whenGET('/databases/4/tags/5/books?authors=1&page=1&perPage=2&series=1&tags=1').respond([{t: 1, metadata: 2}]);
     httpBackend.expectGET('/databases/4/tags/5').respond({name: 'Fantasy'});
     getController();
     httpBackend.flush();
@@ -117,7 +117,7 @@ describe('bookListCategoryController', function(){
   });
 
   it('should have "The Return of Sherlock Holmes" on the first page', function() {
-    httpBackend.expectGET('/databases/0/authors/1/books?authors=1&page=1&per_page=2&series=1&tags=1');
+    httpBackend.expectGET('/databases/0/authors/1/books?authors=1&page=1&perPage=2&series=1&tags=1');
     getController();
     httpBackend.flush();
     expect(scope.books[0].title).toBe('The Return of Sherlock Holmes');
@@ -125,7 +125,7 @@ describe('bookListCategoryController', function(){
 
   it('should have "The Adventures of Sherlock Holmes" on the second page', function() {
     paging.currentPage = 2;
-    httpBackend.expectGET('/databases/0/authors/1/books?authors=1&page=2&per_page=2&series=1&tags=1');
+    httpBackend.expectGET('/databases/0/authors/1/books?authors=1&page=2&perPage=2&series=1&tags=1');
     getController();
     httpBackend.flush();
     expect(scope.books[0].title).toBe('The Adventures of Sherlock Holmes');

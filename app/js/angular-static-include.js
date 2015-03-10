@@ -4,9 +4,8 @@
 // from http://jsperf.com/ng-include-vs-static-include
 
 angular.module('seblucas.slStaticInclude', [])
-.directive('staticInclude', ['$http', '$templateCache', '$compile', '$parse', function($http, $templateCache, $compile, $parse) {
+.directive('staticInclude', ['$http', '$templateCache', '$compile', function($http, $templateCache, $compile) {
     return function(scope, element, attrs) {
-      //var templatePath = $parse(attrs.staticInclude)(scope);
 
       attrs.$observe('staticInclude', function(value){
           scope.$watch(value, function(templatePath){

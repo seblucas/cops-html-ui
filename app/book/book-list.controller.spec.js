@@ -86,9 +86,9 @@ describe('bookListController', function(){
           }
         };
         httpBackend = _$httpBackend_;
-        httpBackend.when('GET', '/databases/0/books?authors=1&page=1&per_page=2&series=1&tags=1').respond(booksJson1);
-        httpBackend.when('GET', '/databases/0/books?authors=1&page=2&per_page=2&series=1&tags=1').respond(booksJson2);
-        httpBackend.when('GET', '/databases/0/books?authors=1&letter=A&page=1&per_page=2&series=1&tags=1').respond(booksJsonLetterA);
+        httpBackend.when('GET', '/databases/0/books?authors=1&page=1&perPage=2&series=1&tags=1').respond(booksJson1);
+        httpBackend.when('GET', '/databases/0/books?authors=1&page=2&perPage=2&series=1&tags=1').respond(booksJson2);
+        httpBackend.when('GET', '/databases/0/books?authors=1&letter=A&page=1&perPage=2&series=1&tags=1').respond(booksJsonLetterA);
         Restangular = _Restangular_;
         stateParams = {db: 0};
         scope = $rootScope.$new();
@@ -115,7 +115,7 @@ describe('bookListController', function(){
   });
 
   it('should have "The Return of Sherlock Holmes" on the first page', function() {
-    httpBackend.expectGET('/databases/0/books?authors=1&page=1&per_page=2&series=1&tags=1');
+    httpBackend.expectGET('/databases/0/books?authors=1&page=1&perPage=2&series=1&tags=1');
     getController();
     httpBackend.flush();
     expect(scope.books[0].title).toBe('The Return of Sherlock Holmes');
@@ -123,7 +123,7 @@ describe('bookListController', function(){
 
   it('should have "The Adventures of Sherlock Holmes" on the second page', function() {
     paging.currentPage = 2;
-    httpBackend.expectGET('/databases/0/books?authors=1&page=2&per_page=2&series=1&tags=1');
+    httpBackend.expectGET('/databases/0/books?authors=1&page=2&perPage=2&series=1&tags=1');
     getController();
     httpBackend.flush();
     expect(scope.books[0].title).toBe('The Adventures of Sherlock Holmes');
@@ -131,7 +131,7 @@ describe('bookListController', function(){
 /*
   it('should return Arthur Conan Doyle when querying', function() {
     stateParams.q = 'doyle';
-    httpBackend.expectGET('/databases/0/authors?page=1&per_page=2&q=doyle');
+    httpBackend.expectGET('/databases/0/authors?page=1&perPage=2&q=doyle');
     getController();
     httpBackend.flush();
     expect(scope.list[0].name).toBe('Arthur Conan Doyle');
@@ -140,7 +140,7 @@ describe('bookListController', function(){
 
   it('should return "The Adventures of Sherlock Holmes" when filtering by books starting by a A', function() {
     stateParams.letter = 'A';
-    httpBackend.expectGET('/databases/0/books?authors=1&letter=A&page=1&per_page=2&series=1&tags=1');
+    httpBackend.expectGET('/databases/0/books?authors=1&letter=A&page=1&perPage=2&series=1&tags=1');
     getController();
     httpBackend.flush();
     expect(scope.books[0].title).toBe('The Adventures of Sherlock Holmes');

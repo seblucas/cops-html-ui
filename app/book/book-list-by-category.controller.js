@@ -13,7 +13,7 @@ angular.module('Cops.book')
     $scope.pageChanged = function() {
       Restangular.one('databases', $stateParams.db)
                  .one($stateParams.cat, $stateParams.id)
-                 .getList('books', {page: $scope.currentPage, per_page: $scope.itemsPerPage, authors: 1, tags: 1, series: 1})
+                 .getList('books', {page: $scope.currentPage, perPage: $scope.itemsPerPage, authors: 1, tags: 1, series: 1})
                  .then(function(list) {
         // Ugly hack to get the paging metadata
         $scope.totalItems = list[0].metadata;

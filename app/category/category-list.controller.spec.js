@@ -77,10 +77,10 @@ describe('categoryListController', function(){
           show: function() {}
         };
         httpBackend = _$httpBackend_;
-        httpBackend.when('GET', '/databases/0/authors?page=1&per_page=2').respond(authorsJson1);
-        httpBackend.when('GET', '/databases/0/authors?page=2&per_page=2').respond(authorsJson2);
-        httpBackend.when('GET', '/databases/0/authors?page=1&per_page=2&q=doyle').respond(authorsJsonQuery);
-        httpBackend.when('GET', '/databases/0/authors?letter=W&page=1&per_page=2').respond(authorsJsonLetterW);
+        httpBackend.when('GET', '/databases/0/authors?page=1&perPage=2').respond(authorsJson1);
+        httpBackend.when('GET', '/databases/0/authors?page=2&perPage=2').respond(authorsJson2);
+        httpBackend.when('GET', '/databases/0/authors?page=1&perPage=2&q=doyle').respond(authorsJsonQuery);
+        httpBackend.when('GET', '/databases/0/authors?letter=W&page=1&perPage=2').respond(authorsJsonLetterW);
         Restangular = _Restangular_;
         stateParams = {db: 0, cat : 'authors'};
         scope = $rootScope.$new();
@@ -106,7 +106,7 @@ describe('categoryListController', function(){
   });
 
   it('should have Lewis Carroll on the first page', function() {
-    httpBackend.expectGET('/databases/0/authors?page=1&per_page=2');
+    httpBackend.expectGET('/databases/0/authors?page=1&perPage=2');
     getController();
     httpBackend.flush();
     expect(scope.list[0].name).toBe('Lewis Carroll');
@@ -114,7 +114,7 @@ describe('categoryListController', function(){
 
   it('should have Alexandre Dumas on the second page', function() {
     paging.currentPage = 2;
-    httpBackend.expectGET('/databases/0/authors?page=2&per_page=2');
+    httpBackend.expectGET('/databases/0/authors?page=2&perPage=2');
     getController();
     httpBackend.flush();
     expect(scope.list[0].name).toBe('Alexandre Dumas');
@@ -122,7 +122,7 @@ describe('categoryListController', function(){
 
   it('should return Arthur Conan Doyle when querying', function() {
     stateParams.q = 'doyle';
-    httpBackend.expectGET('/databases/0/authors?page=1&per_page=2&q=doyle');
+    httpBackend.expectGET('/databases/0/authors?page=1&perPage=2&q=doyle');
     getController();
     httpBackend.flush();
     expect(scope.list[0].name).toBe('Arthur Conan Doyle');
@@ -130,7 +130,7 @@ describe('categoryListController', function(){
 
   it('should return H. G. Wells when filtering by author starting by a W', function() {
     stateParams.letter = 'W';
-    httpBackend.expectGET('/databases/0/authors?letter=W&page=1&per_page=2');
+    httpBackend.expectGET('/databases/0/authors?letter=W&page=1&perPage=2');
     getController();
     httpBackend.flush();
     expect(scope.list[0].name).toBe('H. G. Wells');

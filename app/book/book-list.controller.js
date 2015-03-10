@@ -7,7 +7,7 @@ angular.module('Cops.book')
     $scope.defaultTemplate = 'th';
 
     $scope.pageChanged = function() {
-      var params = {page: $scope.currentPage, per_page: $scope.itemsPerPage, authors: 1, tags: 1, series: 1};
+      var params = {page: $scope.currentPage, perPage: $scope.itemsPerPage, authors: 1, tags: 1, series: 1};
       if ($stateParams.letter) {
         params.letter = $stateParams.letter;
       }

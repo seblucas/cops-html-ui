@@ -10,7 +10,7 @@ app
     $scope.pageChanged = function() {
       spinnerService.show('mainSpinner', 'Loading stuff...');
       controllerHelperServices.setConfigurationValue('categoriesPerPage', $scope.itemsPerPage);
-      var params = {page: $scope.currentPage, per_page: $scope.itemsPerPage};
+      var params = {page: $scope.currentPage, perPage: $scope.itemsPerPage};
       if ($stateParams.letter) {
         params.letter = $stateParams.letter;
       }
