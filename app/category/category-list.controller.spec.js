@@ -99,13 +99,6 @@ describe('categoryListController', function(){
     httpBackend.verifyNoOutstandingRequest();
   });
 
-
-  it('should start with the list (and not the grid)', function() {
-    getController();
-    httpBackend.flush();
-    expect(scope.currentTemplate).toBe('category/category-list.list.html');
-  });
-
   it('should create "list" model with 2 authors', function() {
     getController();
     httpBackend.flush();
