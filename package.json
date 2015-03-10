@@ -17,6 +17,7 @@
     "gulp-angular-templatecache": "^1.5.0",
     "gulp-bootlint": "^0.3.0",
     "gulp-karma": "^0.0.4",
-    "karma-coverage": "^0.2.7"
+    "karma-coverage": "^0.2.7",
+    "jasmine": "^2.2.1"
   }
 }
