@@ -121,3 +121,5 @@ gulp.task('test', function() {
       throw err;
     });
 });
+
+gulp.task('ci', ['default', 'lint', 'bootlint', 'test']);
