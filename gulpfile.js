@@ -110,7 +110,7 @@ gulp.task('watch', ['default'], function() {
   gulp.watch(htmlSources, ['html']);
 }); // development
 
-gulp.task('test', function() {
+gulp.task('test', ['default'], function() {
   return gulp.src('./idontexist') // All the files are defined in karma.conf.js so use a dummy file
     .pipe(karma({
       configFile: 'karma.conf.js',
@@ -122,4 +122,4 @@ gulp.task('test', function() {
     });
 });
 
-gulp.task('ci', ['default', 'lint', 'bootlint', 'test']);
+gulp.task('ci', ['lint', 'bootlint', 'test']);
