@@ -3,20 +3,6 @@
 /* Controllers */
 
 angular.module('Cops.controllers', [])
-  .controller('main', ['$scope', 'Restangular', function($scope, Restangular) {
-    Restangular.all('databases')
-               .getList()
-               .then(function(list) {
-      $scope.databases = list;
-    });
-  }])
-  .controller('databaseDetail', ['$scope', '$filter', 'Restangular', function($scope, $filter, Restangular) {
-    $scope.bookCount = 'Calcul en cours';
-    Restangular.one('databases', $scope.database.id).get().then(function(db) {
-      var cat = $filter('filter')(db.categories, {name: 'books'}, true);
-      $scope.bookCount = cat[0].count;
-    });
-  }])
   .controller('database', ['$scope', '$stateParams', 'Restangular', function($scope, $stateParams, Restangular) {
     Restangular.one('databases', $stateParams.db).get().then(function(list) {
       $scope.database = list;

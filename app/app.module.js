@@ -8,6 +8,7 @@ angular.module('Cops', [
   'Cops.controllers',
   'Cops.category',
   'Cops.configuration',
+  'Cops.database',
   'Cops.book',
   'Cops.layout',
   'Cops.services',
