@@ -17,10 +17,13 @@ module.exports = function(config) {
     files: [
       '../public/js/vendor.js',
       'bower_components/angular-mocks/angular-mocks.js',
-      'category/*.js',
       'book/*.js',
-      'services/*.js',
-      'layout/*.js'
+      'category/*.js',
+      'configuration/*.js',
+      'database/*.js',
+      'js/*.js',
+      'layout/*.js',
+      'services/*.js'
     ],
 
 
