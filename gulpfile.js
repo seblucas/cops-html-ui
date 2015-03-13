@@ -17,7 +17,8 @@ var jsSources = [source + 'app.module.js',
                  source + 'app.config.js',
                  source + '**/*.js',
                  '!' + source + 'bower_components/**/*.js',
-                 '!' + source + '**/*.spec.js'];
+                 '!' + source + '**/*.spec.js',
+                 '!' + source + '**/*.mock.js'];
 
 var cssSources = [source + '**/*.css',
                   '!' + source + 'bower_components/**/*.css'];

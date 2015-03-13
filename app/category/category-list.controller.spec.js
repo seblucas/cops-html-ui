@@ -3,6 +3,7 @@
 describe('categoryListController', function(){
 
   beforeEach(module('restangular'));
+  beforeEach(module('Cops.services.mock'));
   beforeEach(module('Cops.category'), function(RestangularProvider) {
     RestangularProvider.setBaseUrl('http://xxx');
   });
@@ -57,21 +58,14 @@ describe('categoryListController', function(){
 
   var scope, getController, httpBackend, stateParams, Restangular, paging;
 
-  beforeEach(inject(function ($q, $controller, _$httpBackend_, $rootScope, _Restangular_) {
+  beforeEach(inject(function ($q, $controller, _$httpBackend_, $rootScope, _Restangular_, controllerHelperMockServices) {
         paging = {
           itemsPerPage: 2,
           itemsPerPageList: [2, 3],
           maxSize: 10,
           currentPage: 1
         };
-        var controllerHelperServices = {
-          initControllerWithPaging: function() {
-            var deferred = $q.defer();
-            deferred.resolve(paging);
-            return deferred.promise;
-          },
-          setConfigurationValue: function() {}
-        };
+        controllerHelperMockServices.setTestData(paging);
         var spinnerService = {
           hide: function() {},
           show: function() {}
@@ -89,7 +83,7 @@ describe('categoryListController', function(){
             $scope: scope,
             $stateParams: stateParams,
             Restangular: Restangular,
-            controllerHelperServices: controllerHelperServices,
+            controllerHelperServices: controllerHelperMockServices,
             spinnerService: spinnerService
           });
         };

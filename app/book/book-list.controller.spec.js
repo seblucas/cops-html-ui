@@ -3,6 +3,7 @@
 describe('bookListController', function(){
 
   beforeEach(module('restangular'));
+  beforeEach(module('Cops.services.mock'));
   beforeEach(module('Cops.book'), function(RestangularProvider) {
     RestangularProvider.setBaseUrl('http://xxx');
   });
@@ -71,20 +72,14 @@ describe('bookListController', function(){
 
   var scope, getController, httpBackend, stateParams, Restangular, paging;
 
-  beforeEach(inject(function ($q, $controller, _$httpBackend_, $rootScope, _Restangular_) {
+  beforeEach(inject(function ($q, $controller, _$httpBackend_, $rootScope, _Restangular_, controllerHelperMockServices) {
         paging = {
           itemsPerPage: 2,
           itemsPerPageList: [2, 3],
           maxSize: 10,
           currentPage: 1
         };
-        var controllerHelperServices = {
-          initControllerWithPaging: function() {
-            var deferred = $q.defer();
-            deferred.resolve(paging);
-            return deferred.promise;
-          }
-        };
+        controllerHelperMockServices.setTestData(paging);
         httpBackend = _$httpBackend_;
         httpBackend.when('GET', '/databases/0/books?authors=1&page=1&perPage=2&series=1&tags=1').respond(booksJson1);
         httpBackend.when('GET', '/databases/0/books?authors=1&page=2&perPage=2&series=1&tags=1').respond(booksJson2);
@@ -98,7 +93,7 @@ describe('bookListController', function(){
             $scope: scope,
             $stateParams: stateParams,
             Restangular: Restangular,
-            controllerHelperServices: controllerHelperServices
+            controllerHelperServices: controllerHelperMockServices
           });
         };
       }));
