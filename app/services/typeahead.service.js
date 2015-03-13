@@ -6,7 +6,7 @@ var app = angular.module('Cops.services');
 
 app.factory('typeaheadServices', ['$q', '$translate', function($q, $translate) {
   var getBloodhound = function (db, category) {
-      var bhUrl = '/ncops/databases/' + db + '/' + category + '?q=%QUERY&per_page=5';
+      var bhUrl = '/ncops/databases/' + db + '/' + category + '?q=%QUERY&perPage=5';
       return new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
