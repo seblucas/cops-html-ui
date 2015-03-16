@@ -22,14 +22,27 @@ app.factory('controllerHelperServices', ['$q', 'configurationServices', function
         paging.itemsPerPageList = configurationServices.getPageSizes();
         if (withBooks) {
           paging.itemsPerPage = config.booksPerPage;
+          paging.currentTemplate = config.booksGridListTemplate;
         } else {
           paging.itemsPerPage = config.categoriesPerPage;
+          paging.currentTemplate = config.categoriesGridListTemplate;
         }
         deferred.resolve(paging);
       });
       return deferred.promise;
     },
-    setConfigurationValue: function(item, value) {
+    setPageSizeValue: function(withBooks, value) {
+      var item = configurationServices.constants.booksPerPage;
+      if (withBooks) {
+        item = configurationServices.constants.categoriesPerPage;
+      }
+      return configurationServices.setValue(item, value);
+    },
+    setTemplateValue: function(withBooks, value) {
+      var item = configurationServices.constants.categoriesGridListTemplate;
+      if (withBooks) {
+        item = configurationServices.constants.booksGridListTemplate;
+      }
       return configurationServices.setValue(item, value);
     }
   };

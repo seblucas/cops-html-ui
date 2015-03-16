@@ -9,7 +9,7 @@ app
 
     $scope.pageChanged = function() {
       spinnerService.show('mainSpinner', 'Loading stuff...');
-      controllerHelperServices.setConfigurationValue('categoriesPerPage', $scope.itemsPerPage);
+      controllerHelperServices.setPageSizeValue(false, $scope.itemsPerPage);
       var params = {page: $scope.currentPage, perPage: $scope.itemsPerPage};
       if ($stateParams.letter) {
         params.letter = $stateParams.letter;
@@ -29,12 +29,17 @@ app
       });
     };
 
+    $scope.gridListChange = function(newValue) {
+      controllerHelperServices.setTemplateValue(false, newValue);
+    };
+
     controllerHelperServices.initControllerWithPaging(false)
                             .then(function(paging) {
       $scope.itemsPerPage = paging.itemsPerPage;
       $scope.itemsPerPageList = paging.itemsPerPageList;
       $scope.maxSize = paging.maxSize;
       $scope.currentPage = paging.currentPage;
+      $scope.defaultTemplate = paging.currentTemplate;
 
       $scope.pageChanged ();
     });

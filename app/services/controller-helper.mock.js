@@ -13,7 +13,9 @@ app.factory('controllerHelperMockServices', ['$q', function($q) {
       deferred.resolve(_localData);
       return deferred.promise;
     },
-    setConfigurationValue: function() {
+    setPageSizeValue: function() {
+    },
+    setTemplateValue: function() {
     }
   };
 }]);
