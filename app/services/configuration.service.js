@@ -16,22 +16,40 @@ app
   var defaultValues = {
     booksPerPage: 96,
     categoriesPerPage: 192,
-    booksGridList: 'th',
-    categoriesGridList: 'list'
+    booksGridListTemplate: 'th',
+    categoriesGridListTemplate: 'list'
   };
 
+  // Extends the configuration to include the default values
+  var _extendDefaultValues = function(conf) {
+    var merged = {};
+    angular.forEach(defaultValues, function(value, key){
+      if (!angular.isDefined(conf[key])) {
+        merged[key] = value;
+      } else {
+        merged[key] = conf[key];
+      }
+    });
+    return merged;
+  };
+
+  // private load function (to be shared easily)
   var _load = function() {
     var deferred = $q.defer();
     if (!angular.isDefined(current)) {
       $localForage.getItem('cops-configuration').then(function(res) {
         if (!angular.isDefined(res)) {
           res = defaultValues;
+        } else {
+          res = _extendDefaultValues(res);
         }
         current = res;
+        console.log('Load : ');
         console.log(current);
         deferred.resolve(current);
       });
     } else {
+      console.log('Load : ');
       console.log(current);
       deferred.resolve(current);
     }
@@ -42,8 +60,8 @@ app
     constants: {
       booksPerPage: 'booksPerPage',
       categoriesPerPage: 'categoriesPerPage',
-      booksGridList: 'booksGridList',
-      categoriesGridList: 'categoriesGridList'
+      booksGridListTemplate: 'booksGridListTemplate',
+      categoriesGridListTemplate: 'categoriesGridListTemplate'
     },
     getPageSizes: function() {
       return [24, 48, 96, 192, 384];
@@ -59,6 +77,7 @@ app
       return _load();
     },
     setValue: function(item, value) {
+      console.log('setValue : ' + item + '/' + value);
       var deferred = $q.defer();
       _load().then(function(conf) {
         if (conf[item] !== value) {
