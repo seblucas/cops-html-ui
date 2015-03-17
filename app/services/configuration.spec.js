@@ -22,6 +22,7 @@ describe('configurationServices', function(){
     });
   });
 
+  // Borrowed from https://github.com/ocombe/angular-localForage/blob/master/tests/angular-localForage.js
   afterEach(function(done) {
     var interval = triggerDigests();
     // create a fresh instance
