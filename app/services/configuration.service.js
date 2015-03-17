@@ -47,6 +47,8 @@ app
         console.log('Load : ');
         console.log(current);
         deferred.resolve(current);
+      }, function(err) {
+        deferred.reject(err);
       });
     } else {
       console.log('Load : ');
