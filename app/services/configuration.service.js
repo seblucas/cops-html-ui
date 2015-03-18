@@ -24,7 +24,7 @@ app
   var _extendDefaultValues = function(conf) {
     var merged = {};
     angular.forEach(defaultValues, function(value, key){
-      if (!angular.isDefined(conf[key])) {
+      if (!angular.isDefined(conf[key]) || conf[key] === null) {
         merged[key] = value;
       } else {
         merged[key] = conf[key];
