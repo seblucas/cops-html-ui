@@ -61,8 +61,8 @@ config(function($stateProvider, $urlRouterProvider) {
       url: '/letter',
       views: {
         '@': {
-          templateUrl: 'partials/booksByLetter.html',
-          controller: 'bookFirstLetter'
+          templateUrl: 'book/book-list-by-first-letter.html',
+          controller: 'bookListFirstLetterController'
         }
       }
     })
