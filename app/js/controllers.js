@@ -3,11 +3,6 @@
 /* Controllers */
 
 angular.module('Cops.controllers', [])
-  .controller('database', ['$scope', '$stateParams', 'Restangular', function($scope, $stateParams, Restangular) {
-    Restangular.one('databases', $stateParams.db).get().then(function(list) {
-      $scope.database = list;
-    });
-  }])
   .controller('bookFirstLetter', ['$scope', '$stateParams', 'Restangular', function($scope, $stateParams, Restangular) {
     $scope.letters = [];
     Restangular.one('databases', $stateParams.db)

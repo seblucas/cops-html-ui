@@ -30,7 +30,7 @@ describe('routes', function () {
 
   describe('with database', function () {
     beforeEach(function() {
-      mockTemplate('partials/database.html');
+      mockTemplate('database/database-detail.html');
       mockTemplate('database/database-list.html');
     });
     it('should show the database detail', function () {

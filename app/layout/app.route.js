@@ -32,8 +32,8 @@ config(function($stateProvider, $urlRouterProvider) {
     })
     .state('base.database', {
       url: '',
-      templateUrl: 'partials/database.html',
-      controller: 'database'
+      templateUrl: 'database/database-detail.html',
+      controller: 'databaseDetailController'
     })
     .state('base.book', {
       url: '/books',

@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-angular.module('Cops.database', [])
+angular.module('Cops.database')
   .controller('databaseListController', ['$scope', 'Restangular', function($scope, Restangular) {
     Restangular.all('databases')
                .getList()
