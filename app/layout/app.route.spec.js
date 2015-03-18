@@ -20,7 +20,7 @@ describe('routes', function () {
 
   describe('when empty', function () {
     beforeEach(function() {
-      mockTemplate('partials/main.html');
+      mockTemplate('database/database-list.html');
     });
     it('should go to the databases list', function () {
       goTo('');
@@ -31,7 +31,7 @@ describe('routes', function () {
   describe('with database', function () {
     beforeEach(function() {
       mockTemplate('partials/database.html');
-      mockTemplate('partials/main.html');
+      mockTemplate('database/database-list.html');
     });
     it('should show the database detail', function () {
       goTo('0');
