@@ -5,7 +5,6 @@
 angular.module('Cops', [
   'Cops.routes',
   'ngAnimate',
-  'Cops.controllers',
   'Cops.category',
   'Cops.configuration',
   'Cops.database',

@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('Cops.category', []);
+var app = angular.module('Cops.category');
 
 app
 .controller('categoryListController', ['$scope', '$stateParams', 'Restangular', 'controllerHelperServices', 'spinnerService', function($scope, $stateParams, Restangular, controllerHelperServices, spinnerService) {

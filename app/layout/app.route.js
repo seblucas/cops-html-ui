@@ -110,8 +110,8 @@ config(function($stateProvider, $urlRouterProvider) {
       url: '/letter',
       views: {
         '@': {
-          templateUrl: 'partials/listByLetter.html',
-          controller: 'listLetter'
+          templateUrl: 'category/category-list-by-first-letter.html',
+          controller: 'categoryListFirstLetterController'
         }
       }
     });
