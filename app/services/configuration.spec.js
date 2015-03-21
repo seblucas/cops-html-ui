@@ -48,6 +48,17 @@ describe('configurationServices', function(){
     });
   });
 
+  it('should return the configuration default values when empty and always be the same', function(done) {
+    var interval = triggerDigests();
+    configurationServices.load().then(function() {
+      configurationServices.load().then(function(conf) {
+        stopDigests(interval);
+        expect(conf.booksPerPage).toBe(96);
+        done();
+      });
+    });
+  });
+
   it('should return the configuration default values even if incomplete data is already there', function(done) {
     var interval = triggerDigests();
     var startValues = {
@@ -107,6 +118,17 @@ describe('configurationServices', function(){
                          .then(function(conf) {
       stopDigests(interval);
       expect(conf.categoriesPerPage).toBe(42);
+      expect(conf.booksPerPage).toBe(96);
+      done();
+    });
+  });
+
+  it('should keep the configuration unchanged if the new value == old value', function(done) {
+    var interval = triggerDigests();
+    configurationServices.setValue(configurationServices.constants.categoriesPerPage, 192)
+                         .then(function(conf) {
+      stopDigests(interval);
+      expect(conf.categoriesPerPage).toBe(192);
       expect(conf.booksPerPage).toBe(96);
       done();
     });

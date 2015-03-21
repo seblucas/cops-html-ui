@@ -58,6 +58,11 @@ app
     return deferred.promise;
   };
 
+  var _save = function(conf) {
+    current = conf;
+    return $localForage.setItem('cops-configuration', conf);
+  };
+
   return {
     constants: {
       booksPerPage: 'booksPerPage',
@@ -72,8 +77,7 @@ app
       return $localForage.driver();
     },
     save: function (conf) {
-      current = conf;
-      return $localForage.setItem('cops-configuration', conf);
+      return _save(conf);
     },
     load: function () {
       return _load();
@@ -84,8 +88,7 @@ app
       _load().then(function(conf) {
         if (conf[item] !== value) {
           conf[item] = value;
-          $localForage.setItem('cops-configuration', conf)
-                      .then(function(lconfig) {
+          _save(conf).then(function(lconfig) {
             deferred.resolve(lconfig);
           });
         } else {
