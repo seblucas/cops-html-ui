@@ -13,6 +13,7 @@ angular.module('Cops.configuration', [])
   function($scope, configurationServices) {
     $scope.conf = {};
     $scope.saving = false;
+    $scope.categories = {'authors' : false, 'tags' : false, 'series' : false};
     $scope.pageSizes = configurationServices.getPageSizes();
     $scope.driver = configurationServices.getDriver();
 

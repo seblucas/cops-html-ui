@@ -14,6 +14,13 @@
           <option ng-repeat="value in pageSizes">{{ ::value }}</option>
         </select>
       </div>
+      <div class="form-group">
+        <p><label translate>customize.ignored</label></p>
+        <div class="checkbox-inline" ng-repeat="(value, enabled) in categories">
+          <input id="{{ ::value }}" ng-model="categories[value]" type="checkbox" >
+          <label for="{{ ::value }}">{{ value + '.title' | translate}}</label>
+        </div>
+      </div>
       <button type="submit" class="btn btn-default" ng-click="save()">Submit</button>
     </form>
     <div class="alert alert-success" role="alert" ng-if="saving">Saving</div>
