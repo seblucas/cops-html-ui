@@ -96,6 +96,22 @@ describe('configurationServices', function(){
     });
   });
 
+  it('should return the complete ignored categories even if a new one has been added in the default', function(done) {
+    var interval = triggerDigests();
+    var startValues = {
+      ignoredCategories: {'authors' : false, 'tags' : false}
+    };
+    $localForage.setItem('cops-configuration', startValues)
+                         .then(function() {
+      configurationServices.load().then(function(conf) {
+        stopDigests(interval);
+        expect(conf.ignoredCategories.series).toBeDefined();
+        expect(conf.ignoredCategories.series).toBeFalsy();
+        done();
+      });
+    });
+  });
+
   it('should save the new configuration provided', function(done) {
     var interval = triggerDigests();
     configurationServices.load()

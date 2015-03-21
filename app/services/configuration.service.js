@@ -17,17 +17,22 @@ app
     booksPerPage: 96,
     categoriesPerPage: 192,
     booksGridListTemplate: 'th',
-    categoriesGridListTemplate: 'list'
+    categoriesGridListTemplate: 'list',
+    ignoredCategories: {'authors' : false, 'tags' : false, 'series' : false}
   };
 
   // Extends the configuration to include the default values
-  var _extendDefaultValues = function(conf) {
+  var _extendDefaultValues = function(defaultVal, conf) {
     var merged = {};
-    angular.forEach(defaultValues, function(value, key){
+    angular.forEach(defaultVal, function(value, key){
       if (!angular.isDefined(conf[key]) || conf[key] === null) {
         merged[key] = value;
       } else {
-        merged[key] = conf[key];
+        if (angular.isObject(value)) {
+          merged[key] = _extendDefaultValues(value, conf[key]);
+        } else {
+          merged[key] = conf[key];
+        }
       }
     });
     return merged;
@@ -41,7 +46,7 @@ app
         if (!angular.isDefined(res)) {
           res = defaultValues;
         } else {
-          res = _extendDefaultValues(res);
+          res = _extendDefaultValues(defaultValues, res);
         }
         current = res;
         console.log('Load : ');
