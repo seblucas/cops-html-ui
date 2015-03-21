@@ -16,10 +16,9 @@
       </div>
       <div class="form-group">
         <p><label translate>customize.ignored</label></p>
-        <div class="checkbox-inline" ng-repeat="(value, enabled) in conf.ignoredCategories">
-          <input id="{{ ::value }}" ng-model="conf.ignoredCategories[value]" type="checkbox" >
-          <label for="{{ ::value }}">{{ value + '.title' | translate}}</label>
-        </div>
+        <label class="checkbox-inline" ng-repeat="(value, enabled) in conf.ignoredCategories">
+          <input ng-model="conf.ignoredCategories[value]" type="checkbox"> {{ value + '.title' | translate}}
+        </label>
       </div>
       <button type="submit" class="btn btn-default" ng-click="save()">Submit</button>
     </form>
