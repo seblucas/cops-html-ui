@@ -50,20 +50,20 @@ describe('typeaheadServices', function(){
     });
   });
 
-  it('should have a name equal to "name" for all categories except for books', function(done) {
+  it('should have a displayKey equal to "name" for all categories except for books', function(done) {
     var interval = triggerDigests();
     typeaheadServices.getDatasets(0, ['authors']).then(function(dataset) {
       stopDigests(interval);
-      expect(dataset[0].name).toBe('name');
+      expect(dataset[0].displayKey).toBe('name');
       done();
     });
   });
 
-  it('should have a name equal to "title" for books', function(done) {
+  it('should have a displayKey equal to "title" for books', function(done) {
     var interval = triggerDigests();
     typeaheadServices.getDatasets(0, ['books']).then(function(dataset) {
       stopDigests(interval);
-      expect(dataset[0].name).toBe('title');
+      expect(dataset[0].displayKey).toBe('title');
       done();
     });
   });
