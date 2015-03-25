@@ -4,9 +4,9 @@
 
 var app = angular.module('Cops.services');
 
-app.factory('typeaheadServices', ['$q', '$translate', function($q, $translate) {
-  var getBloodhound = function (db, category) {
-      var bhUrl = '/ncops/databases/' + db + '/' + category + '?q=%QUERY&perPage=5';
+app.factory('typeaheadServices', ['$q', '$translate', 'Restangular', function($q, $translate, Restangular) {
+  var _getBloodhound = function (db, category) {
+      var bhUrl = Restangular.one('databases', db).all(category).getRequestedUrl() + '?q=%QUERY&perPage=5';
       return new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -20,7 +20,7 @@ app.factory('typeaheadServices', ['$q', '$translate', function($q, $translate) {
   var getDatasetsSync = function(db, categories, translations) {
       var bloodhounds = [];
       var datasets = [];
-      var localGetBloodhound = getBloodhound; // Helper
+      var localGetBloodhound = _getBloodhound; // Helper
       var name;
       angular.forEach(categories, function(value, key) {
         name = 'name';
@@ -53,6 +53,9 @@ app.factory('typeaheadServices', ['$q', '$translate', function($q, $translate) {
       });
       // return a promise
       return deferred.promise;
+    },
+    getBloodhound: function(db, category) {
+      return _getBloodhound(db, category);
     }
   };
 }]);

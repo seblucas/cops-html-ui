@@ -24,6 +24,10 @@ describe('typeaheadServices', function(){
       .preferredLanguage('en');
   }));
 
+  beforeEach(module('restangular', function(RestangularProvider) {
+    RestangularProvider.setBaseUrl('http://xxx');
+  }));
+
   beforeEach(function() {
     module('Cops.services');
     inject(function (_$q_, _typeaheadServices_, _$rootScope_) {
@@ -66,6 +70,20 @@ describe('typeaheadServices', function(){
       expect(dataset[0].displayKey).toBe('title');
       done();
     });
+  });
+
+  it('should have use the translated name in the header template', function(done) {
+    var interval = triggerDigests();
+    typeaheadServices.getDatasets(0, ['books']).then(function(dataset) {
+      stopDigests(interval);
+      expect(dataset[0].templates.header).toMatch(/>mybooks</);
+      done();
+    });
+  });
+
+  it('should use the same base url as Restangular', function() {
+    var bloodhound = typeaheadServices.getBloodhound(0, 'books');
+    expect(bloodhound.remote.url).toMatch(/^http\:\/\/xxx/);
   });
 
 });
