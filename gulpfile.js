@@ -57,10 +57,6 @@ gulp.task('bower', function() {
     var cssFilter = gulpFilter('**/*.css');
     var fontFilter = gulpFilter('**/*.{otf,eot,svg,ttf,woff,woff2}');
 
-    // for now the woff2 font is not part of bootstrap's bower.json
-    // https://github.com/twbs/bootstrap/commit/767f3c87bc019e04888c82fa222ffae3e89b6f7e
-    gulp.src(source + 'bower_components/bootstrap/dist/fonts/*.woff2')
-        .pipe(gulp.dest(dist.fonts));
     return gulp.src(mainBowerFiles())
         .pipe(jsFilter)
         .pipe(concat('vendor.js'))
