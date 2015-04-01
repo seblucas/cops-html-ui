@@ -58,7 +58,7 @@ describe('bookListCategoryController', function(){
 
   var scope, getController, httpBackend, stateParams, Restangular, paging;
 
-  beforeEach(inject(function ($q, $controller, _$httpBackend_, $rootScope, _Restangular_, controllerHelperMockServices) {
+  beforeEach(inject(function ($q, $controller, _$httpBackend_, $rootScope, _Restangular_, controllerHelperMockServices, downloadableHelperMockServices) {
         paging = {
           itemsPerPage: 2,
           itemsPerPageList: [2, 3],
@@ -78,7 +78,8 @@ describe('bookListCategoryController', function(){
             $scope: scope,
             $stateParams: stateParams,
             Restangular: Restangular,
-            controllerHelperServices: controllerHelperMockServices
+            controllerHelperServices: controllerHelperMockServices,
+            downloadableHelperServices: downloadableHelperMockServices
           });
         };
       }));
@@ -116,6 +117,12 @@ describe('bookListCategoryController', function(){
     getController();
     httpBackend.flush();
     expect(scope.books[0].title).toBe('The Return of Sherlock Holmes');
+  });
+
+  it('should return a valid cover url', function() {
+    getController();
+    httpBackend.flush();
+    expect(scope.getCoverUrl(18)).toBe('url18'); // there is a mock
   });
 
   it('should have "The Adventures of Sherlock Holmes" on the second page', function() {

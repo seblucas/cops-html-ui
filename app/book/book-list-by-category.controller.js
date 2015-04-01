@@ -1,8 +1,11 @@
 'use strict';
 
 angular.module('Cops.book')
-.controller('bookListCategoryController', ['$scope', '$stateParams', 'Restangular', 'controllerHelperServices', function($scope, $stateParams, Restangular, controllerHelperServices) {
-    $scope.db = $stateParams.db;
+.controller('bookListCategoryController', ['$scope',
+                                           '$stateParams',
+                                           'Restangular',
+                                           'controllerHelperServices',
+                                           'downloadableHelperServices', function($scope, $stateParams, Restangular, controllerHelperServices, downloadableHelperServices) {
     $scope.books = [];
     $scope.defaultTemplate = 'th';
 
@@ -11,6 +14,7 @@ angular.module('Cops.book')
     });
 
     $scope.pageChanged = function() {
+      controllerHelperServices.setPageSizeValue(true, $scope.itemsPerPage);
       Restangular.one('databases', $stateParams.db)
                  .one($stateParams.cat, $stateParams.id)
                  .getList('books', {page: $scope.currentPage, perPage: $scope.itemsPerPage, authors: 1, tags: 1, series: 1})
@@ -22,12 +26,18 @@ angular.module('Cops.book')
       });
     };
 
+    $scope.getCoverUrl = function(id) {
+      return downloadableHelperServices.getCoverUrl($stateParams.db, id);
+    };
+
     controllerHelperServices.initControllerWithPaging(true)
                             .then(function(paging) {
       $scope.itemsPerPage = paging.itemsPerPage;
       $scope.itemsPerPageList = paging.itemsPerPageList;
       $scope.maxSize = paging.maxSize;
       $scope.currentPage = paging.currentPage;
+      $scope.defaultTemplate = paging.currentTemplate;
+
       $scope.pageChanged ();
     });
   }]);

@@ -72,7 +72,7 @@ describe('bookListController', function(){
 
   var scope, getController, httpBackend, stateParams, Restangular, paging;
 
-  beforeEach(inject(function ($q, $controller, _$httpBackend_, $rootScope, _Restangular_, controllerHelperMockServices) {
+  beforeEach(inject(function ($q, $controller, _$httpBackend_, $rootScope, _Restangular_, controllerHelperMockServices, downloadableHelperMockServices) {
         paging = {
           itemsPerPage: 2,
           itemsPerPageList: [2, 3],
@@ -93,7 +93,8 @@ describe('bookListController', function(){
             $scope: scope,
             $stateParams: stateParams,
             Restangular: Restangular,
-            controllerHelperServices: controllerHelperMockServices
+            controllerHelperServices: controllerHelperMockServices,
+            downloadableHelperServices: downloadableHelperMockServices
           });
         };
       }));
@@ -123,15 +124,12 @@ describe('bookListController', function(){
     httpBackend.flush();
     expect(scope.books[0].title).toBe('The Adventures of Sherlock Holmes');
   });
-/*
-  it('should return Arthur Conan Doyle when querying', function() {
-    stateParams.q = 'doyle';
-    httpBackend.expectGET('/databases/0/authors?page=1&perPage=2&q=doyle');
+
+  it('should return a valid cover url', function() {
     getController();
     httpBackend.flush();
-    expect(scope.list[0].name).toBe('Arthur Conan Doyle');
-  });*/
-
+    expect(scope.getCoverUrl(12)).toBe('url12'); // there is a mock
+  });
 
   it('should return "The Adventures of Sherlock Holmes" when filtering by books starting by a A', function() {
     stateParams.letter = 'A';

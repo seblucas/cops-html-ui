@@ -3,8 +3,8 @@
     <ul class="media-list col-xs-12">
       <li class="media" ng-repeat="book in books">
         <div class="media-left media-middle">
-          <a href="/ncops/databases/{{::db}}/books/{{::book.id}}/cover" ng-show="book.hasCover == 1">
-              <img class="media-object" ng-src="/ncops/databases/{{::db}}/books/{{::book.id}}/cover" style="width: 64px;" />
+          <a ng-href="{{ getCoverUrl(book.id) }}" ng-show="book.hasCover == 1">
+              <img class="media-object" ng-src="{{ getCoverUrl(book.id) }}" style="width: 64px;" />
           </a>
         </div>
         <div class="media-body">
