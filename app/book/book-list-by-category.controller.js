@@ -30,6 +30,10 @@ angular.module('Cops.book')
       return downloadableHelperServices.getCoverUrl($stateParams.db, id);
     };
 
+    $scope.gridListChange = function(newValue) {
+      controllerHelperServices.setTemplateValue(true, newValue);
+    };
+
     controllerHelperServices.initControllerWithPaging(true)
                             .then(function(paging) {
       $scope.itemsPerPage = paging.itemsPerPage;
