@@ -4,7 +4,7 @@
       <li class="media" ng-repeat="book in books">
         <div class="media-left media-middle">
           <a ng-href="{{ getCoverUrl(book.id) }}" ng-show="book.hasCover == 1">
-              <img class="media-object" ng-src="{{ getCoverUrl(book.id) }}" style="width: 64px;" />
+              <img class="media-object" ng-src="{{ getThumbnailUrlByWidth(book.id, 64) }}" style="width: 64px;" />
           </a>
         </div>
         <div class="media-body">

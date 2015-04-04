@@ -30,6 +30,14 @@ angular.module('Cops.book')
       return downloadableHelperServices.getCoverUrl($stateParams.db, id);
     };
 
+    $scope.getThumbnailUrlByWidth = function(id, width) {
+      return downloadableHelperServices.getThumbnailUrlByWidth($stateParams.db, id, width);
+    };
+
+    $scope.getThumbnailUrlByHeight = function(id, height) {
+      return downloadableHelperServices.getThumbnailUrlByHeight($stateParams.db, id, height);
+    };
+
     $scope.gridListChange = function(newValue) {
       controllerHelperServices.setTemplateValue(true, newValue);
     };

@@ -6,7 +6,7 @@
       <div class="panel-body">
         <div class="cover-image">
             <a ng-href="{{ getCoverUrl(book.id) }}" ng-show="book.hasCover == 1">
-                <img ng-src="{{ getCoverUrl(book.id) }}" />
+                <img ng-src="{{ getThumbnailUrlByHeight(book.id, 164) }}" />
             </a>
         </div>
         <div class="ellipsis"><span class="glyphicon glyphicon-user"></span> {{book.authorsName}}</div>

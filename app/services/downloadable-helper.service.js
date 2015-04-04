@@ -16,6 +16,12 @@ angular.module('Cops.services')
   return {
     getCoverUrl: function (db, id) {
       return getBaseUrl(db) + '/' + id + '/cover';
+    },
+    getThumbnailUrlByHeight: function (db, id, height) {
+      return getBaseUrl(db) + '/' + id + '/thumbnail?height=' + height;
+    },
+    getThumbnailUrlByWidth: function (db, id, width) {
+      return getBaseUrl(db) + '/' + id + '/thumbnail?width=' + width;
     }
   };
 }]);
