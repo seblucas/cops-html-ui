@@ -7,10 +7,6 @@ describe('Category list', function() {
     browser.waitForAngular();
   });
 
-  it('should have a H1 title', function() {
-    expect(element(by.tagName('h1')).getText()).toEqual('Auteurs');
-  });
-
   it('should have the first page starting by a A', function() {
     expect(element.all(by.repeater('item in list')).first().getText()).toMatch(/^A/);
   });
