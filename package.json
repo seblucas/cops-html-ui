@@ -10,16 +10,18 @@
   "license": "ISC",
   "devDependencies": {
     "gulp": "^3.8.10",
-    "gulp-jshint": "^1.9.2",
-    "gulp-filter": "^2.0.2",
-    "main-bower-files": "^2.5.0",
-    "gulp-concat": "^2.5.0",
     "gulp-angular-templatecache": "^1.5.0",
     "gulp-bootlint": "^0.3.0",
+    "gulp-concat": "^2.5.0",
+    "gulp-filter": "^2.0.2",
+    "gulp-jshint": "^1.9.2",
     "gulp-karma": "^0.0.4",
-    "karma-coverage": "^0.2.7",
+    "gulp-protractor": "^1.0.0",
     "jasmine": "^2.2.1",
+    "karma-coverage": "^0.2.7",
     "karma-jasmine": "^0.3.5",
-    "karma-phantomjs-launcher": "^0.1.4"
+    "karma-phantomjs-launcher": "^0.1.4",
+    "main-bower-files": "^2.5.0",
+    "protractor": "^2.0.0"
   }
 }

@@ -42,6 +42,7 @@
     "spyOn" : false,
     "spyOnEvent" : false,
     "waitsFor" : false,
+    "by" : false,
     "xdescribe" : false
   }
 }
