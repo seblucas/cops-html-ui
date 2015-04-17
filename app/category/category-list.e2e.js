@@ -17,6 +17,10 @@ describe('Category list', function() {
     }, 1000);
   });
 
+  afterEach(function () {
+    browser.executeScript('indexedDB.deleteDatabase("cops");');
+  });
+
   it('should have the first page starting by a A', function() {
     expect(element.all(by.repeater('item in list')).first().getText()).toMatch(/^A/);
   });
