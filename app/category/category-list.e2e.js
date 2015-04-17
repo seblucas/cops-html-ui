@@ -9,6 +9,9 @@ describe('Category list', function() {
     nextButton = element(by.css('[ng-click="selectPage(page + 1)"]'));
 
     // We'll have to wait for at least an item or it may give false positive
+    // Don't really know why
+    //  * Maybe because of the static include
+    //  * Maybe because of the some other directive
     browser.wait(function(){
       return element(by.css('.list-group-item')).isPresent();
     }, 1000);
