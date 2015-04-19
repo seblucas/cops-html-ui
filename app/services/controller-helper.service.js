@@ -32,9 +32,9 @@ app.factory('controllerHelperServices', ['$q', 'configurationServices', function
       return deferred.promise;
     },
     setPageSizeValue: function(withBooks, value) {
-      var item = configurationServices.constants.booksPerPage;
+      var item = configurationServices.constants.categoriesPerPage;
       if (withBooks) {
-        item = configurationServices.constants.categoriesPerPage;
+        item = configurationServices.constants.booksPerPage;
       }
       return configurationServices.setValue(item, value);
     },
