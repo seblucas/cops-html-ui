@@ -13,7 +13,7 @@ exports.config = {
     browser.addMockModule('disableNgAnimate', disableNgAnimate);
   },
   //seleniumAddress: 'http://localhost:4444/wd/hub',
-  baseUrl: 'http://localhost/ncops-angular/public/',
+  baseUrl: 'http://localhost/ncops-angular/public/index_prod.html',
   capabilities: {
     'browserName': 'chrome'
   },
