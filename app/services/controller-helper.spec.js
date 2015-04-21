@@ -2,14 +2,15 @@
 
 describe('controllerHelperServices', function(){
 
-  var configurationServices, controllerHelperServices, $rootScope;
+  var configurationServices, controllerHelperServices, $rootScope, $q;
 
   beforeEach(function() {
     module('Cops.services');
-    inject(function (_configurationServices_, _controllerHelperServices_, _$rootScope_) {
+    inject(function (_configurationServices_, _controllerHelperServices_, _$rootScope_, _$q_) {
       $rootScope = _$rootScope_;
       controllerHelperServices = _controllerHelperServices_;
       configurationServices = _configurationServices_;
+      $q = _$q_;
     });
   });
 
@@ -55,11 +56,21 @@ describe('controllerHelperServices', function(){
       window.clearInterval(interval);
     };
 
+    beforeEach(function() {
+      spyOn(configurationServices, 'load').and.
+        returnValue($q.when({
+          booksPerPage: 1,
+          categoriesPerPage: 2,
+          booksGridListTemplate: 'book',
+          categoriesGridListTemplate: 'category',
+          ignoredCategories: {'authors' : false, 'tags' : false, 'series' : false}}));
+    });
+
     it('should set itemsPerPage using booksPerPage', function(done) {
       var interval = triggerDigests();
       controllerHelperServices.initControllerWithPaging(true).then(function(paging) {
         stopDigests(interval);
-        expect(paging.itemsPerPage).toBe(96);
+        expect(paging.itemsPerPage).toBe(1);
         done();
       });
     });
@@ -68,7 +79,7 @@ describe('controllerHelperServices', function(){
       var interval = triggerDigests();
       controllerHelperServices.initControllerWithPaging(true).then(function(paging) {
         stopDigests(interval);
-        expect(paging.currentTemplate).toBe('th');
+        expect(paging.currentTemplate).toBe('book');
         done();
       });
     });
@@ -77,7 +88,7 @@ describe('controllerHelperServices', function(){
       var interval = triggerDigests();
       controllerHelperServices.initControllerWithPaging(false).then(function(paging) {
         stopDigests(interval);
-        expect(paging.itemsPerPage).toBe(192);
+        expect(paging.itemsPerPage).toBe(2);
         done();
       });
     });
@@ -86,7 +97,7 @@ describe('controllerHelperServices', function(){
       var interval = triggerDigests();
       controllerHelperServices.initControllerWithPaging(false).then(function(paging) {
         stopDigests(interval);
-        expect(paging.currentTemplate).toBe('list');
+        expect(paging.currentTemplate).toBe('category');
         done();
       });
     });
