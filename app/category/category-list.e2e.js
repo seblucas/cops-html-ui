@@ -2,7 +2,7 @@
 
 describe('Category list', function() {
 
-  var nextButton, items, itemsPerPage;
+  var nextButton, items, itemsPerPage, toggleBtn;
 
   var waitForPage = function() {
     // We'll have to wait for at least an item or it may give false positive
@@ -20,6 +20,7 @@ describe('Category list', function() {
     nextButton = element(by.css('[ng-click="selectPage(page + 1)"]'));
     items = element.all(by.repeater('item in list'));
     itemsPerPage = element.all(by.repeater('itemValue in itemsPerPageList'));
+    toggleBtn = element.all(by.repeater('item in toggles'));
 
     waitForPage();
   });
@@ -51,5 +52,20 @@ describe('Category list', function() {
     browser.get('#/0/authors');
     waitForPage();
     expect(items.count()).toBe(24);
+  });
+
+  describe('grid / list toggle', function() {
+    it('should switch to card view if it is clicked', function() {
+      toggleBtn.first().click();
+      expect(element(by.css('.panel')).isPresent()).toBeTruthy();
+    });
+
+    it('should save the prefered view', function() {
+      toggleBtn.first().click();
+      browser.get('#/0/authors');
+      waitForPage();
+      expect(element(by.css('.panel')).isPresent()).toBeTruthy();
+    });
+
   });
 });
