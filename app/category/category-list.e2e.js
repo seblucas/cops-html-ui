@@ -30,29 +30,35 @@ describe('Category list', function() {
     browser.executeScript('indexedDB.deleteDatabase("cops");');
   });
 
-  it('should have the first page starting by a A', function() {
-    expect(items.first().getText()).toMatch(/^A/);
+  describe('paging', function() {
+    it('should have the first page starting by a A', function() {
+      expect(items.first().getText()).toMatch(/^A/);
+    });
+
+    it('should have the second page starting by anything but a A', function() {
+      nextButton.click();
+      expect(items.first().getText()).not.toMatch(/^A/);
+    });
+
   });
 
-  it('should have the second page starting by anything but a A', function() {
-    nextButton.click();
-    expect(items.first().getText()).not.toMatch(/^A/);
-  });
+  describe('items per page', function() {
+    it('should have 192 items (default value)', function() {
+      expect(items.count()).toBe(192);
+    });
 
-  it('should have 192 items (default value)', function() {
-    expect(items.count()).toBe(192);
-  });
+    it('should have 24 items if the 24 button is choosen', function() {
+      itemsPerPage.first().element(by.linkText('24')).click();
+      expect(items.count()).toBe(24);
+    });
 
-  it('should have 24 items if the 24 button is choosen', function() {
-    itemsPerPage.first().element(by.linkText('24')).click();
-    expect(items.count()).toBe(24);
-  });
+    it('should save the prefered number of items per page', function() {
+      itemsPerPage.first().element(by.linkText('24')).click();
+      browser.get(baseUrl);
+      waitForPage();
+      expect(items.count()).toBe(24);
+    });
 
-  it('should save the prefered number of items per page', function() {
-    itemsPerPage.first().element(by.linkText('24')).click();
-    browser.get(baseUrl);
-    waitForPage();
-    expect(items.count()).toBe(24);
   });
 
   describe('grid / list toggle', function() {
