@@ -12,7 +12,8 @@ describe('Category list', function() {
     //  * Maybe because of the some other directive
     browser.wait(function(){
       return element(by.repeater('item in list')).isPresent() &&
-             element(by.repeater('itemValue in itemsPerPageList')).isPresent();
+             element(by.repeater('itemValue in itemsPerPageList')).isPresent() &&
+             element(by.repeater('item in toggles')).isPresent();
     }, 1000);
   };
 
