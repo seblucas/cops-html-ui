@@ -3,6 +3,7 @@
 describe('Category list', function() {
 
   var nextButton, items, itemsPerPage, toggleBtn;
+  var baseUrl = '#/0/authors';
 
   var waitForPage = function() {
     // We'll have to wait for at least an item or it may give false positive
@@ -16,7 +17,7 @@ describe('Category list', function() {
   };
 
   beforeEach(function() {
-    browser.get('#/0/authors');
+    browser.get(baseUrl);
     nextButton = element(by.css('[ng-click="selectPage(page + 1)"]'));
     items = element.all(by.repeater('item in list'));
     itemsPerPage = element.all(by.repeater('itemValue in itemsPerPageList'));
@@ -49,7 +50,7 @@ describe('Category list', function() {
 
   it('should save the prefered number of items per page', function() {
     itemsPerPage.first().element(by.linkText('24')).click();
-    browser.get('#/0/authors');
+    browser.get(baseUrl);
     waitForPage();
     expect(items.count()).toBe(24);
   });
@@ -62,7 +63,7 @@ describe('Category list', function() {
 
     it('should save the prefered view', function() {
       toggleBtn.first().click();
-      browser.get('#/0/authors');
+      browser.get(baseUrl);
       waitForPage();
       expect(element(by.css('.panel')).isPresent()).toBeTruthy();
     });
