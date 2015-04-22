@@ -56,9 +56,9 @@ describe('bookListCategoryController', function(){
         count: '2'
     };
 
-  var scope, getController, httpBackend, stateParams, Restangular, paging;
+  var scope, getController, httpBackend, stateParams, Restangular, paging, downloadableHelperMockServices;
 
-  beforeEach(inject(function ($q, $controller, _$httpBackend_, $rootScope, _Restangular_, controllerHelperMockServices, downloadableHelperMockServices) {
+  beforeEach(inject(function ($q, $controller, _$httpBackend_, $rootScope, _Restangular_, controllerHelperMockServices, _downloadableHelperMockServices_) {
         paging = {
           itemsPerPage: 2,
           itemsPerPageList: [2, 3],
@@ -73,6 +73,7 @@ describe('bookListCategoryController', function(){
         Restangular = _Restangular_;
         stateParams = {db: 0, cat: 'authors', id: 1};
         scope = $rootScope.$new();
+        downloadableHelperMockServices = _downloadableHelperMockServices_;
         getController = function () {
           return $controller('bookListCategoryController', {
             $scope: scope,
@@ -131,6 +132,27 @@ describe('bookListCategoryController', function(){
     getController();
     httpBackend.flush();
     expect(scope.books[0].title).toBe('The Adventures of Sherlock Holmes');
+  });
+
+  describe('thumbnails', function(){
+    beforeEach(function() {
+      spyOn(downloadableHelperMockServices, 'getThumbnailUrlByWidth');
+      spyOn(downloadableHelperMockServices, 'getThumbnailUrlByHeight');
+    });
+
+    it('should get the url by height', function() {
+      getController();
+      httpBackend.flush();
+      scope.getThumbnailUrlByHeight(1, 128);
+      expect(downloadableHelperMockServices.getThumbnailUrlByHeight).toHaveBeenCalled();
+    });
+
+    it('should get the url by width', function() {
+      getController();
+      httpBackend.flush();
+      scope.getThumbnailUrlByWidth(1, 128);
+      expect(downloadableHelperMockServices.getThumbnailUrlByWidth).toHaveBeenCalled();
+    });
   });
 
 });

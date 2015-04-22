@@ -5,6 +5,8 @@ angular.module('Cops.services.mock')
   return {
     getCoverUrl: function (db, id) {
       return 'url' + id;
-    }
+    },
+    getThumbnailUrlByHeight: function () {},
+    getThumbnailUrlByWidth: function () {}
   };
 });
