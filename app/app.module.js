@@ -18,6 +18,6 @@ angular.module('Cops', [
   'seblucas.slPageSizeChanger',
   'seblucas.slGridListToggle',
   'seblucas.slSpinner',
-  'seblucas.slStaticInclude',
+  'inline',
   'restangular'
 ]);

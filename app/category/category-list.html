@@ -4,5 +4,5 @@
   <h1 ng-switch-when="base.category.listByLetter" translate="splitByLetter.letter" translate-value-category="{{$stateParams.cat + '.title' | translate}}" translate-value-letter="{{$stateParams.letter}}">
   </h1>
 </ng-switch>
-<div static-include=" 'partials/paginationInclude.html' "></div>
+<div ng-inline="partials/paginationInclude.html"></div>
 <div ng-include src="currentTemplate" scope="" onload=""></div>

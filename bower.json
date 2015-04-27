@@ -44,7 +44,8 @@
     "angular-bootstrap-page-size-changer": ">0.1.0",
     "angular-bootstrap-grid-list-toggle": ">0.0.0",
     "typeahead.js-bootstrap3.less": "~0.2.3",
-    "angular-localforage": "~1.2.2"
+    "angular-localforage": "~1.2.2",
+    "ng-inline": "~0.0.2"
   },
   "resolutions": {
     "angular": "1.3.x",
