@@ -11,8 +11,8 @@ describe('Category list', function() {
     //  * Maybe because of the static include
     //  * Maybe because of the some other directive
     browser.wait(function(){
-      return element(by.repeater('item in list')).isPresent() &&
-             element(by.repeater('itemValue in itemsPerPageList')).isPresent() &&
+      return element(by.css('.list-group-item')).isPresent() &&
+             element(by.css('ul.pagination > li.active')).isPresent() &&
              element(by.repeater('item in toggles')).isPresent();
     }, 1000);
   };
