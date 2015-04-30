@@ -21,6 +21,13 @@
     display:block;
 }
 
+.bottomright {
+  position:absolute;
+  bottom:0;
+  margin-bottom:25px;
+  right: 20px;
+}
+
 li.media {
     border-bottom: 1px solid #ccc;
 }

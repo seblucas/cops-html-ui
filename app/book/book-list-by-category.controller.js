@@ -17,7 +17,7 @@ angular.module('Cops.book')
       controllerHelperServices.setPageSizeValue(true, $scope.itemsPerPage);
       Restangular.one('databases', $stateParams.db)
                  .one($stateParams.cat, $stateParams.id)
-                 .getList('books', {page: $scope.currentPage, perPage: $scope.itemsPerPage, authors: 1, tags: 1, series: 1})
+                 .getList('books', {page: $scope.currentPage, perPage: $scope.itemsPerPage, authors: 1, tags: 1, series: 1, datas: 'EPUB,PDF'})
                  .then(function(list) {
         // Ugly hack to get the paging metadata
         $scope.totalItems = list[0].metadata;

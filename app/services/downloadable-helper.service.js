@@ -2,26 +2,39 @@
 
 angular.module('Cops.services')
 .factory('downloadableHelperServices', ['Restangular', function(Restangular) {
-  var baseUrl = {};
+  var bookBaseUrl = {};
+  var dataBaseUrl = {};
 
-  var getBaseUrl = function(db) {
-    if (!angular.isDefined(baseUrl[db])) {
-      baseUrl[db] = Restangular.one('databases', db)
+  var getBookBaseUrl = function(db) {
+    if (!angular.isDefined(bookBaseUrl[db])) {
+      bookBaseUrl[db] = Restangular.one('databases', db)
                            .all('books')
                            .getRequestedUrl();
     }
-    return baseUrl[db];
+    return bookBaseUrl[db];
+  };
+
+  var getDataBaseUrl = function(db) {
+    if (!angular.isDefined(dataBaseUrl[db])) {
+      dataBaseUrl[db] = Restangular.one('databases', db)
+                           .all('datas')
+                           .getRequestedUrl();
+    }
+    return dataBaseUrl[db];
   };
 
   return {
     getCoverUrl: function (db, id) {
-      return getBaseUrl(db) + '/' + id + '/cover';
+      return getBookBaseUrl(db) + '/' + id + '/cover';
     },
     getThumbnailUrlByHeight: function (db, id, height) {
-      return getBaseUrl(db) + '/' + id + '/thumbnail?height=' + height;
+      return getBookBaseUrl(db) + '/' + id + '/thumbnail?height=' + height;
     },
     getThumbnailUrlByWidth: function (db, id, width) {
-      return getBaseUrl(db) + '/' + id + '/thumbnail?width=' + width;
+      return getBookBaseUrl(db) + '/' + id + '/thumbnail?width=' + width;
+    },
+    getDataUrl: function (db, idBook, idData) {
+      return getBookBaseUrl(db) + '/' + idBook + '/datas/' + idData;
     }
   };
 }]);

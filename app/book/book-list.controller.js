@@ -11,7 +11,7 @@ angular.module('Cops.book')
 
     $scope.pageChanged = function() {
       controllerHelperServices.setPageSizeValue(true, $scope.itemsPerPage);
-      var params = {page: $scope.currentPage, perPage: $scope.itemsPerPage, authors: 1, tags: 1, series: 1};
+      var params = {page: $scope.currentPage, perPage: $scope.itemsPerPage, authors: 1, tags: 1, series: 1, datas: 'EPUB,PDF'};
       if ($stateParams.letter) {
         params.letter = $stateParams.letter;
       }
@@ -27,6 +27,10 @@ angular.module('Cops.book')
 
     $scope.getCoverUrl = function(id) {
       return downloadableHelperServices.getCoverUrl($stateParams.db, id);
+    };
+
+    $scope.getDataUrl = function(idBook, idData) {
+      return downloadableHelperServices.getDataUrl($stateParams.db, idBook, idData);
     };
 
     $scope.getThumbnailUrlByWidth = function(id, width) {
