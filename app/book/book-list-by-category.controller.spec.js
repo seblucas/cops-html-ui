@@ -3,6 +3,7 @@
 describe('bookListCategoryController', function(){
 
   beforeEach(module('restangular'));
+  beforeEach(module('Cops.services'));
   beforeEach(module('Cops.services.mock'));
   beforeEach(module('Cops.book'), function(RestangularProvider) {
     RestangularProvider.setBaseUrl('http://xxx');
@@ -56,9 +57,9 @@ describe('bookListCategoryController', function(){
         count: '2'
     };
 
-  var scope, getController, httpBackend, stateParams, Restangular, paging, downloadableHelperMockServices;
+  var scope, getController, httpBackend, stateParams, Restangular, paging;
 
-  beforeEach(inject(function ($q, $controller, _$httpBackend_, $rootScope, _Restangular_, controllerHelperMockServices, _downloadableHelperMockServices_) {
+  beforeEach(inject(function ($q, $controller, _$httpBackend_, $rootScope, _Restangular_, controllerHelperMockServices, _bookListHelperServices_) {
         paging = {
           itemsPerPage: 2,
           itemsPerPageList: [2, 3],
@@ -67,20 +68,19 @@ describe('bookListCategoryController', function(){
         };
         controllerHelperMockServices.setTestData(paging);
         httpBackend = _$httpBackend_;
-        httpBackend.when('GET', '/databases/0/authors/1/books?authors=1&page=1&perPage=2&series=1&tags=1').respond(booksJson1);
-        httpBackend.when('GET', '/databases/0/authors/1/books?authors=1&page=2&perPage=2&series=1&tags=1').respond(booksJson2);
+        httpBackend.when('GET', '/databases/0/authors/1/books?authors=1&datas=EPUB,PDF&page=1&perPage=2&series=1&tags=1').respond(booksJson1);
+        httpBackend.when('GET', '/databases/0/authors/1/books?authors=1&datas=EPUB,PDF&page=2&perPage=2&series=1&tags=1').respond(booksJson2);
         httpBackend.when('GET', '/databases/0/authors/1').respond(authorJson);
         Restangular = _Restangular_;
         stateParams = {db: 0, cat: 'authors', id: 1};
         scope = $rootScope.$new();
-        downloadableHelperMockServices = _downloadableHelperMockServices_;
         getController = function () {
           return $controller('bookListCategoryController', {
             $scope: scope,
             $stateParams: stateParams,
             Restangular: Restangular,
             controllerHelperServices: controllerHelperMockServices,
-            downloadableHelperServices: downloadableHelperMockServices
+            bookListHelperServices: _bookListHelperServices_
           });
         };
       }));
@@ -100,7 +100,7 @@ describe('bookListCategoryController', function(){
     stateParams.cat = 'tags';
     stateParams.id = 5;
     stateParams.db = 4;
-    httpBackend.whenGET('/databases/4/tags/5/books?authors=1&page=1&perPage=2&series=1&tags=1').respond([{t: 1, metadata: 2}]);
+    httpBackend.whenGET('/databases/4/tags/5/books?authors=1&datas=EPUB,PDF&page=1&perPage=2&series=1&tags=1').respond([{t: 1, metadata: 2}]);
     httpBackend.expectGET('/databases/4/tags/5').respond({name: 'Fantasy'});
     getController();
     httpBackend.flush();
@@ -114,45 +114,17 @@ describe('bookListCategoryController', function(){
   });
 
   it('should have "The Return of Sherlock Holmes" on the first page', function() {
-    httpBackend.expectGET('/databases/0/authors/1/books?authors=1&page=1&perPage=2&series=1&tags=1');
+    httpBackend.expectGET('/databases/0/authors/1/books?authors=1&datas=EPUB,PDF&page=1&perPage=2&series=1&tags=1');
     getController();
     httpBackend.flush();
     expect(scope.books[0].title).toBe('The Return of Sherlock Holmes');
   });
 
-  it('should return a valid cover url', function() {
-    getController();
-    httpBackend.flush();
-    expect(scope.getCoverUrl(18)).toBe('url18'); // there is a mock
-  });
-
   it('should have "The Adventures of Sherlock Holmes" on the second page', function() {
     paging.currentPage = 2;
-    httpBackend.expectGET('/databases/0/authors/1/books?authors=1&page=2&perPage=2&series=1&tags=1');
+    httpBackend.expectGET('/databases/0/authors/1/books?authors=1&datas=EPUB,PDF&page=2&perPage=2&series=1&tags=1');
     getController();
     httpBackend.flush();
     expect(scope.books[0].title).toBe('The Adventures of Sherlock Holmes');
   });
-
-  describe('thumbnails', function(){
-    beforeEach(function() {
-      spyOn(downloadableHelperMockServices, 'getThumbnailUrlByWidth');
-      spyOn(downloadableHelperMockServices, 'getThumbnailUrlByHeight');
-    });
-
-    it('should get the url by height', function() {
-      getController();
-      httpBackend.flush();
-      scope.getThumbnailUrlByHeight(1, 128);
-      expect(downloadableHelperMockServices.getThumbnailUrlByHeight).toHaveBeenCalled();
-    });
-
-    it('should get the url by width', function() {
-      getController();
-      httpBackend.flush();
-      scope.getThumbnailUrlByWidth(1, 128);
-      expect(downloadableHelperMockServices.getThumbnailUrlByWidth).toHaveBeenCalled();
-    });
-  });
-
 });

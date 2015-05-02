@@ -4,10 +4,11 @@ angular.module('Cops.book')
   .controller('bookListController', ['$scope',
                                            '$stateParams',
                                            'Restangular',
-                                           'controllerHelperServices',
-                                           'downloadableHelperServices', function($scope, $stateParams, Restangular, controllerHelperServices, downloadableHelperServices) {
+                                           'bookListHelperServices',
+                                           'controllerHelperServices', function($scope, $stateParams, Restangular, bookListHelperServices, controllerHelperServices) {
     $scope.books = [];
     $scope.defaultTemplate = 'th';
+    $scope.bookListHelper = bookListHelperServices;
 
     $scope.pageChanged = function() {
       controllerHelperServices.setPageSizeValue(true, $scope.itemsPerPage);
@@ -25,21 +26,6 @@ angular.module('Cops.book')
       });
     };
 
-    $scope.getCoverUrl = function(id) {
-      return downloadableHelperServices.getCoverUrl($stateParams.db, id);
-    };
-
-    $scope.getDataUrl = function(idBook, idData) {
-      return downloadableHelperServices.getDataUrl($stateParams.db, idBook, idData);
-    };
-
-    $scope.getThumbnailUrlByWidth = function(id, width) {
-      return downloadableHelperServices.getThumbnailUrlByWidth($stateParams.db, id, width);
-    };
-
-    $scope.getThumbnailUrlByHeight = function(id, height) {
-      return downloadableHelperServices.getThumbnailUrlByHeight($stateParams.db, id, height);
-    };
     $scope.gridListChange = function(newValue) {
       controllerHelperServices.setTemplateValue(true, newValue);
     };

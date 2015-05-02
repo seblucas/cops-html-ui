@@ -5,9 +5,10 @@ angular.module('Cops.book')
                                            '$stateParams',
                                            'Restangular',
                                            'controllerHelperServices',
-                                           'downloadableHelperServices', function($scope, $stateParams, Restangular, controllerHelperServices, downloadableHelperServices) {
+                                           'bookListHelperServices', function($scope, $stateParams, Restangular, controllerHelperServices, bookListHelperServices) {
     $scope.books = [];
     $scope.defaultTemplate = 'th';
+    $scope.bookListHelper = bookListHelperServices;
 
     Restangular.one('databases', $stateParams.db).one($stateParams.cat, $stateParams.id).get().then(function(cat) {
       $scope.title = cat.name;
@@ -24,18 +25,6 @@ angular.module('Cops.book')
         delete list[0].metadata;
         $scope.books = list;
       });
-    };
-
-    $scope.getCoverUrl = function(id) {
-      return downloadableHelperServices.getCoverUrl($stateParams.db, id);
-    };
-
-    $scope.getThumbnailUrlByWidth = function(id, width) {
-      return downloadableHelperServices.getThumbnailUrlByWidth($stateParams.db, id, width);
-    };
-
-    $scope.getThumbnailUrlByHeight = function(id, height) {
-      return downloadableHelperServices.getThumbnailUrlByHeight($stateParams.db, id, height);
     };
 
     $scope.gridListChange = function(newValue) {
