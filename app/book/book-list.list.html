@@ -9,7 +9,7 @@
         </div>
         <div class="media-body">
           <div class="btn-group-vertical pull-right" role="group" aria-label="format">
-            <a ng-repeat="data in book.dataList" ng-href="{{ getDataUrl(book.id, data.id )}}" class="btn btn-primary btn-sm" role="button">{{ data.format }}</a>
+            <a ng-repeat="data in book.dataList" ng-href="{{ getDataUrl(book.id, data.id) }}" class="btn btn-primary btn-sm" role="button">{{ data.format }}</a>
           </div>
           <h4 class="media-heading"><a ui-sref="base.book.detail({id: book.id})">{{::book.title}}</a></h4>
           <div class="ellipsis"><span class="glyphicon glyphicon-user"></span> {{book.authorsName}}</div>
