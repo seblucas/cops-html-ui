@@ -3,9 +3,11 @@
 angular.module('Cops.book')
   .factory('bookListHelperServices', ['$rootScope',
                                       '$q',
-                                      'downloadableHelperServices', function($rootScope, $q, downloadableHelperServices) {
+                                      'spinnerService',
+                                      'downloadableHelperServices', function($rootScope, $q, spinnerService, downloadableHelperServices) {
   return {
     loadPage: function(method, $scope) {
+      spinnerService.show('mainSpinner', 'Loading stuff...');
       var deferred = $q.defer();
       var params = {page: $scope.currentPage, perPage: $scope.itemsPerPage, authors: 1, tags: 1, series: 1, datas: 'EPUB,PDF'};
       if (angular.isDefined($rootScope.$stateParams.letter)) {
@@ -16,6 +18,7 @@ angular.module('Cops.book')
         // Ugly hack to get the paging metadata
         $scope.totalItems = list[0].metadata;
         delete list[0].metadata;
+        spinnerService.hide('mainSpinner', 'Loading stuff...');
         deferred.resolve(list);
       });
       return deferred.promise;
