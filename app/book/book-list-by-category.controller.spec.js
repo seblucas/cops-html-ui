@@ -72,7 +72,7 @@ describe('bookListCategoryController', function(){
         httpBackend.when('GET', '/databases/0/authors/1/books?authors=1&datas=EPUB,PDF&page=2&perPage=2&series=1&tags=1').respond(booksJson2);
         httpBackend.when('GET', '/databases/0/authors/1').respond(authorJson);
         Restangular = _Restangular_;
-        stateParams = {db: 0, cat: 'authors', id: 1};
+        stateParams = $rootScope.$stateParams = {db: 0, cat: 'authors', id: 1};
         scope = $rootScope.$new();
         getController = function () {
           return $controller('bookListCategoryController', {
