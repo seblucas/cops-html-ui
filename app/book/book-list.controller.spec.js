@@ -3,6 +3,7 @@
 describe('bookListController', function(){
 
   beforeEach(module('restangular'));
+  beforeEach(module('seblucas.slSpinner'));
   beforeEach(module('Cops.services'));
   beforeEach(module('Cops.services.mock'));
   beforeEach(module('Cops.book'), function(RestangularProvider) {
