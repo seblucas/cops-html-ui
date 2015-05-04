@@ -18,7 +18,8 @@ app
     categoriesPerPage: 192,
     booksGridListTemplate: 'th',
     categoriesGridListTemplate: 'list',
-    ignoredCategories: {'authors' : false, 'tags' : false, 'series' : false}
+    ignoredCategories: {'authors' : false, 'tags' : false, 'series' : false},
+    preferedFormats: ''
   };
 
   // Extends the configuration to include the default values

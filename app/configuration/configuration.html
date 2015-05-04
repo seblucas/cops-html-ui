@@ -9,7 +9,7 @@
         </select>
       </div>
       <div class="form-group">
-        <label for="CategoriesPerPage" translate>customize.paging</label>
+        <label for="CategoriesPerPage" translate>customize.paging</label> Cat
         <select class="form-control" id="CategoriesPerPage" ng-model="conf.categoriesPerPage">
           <option ng-repeat="value in pageSizes">{{ ::value }}</option>
         </select>
@@ -19,6 +19,10 @@
         <label class="checkbox-inline" ng-repeat="(value, enabled) in conf.ignoredCategories">
           <input ng-model="conf.ignoredCategories[value]" type="checkbox"> {{ value + '.title' | translate}}
         </label>
+      </div>
+      <div class="form-group">
+        <p><label>Prefered formats</label></p>
+        <input ng-model="conf.preferedFormats" type="text">
       </div>
       <button type="submit" class="btn btn-default" ng-click="save()">Submit</button>
     </form>

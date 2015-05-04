@@ -15,6 +15,7 @@ app.factory('controllerHelperServices', ['$q', 'configurationServices', function
         if (withBooks) {
           paging.itemsPerPage = config.booksPerPage;
           paging.currentTemplate = config.booksGridListTemplate;
+          paging.preferedFormats = config.preferedFormats;
         } else {
           paging.itemsPerPage = config.categoriesPerPage;
           paging.currentTemplate = config.categoriesGridListTemplate;

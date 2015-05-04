@@ -34,6 +34,7 @@ angular.module('Cops.book')
       $scope.maxSize = paging.maxSize;
       $scope.currentPage = paging.currentPage;
       $scope.defaultTemplate = paging.currentTemplate;
+      $scope.preferedFormats = paging.preferedFormats;
 
       $scope.pageChanged ();
     });
