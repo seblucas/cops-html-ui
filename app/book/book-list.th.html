@@ -13,7 +13,7 @@
         <div class="ellipsis" ng-show="book.tagsName"><span class="glyphicon glyphicon-tag"></span> {{book.tagsName}}</div>
         <div class="ellipsis" ng-show="book.seriesName"><span class="glyphicon glyphicon-list"></span> {{book.seriesName}} ({{book.seriesIndex}})</div>
         <div class="text-center bottomright">
-          <a ng-repeat="data in book.dataList" ng-href="{{ bookListHelper.getDataUrl(book.id, data.id) }}" class="btn btn-primary btn-sm" role="button">{{ data.format }}</a>
+          <a ng-repeat="data in book.dataList | limitTo: 2" ng-href="{{ bookListHelper.getDataUrl(book.id, data.id) }}" class="btn btn-primary btn-sm" role="button">{{ data.format }}</a>
         </div>
       </div>
     </div>
