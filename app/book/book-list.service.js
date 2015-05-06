@@ -9,7 +9,7 @@ angular.module('Cops.book')
     loadPage: function(method, $scope) {
       spinnerService.show('mainSpinner', 'Loading stuff...');
       var deferred = $q.defer();
-      var params = {page: $scope.currentPage, perPage: $scope.itemsPerPage, authors: 1, tags: 1, series: 1, datas: 'EPUB,PDF'};
+      var params = {page: $scope.currentPage, perPage: $scope.itemsPerPage, authors: 1, tags: 1, series: 1, datas: $scope.preferedFormats};
       if (angular.isDefined($rootScope.$stateParams.letter)) {
         params.letter = $rootScope.$stateParams.letter;
       }
