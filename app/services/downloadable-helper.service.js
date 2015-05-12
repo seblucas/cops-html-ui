@@ -3,7 +3,6 @@
 angular.module('Cops.services')
 .factory('downloadableHelperServices', ['Restangular', function(Restangular) {
   var bookBaseUrl = {};
-  var dataBaseUrl = {};
 
   var getBookBaseUrl = function(db) {
     if (!angular.isDefined(bookBaseUrl[db])) {
@@ -12,15 +11,6 @@ angular.module('Cops.services')
                            .getRequestedUrl();
     }
     return bookBaseUrl[db];
-  };
-
-  var getDataBaseUrl = function(db) {
-    if (!angular.isDefined(dataBaseUrl[db])) {
-      dataBaseUrl[db] = Restangular.one('databases', db)
-                           .all('datas')
-                           .getRequestedUrl();
-    }
-    return dataBaseUrl[db];
   };
 
   return {
