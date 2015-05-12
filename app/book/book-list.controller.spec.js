@@ -79,7 +79,8 @@ describe('bookListController', function(){
           itemsPerPage: 2,
           itemsPerPageList: [2, 3],
           maxSize: 10,
-          currentPage: 1
+          currentPage: 1,
+          preferedFormats: 'EPUB,PDF'
         };
         controllerHelperMockServices.setTestData(paging);
         httpBackend = _$httpBackend_;
