@@ -3,18 +3,18 @@
     <ul class="media-list col-xs-12">
       <li class="media" ng-repeat="book in books">
         <div class="media-left media-middle">
-          <a ng-href="{{ bookListHelper.getCoverUrl(book.id) }}" ng-show="book.hasCover == 1">
-              <img class="media-object" ng-src="{{ bookListHelper.getThumbnailUrlByWidth(book.id, 64) }}" style="width: 64px;" />
+          <a ng-href="{{ ::bookListHelper.getCoverUrl(book.id) }}" ng-show="::book.hasCover == 1">
+              <img class="media-object" ng-src="{{ ::bookListHelper.getThumbnailUrlByWidth(book.id, 64) }}" style="width: 64px;" />
           </a>
         </div>
         <div class="media-body">
           <div class="btn-group-vertical pull-right" role="group" aria-label="format">
-            <a ng-repeat="data in book.dataList | limitTo: 2" ng-href="{{ bookListHelper.getDataUrl(book.id, data.id) }}" class="btn btn-primary btn-sm" role="button">{{ data.format }}</a>
+            <a ng-repeat="data in ::book.dataList | limitTo: 2" ng-href="{{ ::bookListHelper.getDataUrl(book.id, data.id) }}" class="btn btn-primary btn-sm" role="button">{{ ::data.format }}</a>
           </div>
           <h4 class="media-heading"><a ui-sref="base.book.detail({id: book.id})">{{::book.title}}</a></h4>
-          <div class="ellipsis"><span class="glyphicon glyphicon-user"></span> {{book.authorsName}}</div>
-          <div class="ellipsis" ng-show="book.tagsName"><span class="glyphicon glyphicon-tag"></span> {{book.tagsName}}</div>
-          <div class="ellipsis" ng-show="book.seriesName"><span class="glyphicon glyphicon-list"></span> {{book.seriesName}} ({{book.seriesIndex}})</div>
+          <div class="ellipsis"><span class="glyphicon glyphicon-user"></span> {{::book.authorsName}}</div>
+          <div class="ellipsis" ng-show="::book.tagsName"><span class="glyphicon glyphicon-tag"></span> {{::book.tagsName}}</div>
+          <div class="ellipsis" ng-show="::book.seriesName"><span class="glyphicon glyphicon-list"></span> {{::book.seriesName}} ({{::book.seriesIndex}})</div>
         </div>
       </li>
     </ul>

@@ -1,16 +1,16 @@
 <h1>{{::database.name}}</h1>
-<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" ng-repeat="category in database.categories">
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" ng-repeat="category in ::database.categories">
     <div class="panel panel-default">
-        <div class="panel-heading" ng-if="category.count > 0" ng-switch on="category.name">
+        <div class="panel-heading" ng-if="::category.count > 0" ng-switch on="::category.name">
             <h2 class="panel-title" ng-switch-when="books">
-                <a ui-sref="base.book.list()" translate>{{ category.name + '.title' }}</a> // <a ui-sref="base.book.firstLetter()"><span class="glyphicon glyphicon-sort-by-alphabet"></span></a>
+                <a ui-sref="base.book.list()" translate>{{ ::category.name + '.title' }}</a> // <a ui-sref="base.book.firstLetter()"><span class="glyphicon glyphicon-sort-by-alphabet"></span></a>
             </h2>
             <h2 class="panel-title" ng-switch-default>
-                <a ui-sref="base.category.list({cat: category.name})"  translate>{{ category.name + '.title' }}</a> // <a ui-sref="base.category.firstLetter({cat: category.name})"><span class="glyphicon glyphicon-sort-by-alphabet"></span></a>
+                <a ui-sref="base.category.list({cat: category.name})"  translate>{{ ::category.name + '.title' }}</a> // <a ui-sref="base.category.firstLetter({cat: category.name})"><span class="glyphicon glyphicon-sort-by-alphabet"></span></a>
             </h2>
         </div>
-        <div class="panel-heading" ng-if="category.count == 0" ng-switch on="category.name">
-            <h2 class="panel-title" translate>{{ category.name + '.title' }}</h2>
+        <div class="panel-heading" ng-if="::category.count == 0">
+            <h2 class="panel-title" translate>{{ ::category.name + '.title' }}</h2>
         </div>
         <div class="panel-body">
             <span class="badge bottomright">{{::category.count}}</span>
