@@ -24,6 +24,9 @@ app
 
   // Extends the configuration to include the default values
   var _extendDefaultValues = function(defaultVal, conf) {
+    if (!conf) {
+      conf = {};
+    }
     var merged = {};
     angular.forEach(defaultVal, function(value, key){
       if (!angular.isDefined(conf[key]) || conf[key] === null) {
