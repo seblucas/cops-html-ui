@@ -17,8 +17,11 @@ angular.module('Cops.book', [])
     $scope.coverUrl = downloadableHelperServices.getCoverUrl($stateParams.db, $stateParams.id);
 
     $scope.setPublicationOk = function(pubdate){
-      // If the publication date starts with 01 then it's NULL -> not OK
-      return pubdate.indexOf('01') !== 0;
+      if (!pubdate || pubdate.length <= 4) {
+        return false;
+      }
+      $scope.publicationYear = pubdate.substring(0, 4);
+      return ($scope.publicationYear > 101);
     };
 
     Restangular.one('databases', $stateParams.db).one('books', $stateParams.id).get({ comments: 1}).then(function(book) {

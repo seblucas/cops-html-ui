@@ -1,6 +1,6 @@
 'use strict';
 
-describe('categoryListController', function(){
+describe('bookDetailController', function(){
 
   beforeEach(module('restangular'));
   beforeEach(module('Cops.book'), function(RestangularProvider) {
@@ -11,7 +11,7 @@ describe('categoryListController', function(){
     id: '4',
     title: 'The Adventures of Sherlock Holmes',
     timestamp: '2012-03-03 19:47:50.042000+00:00',
-    pubdate: '2007-07-18 22:00:00+00:00',
+    pubdate: '1184709600',
     uuid: 'be99a102-8275-47a0-9bb5-7c341d6a7dda',
     hasCover: '1',
     seriesIndex: '9.0'
@@ -130,22 +130,31 @@ describe('categoryListController', function(){
   });
 
   describe('setPublicationOk', function(){
-    it('should be ok with 2014', function() {
+    it('should be ok with 2010', function() {
       getController();
       httpBackend.flush();
-      expect(scope.setPublicationOk('2014-07-18 22:00:00+00:00')).toBeTruthy();
+      expect(scope.setPublicationOk('2010-10-05 22:00:00+00:00')).toBeTruthy();
+      expect(scope.publicationYear).toBe('2010');
     });
 
-    it('should be ok with 1504', function() {
+    it('should be ok with 1982 and microseconds', function() {
       getController();
       httpBackend.flush();
-      expect(scope.setPublicationOk('1504-07-18 22:00:00+00:00')).toBeTruthy();
+      expect(scope.setPublicationOk('1982-11-15 13:05:29.908657+00:00')).toBeTruthy();
+      expect(scope.publicationYear).toBe('1982');
     });
 
-    it('shouldn\'t be ok with 0100', function() {
+    it('should be ok with 1562 (way below epoch)', function() {
       getController();
       httpBackend.flush();
-      expect(scope.setPublicationOk('0100-07-18 22:00:00+00:00')).toBeFalsy();
+      expect(scope.setPublicationOk('1562-10-05 00:00:00+00:00')).toBeTruthy();
+      expect(scope.publicationYear).toBe('1562');
+    });
+
+    it('should not be ok with 0100', function() {
+      getController();
+      httpBackend.flush();
+      expect(scope.setPublicationOk('0100-12-31 23:00:00+00:00')).toBeFalsy();
     });
   });
 
