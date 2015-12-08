@@ -8,6 +8,7 @@ var mainBowerFiles = require('main-bower-files');
 var concat = require('gulp-concat');
 var bootlint = require('gulp-bootlint');
 var gulpFilter = require('gulp-filter');
+var replace = require('gulp-replace');
 var karma = require('gulp-karma');
 var templateCache = require('gulp-angular-templatecache');
 
@@ -90,6 +91,11 @@ gulp.task('index', function() {
 
 gulp.task('lang', function() {
     return gulp.src([source + 'lang/*'])
+        .pipe(replace(/"content\.series\.data"\:(.*?)\{0\}(.*?),/g, '"content.series.data":$1{{number}}$2,'))
+        .pipe(replace(/"content\.series\.data"\:(.*?)\{1\}(.*?),/g, '"content.series.data":$1{{name}}$2,'))
+        .pipe(replace(/"splitByLetter\.letter"\:(.*?)\{0\}(.*?),/g, '"splitByLetter.letter":$1{{category}}$2,'))
+        .pipe(replace(/"splitByLetter\.letter"\:(.*?)\{1\}(.*?),/g, '"splitByLetter.letter":$1{{letter}}$2,'))
+        .pipe(replace('"bookword.title"', '"books.title"'))
         .pipe(gulp.dest(dist.lang));
 });
 
