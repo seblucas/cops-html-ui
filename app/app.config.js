@@ -18,6 +18,8 @@ config(function(RestangularProvider) {
       false, provideSort);
     RestangularProvider.addElementTransformer('ratings',
       false, provideSort);
+    RestangularProvider.addElementTransformer('languages',
+      false, provideSort);
 }).
 config(function($translateProvider) {
   $translateProvider.useStaticFilesLoader({
