@@ -67,7 +67,7 @@ config(function($stateProvider, $urlRouterProvider) {
       }
     })
     .state('base.category', {
-      url: '/{cat:(?:authors|series|tags|publishers|ratings)}',
+      url: '/{cat:(?:authors|series|tags|publishers|ratings|languages)}',
       abstract: true
     })
     .state('base.category.list', {
