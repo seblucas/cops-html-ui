@@ -59,6 +59,7 @@ config(function($translateProvider) {
   };
 
   $translateProvider.determinePreferredLanguage(getLocaleWithLanguageOnly);
+  $translateProvider.useSanitizeValueStrategy('escape');
   $translateProvider.fallbackLanguage('en');
 }).
 config(['$httpProvider', function ($httpProvider) {
