@@ -47,5 +47,12 @@ angular.module('Cops.book', [])
       $scope.datas = list;
     });
 
+    $scope.ratings = null;
+    Restangular.one('databases', $stateParams.db).one('books', $stateParams.id).getList('ratings').then(function(list) {
+      if (list.length === 1) {
+        $scope.ratings = Math.floor(list[0].name / 2);
+      }
+    });
+
 
   }]);

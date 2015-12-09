@@ -10,6 +10,7 @@
       <h1><a rel="bookmark" ui-sref="base.book.detail()">
           <span class="glyphicon glyphicon-link"></span></a>{{ ::book.title }}
       </h1>
+      <h4 ng-if="ratings"><uib-rating ng-model="ratings" readonly="true"></uib-rating></h4>
       <h4>{{ 'authors.title' | translate }}:
         <span ng-repeat="author in ::authors">
         <span ng-if="!$first">, </span><a ui-sref="base.category.books({cat: 'authors', id: author.id})">{{ ::author.name }}</a>
