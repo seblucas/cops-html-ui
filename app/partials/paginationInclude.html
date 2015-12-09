@@ -1,10 +1,10 @@
 <div style="width: 100%; display: inline-block;">
-<pagination total-items="totalItems"
+<uib-pagination total-items="totalItems"
           items-per-page="itemsPerPage"
           max-size="maxSize"
           ng-model="currentPage"
           ng-change="pageChanged()"
           next-text="{{ 'paging.next.alternate' | translate}}"
-          previous-text="{{ 'paging.previous.alternate' | translate}}"></pagination>
+          previous-text="{{ 'paging.previous.alternate' | translate}}"></uib-pagination>
 <sl-page-size-changer total-items="totalItems" ng-model="itemsPerPage" ng-change="pageChanged()" items-per-page-list="itemsPerPageList"></sl-page-size-changer>
 </div>
