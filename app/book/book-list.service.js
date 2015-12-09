@@ -7,7 +7,7 @@ angular.module('Cops.book')
                                       'downloadableHelperServices', function($rootScope, $q, spinnerService, downloadableHelperServices) {
   return {
     loadPage: function(method, $scope) {
-      spinnerService.show('mainSpinner', 'Loading stuff...');
+      spinnerService.show('mainSpinner');
       var deferred = $q.defer();
       var params = {page: $scope.currentPage, perPage: $scope.itemsPerPage, authors: 1, tags: 1, series: 1, datas: $scope.preferedFormats};
       if (angular.isDefined($rootScope.$stateParams.letter)) {
@@ -18,7 +18,7 @@ angular.module('Cops.book')
         // Ugly hack to get the paging metadata
         $scope.totalItems = list[0].metadata;
         delete list[0].metadata;
-        spinnerService.hide('mainSpinner', 'Loading stuff...');
+        spinnerService.hide('mainSpinner');
         deferred.resolve(list);
       });
       return deferred.promise;

@@ -8,7 +8,7 @@ app
     $scope.defaultTemplate = 'list';
 
     $scope.pageChanged = function() {
-      spinnerService.show('mainSpinner', 'Loading stuff...');
+      spinnerService.show('mainSpinner');
       controllerHelperServices.setPageSizeValue(false, $scope.itemsPerPage);
       var params = {page: $scope.currentPage, perPage: $scope.itemsPerPage};
       if ($stateParams.letter) {
@@ -25,7 +25,7 @@ app
         $scope.totalItems = list[0].metadata;
         delete list[0].metadata;
         $scope.list = list;
-        spinnerService.hide('mainSpinner', 'Loading stuff...');
+        spinnerService.hide('mainSpinner');
       });
     };
 

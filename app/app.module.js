@@ -17,7 +17,7 @@ angular.module('Cops', [
   'siyfion.sfTypeahead',
   'seblucas.slPageSizeChanger',
   'seblucas.slGridListToggle',
-  'seblucas.slSpinner',
+  'angularSpinners',
   'inline',
   'restangular'
 ]);

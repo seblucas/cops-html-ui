@@ -57,7 +57,8 @@
     "angular-bootstrap-grid-list-toggle": ">0.0.0",
     "typeahead.js-bootstrap3.less": "~0.2.3",
     "angular-localforage": "1.2.x",
-    "ng-inline": "~0.0.2"
+    "ng-inline": "~0.0.2",
+    "angular-spinners": "~3.0.4"
   },
   "resolutions": {
     "bootstrap": "3.3.x"
