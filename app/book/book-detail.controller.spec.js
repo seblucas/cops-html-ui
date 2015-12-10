@@ -59,6 +59,8 @@ describe('bookDetailController', function(){
     }
   ];
 
+  var ratingsJson = [];
+
   var scope, getController, httpBackend, stateParams, Restangular;
 
   beforeEach(inject(function ($controller, _$httpBackend_, $rootScope, _Restangular_, _$sce_) {
@@ -71,6 +73,7 @@ describe('bookDetailController', function(){
         httpBackend.when('GET', '/databases/0/books/4/tags').respond(tagsJson);
         httpBackend.when('GET', '/databases/0/books/4/series').respond(seriesJson);
         httpBackend.when('GET', '/databases/0/books/4/datas').respond(datasJson);
+        httpBackend.when('GET', '/databases/0/books/4/ratings').respond(ratingsJson);
         Restangular = _Restangular_;
         stateParams = {db: 0, id : 4};
         scope = $rootScope.$new();

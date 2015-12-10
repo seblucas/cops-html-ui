@@ -3,7 +3,7 @@
 describe('bookListController', function(){
 
   beforeEach(module('restangular'));
-  beforeEach(module('seblucas.slSpinner'));
+  beforeEach(module('angularSpinners'));
   beforeEach(module('Cops.services'));
   beforeEach(module('Cops.services.mock'));
   beforeEach(module('Cops.book'), function(RestangularProvider) {
@@ -74,7 +74,7 @@ describe('bookListController', function(){
 
   var scope, getController, httpBackend, stateParams, Restangular, paging;
 
-  beforeEach(inject(function ($q, $controller, _$httpBackend_, $rootScope, _Restangular_, controllerHelperMockServices, _bookListHelperServices_) {
+  beforeEach(inject(function ($q, $controller, _$httpBackend_, $rootScope, _Restangular_, controllerHelperMockServices, _bookListHelperServices_, _spinnerService_) {
         paging = {
           itemsPerPage: 2,
           itemsPerPageList: [2, 3],
@@ -83,6 +83,8 @@ describe('bookListController', function(){
           preferedFormats: 'EPUB,PDF'
         };
         controllerHelperMockServices.setTestData(paging);
+        spyOn(_spinnerService_, 'show');
+        spyOn(_spinnerService_, 'hide');
         httpBackend = _$httpBackend_;
         httpBackend.when('GET', '/databases/0/books?authors=1&datas=EPUB,PDF&page=1&perPage=2&series=1&tags=1').respond(booksJson1);
         httpBackend.when('GET', '/databases/0/books?authors=1&datas=EPUB,PDF&page=2&perPage=2&series=1&tags=1').respond(booksJson2);

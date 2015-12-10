@@ -3,7 +3,7 @@
 describe('bookListHelperServices', function(){
 
   beforeEach(module('restangular'));
-  beforeEach(module('seblucas.slSpinner'));
+  beforeEach(module('angularSpinners'));
   beforeEach(module('Cops.book'));
   beforeEach(module('Cops.services'));
 
