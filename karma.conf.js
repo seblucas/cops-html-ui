@@ -21,7 +21,6 @@ module.exports = function(config) {
       'category/*.js',
       'configuration/*.js',
       'database/*.js',
-      'js/*.js',
       'layout/*.js',
       'services/*.js'
     ],
