@@ -24,7 +24,9 @@
             <div class="input-group hidden-xs">
               <div class="input-group-btn">
                 <button type="button" class="btn btn-link">
+                  <div style="width: 5px">
                   <spinner name="mainSpinner"><span class="glyphicon glyphicon-refresh glyphicon-spin"></span></spinner>
+                  </div>
                 </button>
               </div>
             </div>
@@ -41,7 +43,7 @@
             <li><a href="#">{{$state.current.name}}</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                    Language <span class="caret"></span>
+                  <span translate>language.title</span> <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
                     <li ng-class='{active: isLanguageActive(lang.code)}' ng-repeat="lang in languageList"><a href="" ng-click="setLanguage(lang.code)">{{lang.name}}</a></li>
