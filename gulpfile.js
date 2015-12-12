@@ -55,19 +55,19 @@ gulp.task('lint', function () {
 });
 
 gulp.task('bower', function() {
-    var jsFilter = gulpFilter('**/*.js');
-    var cssFilter = gulpFilter('**/*.css');
-    var fontFilter = gulpFilter('**/*.{otf,eot,svg,ttf,woff,woff2}');
+    var jsFilter = gulpFilter('**/*.js', {restore: true});
+    var cssFilter = gulpFilter('**/*.css', {restore: true});
+    var fontFilter = gulpFilter('**/*.{otf,eot,svg,ttf,woff,woff2}', {restore: true});
 
     return gulp.src(mainBowerFiles())
         .pipe(jsFilter)
         .pipe(concat('vendor.js'))
         .pipe(gulp.dest(dist.js))
-        .pipe(jsFilter.restore())
+        .pipe(jsFilter.restore)
         .pipe(cssFilter)
         .pipe(concat('vendor.css'))
         .pipe(gulp.dest(dist.css))
-        .pipe(cssFilter.restore())
+        .pipe(cssFilter.restore)
         .pipe(fontFilter)
         .pipe(gulp.dest(dist.fonts));
 });
