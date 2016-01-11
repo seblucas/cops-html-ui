@@ -2,10 +2,11 @@
 
 angular.module('Cops.book')
   .controller('bookListController', ['$scope',
+                                           'Lightbox',
                                            '$stateParams',
                                            'Restangular',
                                            'bookListHelperServices',
-                                           'controllerHelperServices', function($scope, $stateParams, Restangular, bookListHelperServices, controllerHelperServices) {
+                                           'controllerHelperServices', function($scope, Lightbox, $stateParams, Restangular, bookListHelperServices, controllerHelperServices) {
     $scope.books = [];
     $scope.defaultTemplate = 'th';
     $scope.bookListHelper = bookListHelperServices;
@@ -14,12 +15,17 @@ angular.module('Cops.book')
       controllerHelperServices.setPageSizeValue(true, $scope.itemsPerPage);
       bookListHelperServices.loadPage(Restangular.one('databases', $stateParams.db), $scope)
                             .then(function(list) {
+        $scope.covers = bookListHelperServices.getCovers(list);
         $scope.books = list;
       });
     };
 
     $scope.gridListChange = function(newValue) {
       controllerHelperServices.setTemplateValue(true, newValue);
+    };
+
+    $scope.openLightboxModal = function (index) {
+      Lightbox.openModal($scope.covers, index);
     };
 
     controllerHelperServices.initControllerWithPaging(true)

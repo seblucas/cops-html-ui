@@ -6,6 +6,14 @@ angular.module('Cops.book')
                                       'spinnerService',
                                       'downloadableHelperServices', function($rootScope, $q, spinnerService, downloadableHelperServices) {
   return {
+    getCovers: function(books) {
+      var images = [];
+      for (var i = 0; i < books.length; i++) {
+        images.push({url : downloadableHelperServices.getCoverUrl($rootScope.$stateParams.db, books[i].id),
+                     caption : books[i].title});
+      }
+      return images;
+    },
     loadPage: function(method, $scope) {
       spinnerService.show('mainSpinner');
       var deferred = $q.defer();

@@ -11,7 +11,7 @@
  * @description
  * Get all the data necessary to show the book detail
  */
-angular.module('Cops.book', [])
+angular.module('Cops.book', ['bootstrapLightbox'])
   .controller('bookDetailController', ['$scope', '$stateParams', 'Restangular', 'downloadableHelperServices', '$sce',
   function($scope, $stateParams, Restangular, downloadableHelperServices, $sce) {
     $scope.coverUrl = downloadableHelperServices.getCoverUrl($stateParams.db, $stateParams.id);
