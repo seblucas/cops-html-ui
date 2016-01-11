@@ -5,7 +5,7 @@
       </div>
       <div class="panel-body">
         <div class="cover-image">
-            <a ng-href="{{ ::bookListHelper.getCoverUrl(book.id) }}" ng-show="::book.hasCover == 1">
+            <a ng-click="openLightboxModal($index)" ng-show="::book.hasCover == 1">
                 <img ng-src="{{ ::bookListHelper.getThumbnailUrlByHeight(book.id, 164) }}" />
             </a>
         </div>
