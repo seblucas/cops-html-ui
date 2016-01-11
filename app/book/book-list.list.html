@@ -3,7 +3,7 @@
     <ul class="media-list col-xs-12">
       <li class="media" ng-repeat="book in books">
         <div class="media-left media-middle">
-          <a ng-show="::book.hasCover == 1" ng-click="openLightboxModal($index)">
+          <a ng-show="::book.hasCover == 1" ng-click="openLightboxModal($index)" class="pointer">
               <img class="media-object" ng-src="{{ ::bookListHelper.getThumbnailUrlByWidth(book.id, 64) }}" style="width: 64px;" />
           </a>
         </div>

@@ -1,3 +1,7 @@
+.pointer {
+  cursor:pointer;
+}
+
 .cover-image { height:164px; text-align: center;}
 
 .cover-image img {
