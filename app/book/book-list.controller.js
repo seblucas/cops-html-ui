@@ -1,6 +1,11 @@
 'use strict';
 
 angular.module('Cops.book')
+  .config(function (LightboxProvider) {
+    // set a custom template
+    LightboxProvider.templateUrl = 'book/lightbox.html';
+    LightboxProvider.fullScreenMode = true;
+  })
   .controller('bookListController', ['$scope',
                                            'Lightbox',
                                            '$stateParams',
