@@ -4,6 +4,7 @@
 // Declare app level module which depends on filters, and services
 angular.module('Cops', [
   'Cops.routes',
+  'Cops.constants',
   'ngAnimate',
   'Cops.category',
   'Cops.configuration',
@@ -19,5 +20,6 @@ angular.module('Cops', [
   'seblucas.slGridListToggle',
   'angularSpinners',
   'inline',
+  'logglyLogger',
   'restangular'
 ]);

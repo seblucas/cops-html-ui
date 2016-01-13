@@ -11,7 +11,7 @@ app
         description : 'COPS configuration data'
     });
 }])
-.factory('configurationServices', ['$q', '$localForage', function($q, $localForage) {
+.factory('configurationServices', ['$q', '$localForage', '$log', function($q, $localForage, $log) {
   var current;
   var defaultValues = {
     booksPerPage: 96,
@@ -53,15 +53,15 @@ app
           res = _extendDefaultValues(defaultValues, res);
         }
         current = res;
-        console.log('Load : ');
-        console.log(current);
+        $log.debug('Load : ');
+        $log.debug(current);
         deferred.resolve(current);
       }, function(err) {
         deferred.reject(err);
       });
     } else {
-      console.log('Load : ');
-      console.log(current);
+      $log.debug('Load : ');
+      $log.debug(current);
       deferred.resolve(current);
     }
     return deferred.promise;
@@ -92,7 +92,7 @@ app
       return _load();
     },
     setValue: function(item, value) {
-      console.log('setValue : ' + item + '/' + value);
+      $log.debug('setValue : ' + item + '/' + value);
       var deferred = $q.defer();
       _load().then(function(conf) {
         if (conf[item] !== value) {

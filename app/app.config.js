@@ -4,6 +4,11 @@
 var app = angular.module('Cops');
 
 app.
+config( function( LogglyLoggerProvider, logglyToken ) {
+  LogglyLoggerProvider.inputToken( logglyToken )
+  .sendConsoleErrors(true)
+  .inputTag('angular,cops');
+}).
 config(function(RestangularProvider) {
     RestangularProvider.setBaseUrl('/ncops');
 
@@ -21,6 +26,9 @@ config(function(RestangularProvider) {
     RestangularProvider.addElementTransformer('languages',
       false, provideSort);
 }).
+config(['$compileProvider', function ($compileProvider) {
+  $compileProvider.debugInfoEnabled(true);
+}]).
 config(function($translateProvider) {
   $translateProvider.useStaticFilesLoader({
     prefix: 'lang/Localization_',
