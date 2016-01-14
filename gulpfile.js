@@ -26,6 +26,7 @@ var cssSources = [source + '**/*.css',
                   '!' + source + 'bower_components/**/*.css'];
 
 var htmlSources = [source + '**/*.html',
+                   '!' + source + 'bower_components/**/*.html',
                    '!' + source + 'index*.html'];
 
 var publishdir = 'public';
