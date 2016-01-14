@@ -97,6 +97,12 @@ gulp.task('lang', function() {
         .pipe(replace(/"splitByLetter\.letter"\:(.*?)\{0\}(.*?),/g, '"splitByLetter.letter":$1{{category}}$2,'))
         .pipe(replace(/"splitByLetter\.letter"\:(.*?)\{1\}(.*?),/g, '"splitByLetter.letter":$1{{letter}}$2,'))
         .pipe(replace('"bookword.title"', '"books.title"'))
+        .pipe(replace('authorword', 'authorsword'))
+        .pipe(replace('tagword', 'tagsword'))
+        .pipe(replace('bookword', 'booksword'))
+        .pipe(replace('publisherword', 'publishersword'))
+        .pipe(replace('ratingword', 'ratingsword'))
+        .pipe(replace('languageword', 'languagesword'))
         .pipe(gulp.dest(dist.lang));
 });
 
