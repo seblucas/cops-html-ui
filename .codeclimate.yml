@@ -8,7 +8,7 @@ engines:
   fixme:
     enabled: true
 ratings:
-  - paths:
+  paths:
     - app/**
 exclude_paths:
   - app/**/*.spec.js
