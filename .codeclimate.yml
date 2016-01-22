@@ -1,0 +1,16 @@
+engines:
+  eslint:
+    enabled: true
+  duplication:
+    enabled: true
+  csslint:
+    enabled: true
+  fixme:
+    enabled: true
+ratings:
+  - paths:
+    - app/**
+exclude_paths:
+  - app/**/*.spec.js
+  - app/**/*.e2e.js
+  - lang/**
