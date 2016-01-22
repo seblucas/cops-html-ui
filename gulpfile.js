@@ -11,6 +11,7 @@ var gulpFilter = require('gulp-filter');
 var replace = require('gulp-replace');
 var karma = require('gulp-karma');
 var templateCache = require('gulp-angular-templatecache');
+var plato = require('plato');
 
 var source = 'app/';
 
@@ -104,6 +105,26 @@ gulp.task('lang', function() {
         .pipe(replace('ratingword', 'ratingsword'))
         .pipe(replace('languageword', 'languagesword'))
         .pipe(gulp.dest(dist.lang));
+});
+
+gulp.task('plato', function() {
+  var jsPlato = [source + 'app.module.js',
+                 source + 'app.config.js',
+                 source + '**/*.controller.js',
+                 source + '**/*.service.js',
+                 source + '**/*.route.js'];
+  var outputDir = './plato';
+  // null options for this example
+  var options = {
+    title: 'COPS'
+  };
+
+  var callback = function (report){
+  // once done the analysis,
+  // execute this
+  };
+
+  return plato.inspect(jsPlato, outputDir, options, callback);
 });
 
 gulp.task('html', function() {
