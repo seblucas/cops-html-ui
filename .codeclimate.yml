@@ -16,4 +16,4 @@ ratings:
 exclude_paths:
   - app/**/*.spec.js
   - app/**/*.e2e.js
-  - lang/**
+  - app/lang/**
