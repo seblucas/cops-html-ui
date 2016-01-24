@@ -50,7 +50,7 @@
     "angular-translate": "2.8.x",
     "angular-translate-loader-static-files": "2.8.x",
     "restangular": "1.4.x",
-    "angular-bootstrap": "0.14.x",
+    "angular-bootstrap": "1.1.x",
     "angular-animate": "1.4.x",
     "angular-typeahead": "0.2.3",
     "angular-bootstrap-page-size-changer": ">0.1.0",
@@ -64,6 +64,7 @@
   },
   "resolutions": {
     "bootstrap": "3.3.x",
-    "angular": "1.4.9"
+    "angular": "1.4.9",
+    "angular-bootstrap": "1.1.x"
   }
 }
