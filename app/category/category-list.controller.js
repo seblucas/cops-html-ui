@@ -3,7 +3,8 @@
 var app = angular.module('Cops.category');
 
 app
-.controller('categoryListController', ['$scope', '$stateParams', 'Restangular', 'controllerHelperServices', 'spinnerService', function($scope, $stateParams, Restangular, controllerHelperServices, spinnerService) {
+.controller('categoryListController', ['$scope', '$stateParams', 'Restangular', 'controllerHelperServices', 'spinnerService', '$log',
+  function($scope, $stateParams, Restangular, controllerHelperServices, spinnerService, $log) {
     $scope.list = [];
     $scope.defaultTemplate = 'list';
 
@@ -26,6 +27,8 @@ app
         delete list[0].metadata;
         $scope.list = list;
         spinnerService.hide('mainSpinner');
+      }, function(err) {
+        $log.error({'__context' : 'categoryListController / Restangular.XX', 'error': err});
       });
     };
 
@@ -42,5 +45,7 @@ app
       $scope.defaultTemplate = paging.currentTemplate;
 
       $scope.pageChanged ();
-    });
+    }, function(err) {
+        $log.error({'__context' : 'categoryListController / controllerHelperServices.initControllerWithPaging', 'error': err});
+      });
   }]);

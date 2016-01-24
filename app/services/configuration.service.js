@@ -57,6 +57,7 @@ app
         $log.debug(current);
         deferred.resolve(current);
       }, function(err) {
+        $log.error({'__context' : 'configurationServices / $localForage.getItem', 'error': err});
         deferred.reject(err);
       });
     } else {

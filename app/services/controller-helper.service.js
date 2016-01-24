@@ -2,7 +2,7 @@
 
 var app = angular.module('Cops.services');
 
-app.factory('controllerHelperServices', ['$q', 'configurationServices', function($q, configurationServices) {
+app.factory('controllerHelperServices', ['$q', 'configurationServices', '$log', function($q, configurationServices, $log) {
   return {
     initControllerWithPaging: function (withBooks) {
       var deferred = $q.defer();
@@ -21,6 +21,8 @@ app.factory('controllerHelperServices', ['$q', 'configurationServices', function
           paging.currentTemplate = config.categoriesGridListTemplate;
         }
         deferred.resolve(paging);
+      }, function(err) {
+        $log.error({'__context' : 'controllerHelperServices / configurationServices.load', 'error': err});
       });
       return deferred.promise;
     },
