@@ -58,7 +58,10 @@ app
         deferred.resolve(current);
       }, function(err) {
         $log.error({'__context' : 'configurationServices / $localForage.getItem', 'error': err});
-        deferred.reject(err);
+        // In case getitem give an error (localstorage not supported)
+        // I'll return the default values
+        current = angular.merge({'_error_': '1'}, defaultValues);
+        deferred.resolve(current);
       });
     } else {
       $log.debug('Load : ');
