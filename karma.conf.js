@@ -51,6 +51,10 @@ module.exports = function(config) {
           type : 'text-summary'
         },
         {
+          type : 'lcov',
+          subdir: 'lcov'
+        },
+        {
           type : 'html',
           subdir: 'report'
         }
