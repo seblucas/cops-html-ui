@@ -17,3 +17,7 @@ script:
 
 after_script:
  - 'if [ "${TRAVIS_NODE_VERSION}" = "4.1" ]; then npm install codeclimate-test-reporter && codeclimate-test-reporter < coverage/lcov/lcov.info ; fi'
+
+cache:
+  directories:
+    - node_modules
