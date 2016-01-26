@@ -19,7 +19,7 @@ describe('Category list', function() {
 
   beforeEach(function() {
     browser.get(baseUrl);
-    nextButton = element(by.css('[ng-click="selectPage(page + 1)"]'));
+    nextButton = element(by.css('[ng-click="selectPage(page + 1, $event)"]'));
     items = element.all(by.repeater('item in list'));
     itemsPerPage = element.all(by.repeater('itemValue in itemsPerPageList'));
     toggleBtn = element.all(by.repeater('item in toggles'));
