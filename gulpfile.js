@@ -9,7 +9,7 @@ var concat = require('gulp-concat');
 var bootlint = require('gulp-bootlint');
 var gulpFilter = require('gulp-filter');
 var replace = require('gulp-replace');
-var karma = require('gulp-karma');
+var Server = require('karma').Server;
 var templateCache = require('gulp-angular-templatecache');
 var plato = require('plato');
 
@@ -143,16 +143,11 @@ gulp.task('watch', ['default'], function() {
   gulp.watch(htmlSources, ['html']);
 }); // development
 
-gulp.task('test', ['default'], function() {
-  return gulp.src('./idontexist') // All the files are defined in karma.conf.js so use a dummy file
-    .pipe(karma({
-      configFile: 'karma.conf.js',
-      action: 'run'
-    }))
-    .on('error', function(err) {
-      // Make sure failed tests cause gulp to exit non-zero
-      throw err;
-    });
+gulp.task('test', ['default'], function(done) {
+  new Server({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
+  }, done).start();
 });
 
 gulp.task('ci', ['lint', 'bootlint', 'test']);
