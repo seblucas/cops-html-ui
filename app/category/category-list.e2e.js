@@ -55,6 +55,8 @@ describe('Category list', function() {
 
     it('should save the prefered number of items per page', function() {
       itemsPerPage.first().element(by.linkText('24')).click();
+      browser.waitForAngular();
+      browser.sleep(100);
       browser.get(baseUrl);
       waitForPage();
       expect(items.count()).toBe(24);
@@ -70,6 +72,8 @@ describe('Category list', function() {
 
     it('should save the prefered view', function() {
       toggleBtn.first().click();
+      browser.waitForAngular();
+      browser.sleep(100);
       browser.get(baseUrl);
       waitForPage();
       expect(element(by.css('.panel')).isPresent()).toBeTruthy();
