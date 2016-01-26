@@ -3,7 +3,7 @@ Future COPS HTML UI (powered with AngularJS)
 
 ## Badges
 
-[![Code Climate](https://codeclimate.com/github/seblucas/cops-html-ui/badges/gpa.svg)](https://codeclimate.com/github/seblucas/cops-html-ui)
+[![Code Climate](https://codeclimate.com/github/seblucas/cops-html-ui/badges/gpa.svg)](https://codeclimate.com/github/seblucas/cops-html-ui) [![Test Coverage](https://codeclimate.com/github/seblucas/cops-html-ui/badges/coverage.svg)](https://codeclimate.com/github/seblucas/cops-html-ui/coverage)
 
 ### Dependencies
 
