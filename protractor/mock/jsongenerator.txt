@@ -1,0 +1,18 @@
+[
+  {
+    'repeat:97': {
+      id: '{{index()}}',
+      __name: {
+        first: '{{firstName()}}',
+        last: '{{surname()}}'
+      },
+      name: function () {
+        return this.__name.first + ' ' + this.__name.last;
+      },
+      sort: function () {
+        return this.__name.last + ', ' + this.__name.first;
+      },
+      count: '{{integer(1, 60)}}'
+    }
+  }
+]

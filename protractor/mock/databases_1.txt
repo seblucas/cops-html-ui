@@ -1,0 +1,35 @@
+{
+    "id": 1,
+    "name": "Second",
+    "lastModified": 1418185409,
+    "categories": [
+        {
+            "name": "authors",
+            "count": "205"
+        },
+        {
+            "name": "books",
+            "count": "1150"
+        },
+        {
+            "name": "series",
+            "count": "173"
+        },
+        {
+            "name": "tags",
+            "count": "27"
+        },
+        {
+            "name": "publishers",
+            "count": "138"
+        },
+        {
+            "name": "ratings",
+            "count": "6"
+        },
+        {
+            "name": "languages",
+            "count": "2"
+        }
+    ]
+}
