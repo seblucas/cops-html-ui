@@ -12,6 +12,7 @@ var replace = require('gulp-replace');
 var Server = require('karma').Server;
 var templateCache = require('gulp-angular-templatecache');
 var plato = require('plato');
+var protractor = require("gulp-protractor").protractor;
 
 var source = 'app/';
 
@@ -148,6 +149,14 @@ gulp.task('test', ['default'], function(done) {
     configFile: __dirname + '/karma.conf.js',
     singleRun: true
   }, done).start();
+});
+
+gulp.task('protractor', [], function() {
+  gulp.src([source + '**/*.e2e.js'])
+    .pipe(protractor({
+        configFile: 'protractor.conf.js'
+  }))
+  .on('error', function(e) { throw e; });
 });
 
 gulp.task('ci', ['lint', 'bootlint', 'test']);
