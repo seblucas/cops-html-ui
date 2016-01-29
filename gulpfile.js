@@ -6,6 +6,7 @@ var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var mainBowerFiles = require('main-bower-files');
 var concat = require('gulp-concat');
+var connect = require('gulp-connect');
 var bootlint = require('gulp-bootlint');
 var gulpFilter = require('gulp-filter');
 var rename = require('gulp-rename');
@@ -170,11 +171,22 @@ gulp.task('protractor:index', function() {
     return gulp.src([source + 'index_prod.html'])
         .pipe(replace(/<!-- e2e -->/g, '<script src="js/angular-mocks.js"></script><script src="js/CopsE2E.js"></script>'))
         .pipe(replace(/ng-app="Cops"/g, 'ng-app="CopsE2E"'))
-        .pipe(rename('index_deb.html'))
+        .pipe(rename('index_protractor.html'))
         .pipe(gulp.dest(publishdir));
 });
 
-gulp.task('protractor:prepare', ['protractor:index', 'protractor:js', 'protractor:mock']);
+gulp.task('protractor:webserver:start', function () {
+  connect.server({
+    root: 'public',
+    port: 8086
+  });
+});
+
+gulp.task('protractor:webserver:stop', function() {
+  connect.serverClose();
+});
+
+gulp.task('protractor:prepare', ['protractor:index', 'protractor:js', 'protractor:mock', 'protractor:webserver:start']);
 
 gulp.task('protractor', [], function() {
   gulp.src([source + '**/*.e2e.js'])
