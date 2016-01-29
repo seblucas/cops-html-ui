@@ -8,11 +8,12 @@ var mainBowerFiles = require('main-bower-files');
 var concat = require('gulp-concat');
 var bootlint = require('gulp-bootlint');
 var gulpFilter = require('gulp-filter');
+var rename = require('gulp-rename');
 var replace = require('gulp-replace');
 var Server = require('karma').Server;
 var templateCache = require('gulp-angular-templatecache');
 var plato = require('plato');
-var protractor = require("gulp-protractor").protractor;
+var protractor = require('gulp-protractor').protractor;
 
 var source = 'app/';
 
@@ -36,7 +37,8 @@ var dist = {
 css: publishdir + '/css/',
 js: publishdir + '/js/',
 fonts: publishdir + '/fonts/',
-lang: publishdir + '/lang/'
+lang: publishdir + '/lang/',
+mock: publishdir + '/mock/',
 };
 // Define tasks
 
@@ -151,6 +153,29 @@ gulp.task('test', ['default'], function(done) {
   }, done).start();
 });
 
+gulp.task('ci', ['lint', 'bootlint', 'test']);
+
+gulp.task('protractor:js', function() {
+    return gulp.src([source + 'bower_components/angular-mocks/angular-mocks.js',
+                     'protractor/js/*.js'])
+        .pipe(gulp.dest(dist.js));
+});
+
+gulp.task('protractor:mock', function() {
+    return gulp.src(['protractor/mock/*.txt'])
+        .pipe(gulp.dest(dist.mock));
+});
+
+gulp.task('protractor:index', function() {
+    return gulp.src([source + 'index_prod.html'])
+        .pipe(replace(/<!-- e2e -->/g, '<script src="js/angular-mocks.js"></script><script src="js/CopsE2E.js"></script>'))
+        .pipe(replace(/ng-app="Cops"/g, 'ng-app="CopsE2E"'))
+        .pipe(rename('index_deb.html'))
+        .pipe(gulp.dest(publishdir));
+});
+
+gulp.task('protractor:prepare', ['protractor:index', 'protractor:js', 'protractor:mock']);
+
 gulp.task('protractor', [], function() {
   gulp.src([source + '**/*.e2e.js'])
     .pipe(protractor({
@@ -159,4 +184,4 @@ gulp.task('protractor', [], function() {
   .on('error', function(e) { throw e; });
 });
 
-gulp.task('ci', ['lint', 'bootlint', 'test']);
+
