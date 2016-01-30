@@ -118,7 +118,6 @@ gulp.task('plato', function() {
                  source + '**/*.service.js',
                  source + '**/*.route.js'];
   var outputDir = './plato';
-  // null options for this example
   var options = {
     title: 'COPS'
   };
