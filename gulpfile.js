@@ -15,6 +15,7 @@ var Server = require('karma').Server;
 var templateCache = require('gulp-angular-templatecache');
 var plato = require('plato');
 var protractor = require('gulp-protractor').protractor;
+var webdriver_update = require('gulp-protractor').webdriver_update;
 
 var source = 'app/';
 
@@ -122,12 +123,7 @@ gulp.task('plato', function() {
     title: 'COPS'
   };
 
-  var callback = function (report){
-  // once done the analysis,
-  // execute this
-  };
-
-  return plato.inspect(jsPlato, outputDir, options, callback);
+  return plato.inspect(jsPlato, outputDir, options, function() {});
 });
 
 gulp.task('html', function() {
@@ -187,7 +183,10 @@ gulp.task('protractor:webserver:stop', function() {
 
 gulp.task('protractor:prepare', ['protractor:index', 'protractor:js', 'protractor:mock', 'protractor:webserver:start']);
 
-gulp.task('protractor', [], function() {
+// Downloads the selenium webdriver
+gulp.task('webdriver_update', webdriver_update);
+
+gulp.task('protractor', ['webdriver_update'], function() {
   gulp.src([source + '**/*.e2e.js'])
     .pipe(protractor({
         configFile: 'protractor.conf.js'
