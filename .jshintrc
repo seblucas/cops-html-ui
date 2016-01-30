@@ -35,6 +35,7 @@
     "expect" : false,
     "it" : false,
     "jasmine" : false,
+    "protractor" : false,
     "JSHINT" : false,
     "mostRecentAjaxRequest": false,
     "qq" : false,
