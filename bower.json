@@ -23,9 +23,6 @@
     "tests"
   ],
   "overrides": {
-    "lodash": {
-      "main": "dist/lodash.js"
-    },
     "bootstrap": {
       "main": [
         "less/bootstrap.less",
@@ -49,7 +46,8 @@
     "bootstrap": "3.3.x",
     "angular-translate": "2.9.0",
     "angular-translate-loader-static-files": "2.9.0",
-    "restangular": "1.4.x",
+    "lodash": "3.10.x",
+    "restangular": "1.5.1",
     "angular-bootstrap": "1.1.x",
     "angular-animate": "1.4.x",
     "angular-touch": "1.4.x",
