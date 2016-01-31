@@ -59,7 +59,7 @@
     "typeahead.js-bootstrap3.less": "~0.2.3",
     "angular-localforage": "1.2.x",
     "ng-inline": "~0.0.2",
-    "angular-spinners": "~3.0.4",
+    "angular-spinners": "3.1.x",
     "angular-bootstrap-lightbox": "0.10.x",
     "angular-loggly-logger": "0.1.3"
   },
