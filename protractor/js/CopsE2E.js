@@ -9,6 +9,11 @@ angular.module('CopsE2E', ['Cops', 'ngMockE2E']).run(function ($httpBackend) {
     //return [request.status, request.response, {}];
     var data = JSON.parse(request.response);
     if (page && perPage) {
+      if ('sort' in data[0]) {
+        data.sort(function(a, b) {
+          return a.sort.localeCompare(b.sort);
+        });
+      }
       data.splice(page * perPage);
       if (page > 1) {
        data.splice(0, (page - 1) * perPage);

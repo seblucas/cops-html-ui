@@ -181,17 +181,19 @@ gulp.task('protractor:webserver:stop', function() {
   connect.serverClose();
 });
 
-gulp.task('protractor:prepare', ['protractor:index', 'protractor:js', 'protractor:mock', 'protractor:webserver:start']);
+gulp.task('protractor:prepare', ['protractor:index', 'protractor:js', 'protractor:mock']);
 
 // Downloads the selenium webdriver
 gulp.task('webdriver_update', webdriver_update);
 
-gulp.task('protractor', ['webdriver_update'], function() {
+gulp.task('protractor', ['webdriver_update', 'protractor:prepare', 'protractor:webserver:start'], function() {
+
   gulp.src([source + '**/*.e2e.js'])
     .pipe(protractor({
         configFile: 'protractor.conf.js'
   }))
-  .on('error', function(e) { throw e; });
+  .on('error', function(e) { throw e; })
+  .on('end', function() { connect.serverClose(); });
 });
 
 

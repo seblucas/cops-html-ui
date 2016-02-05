@@ -28,11 +28,13 @@ describe('Category list', function() {
   describe('paging', function() {
     it('should have the first page starting by a A', function() {
       waitForPage();
+      itemsPerPage.first().element(by.linkText('24')).click();
       expect(items.first().getText()).toMatch(/^A/);
     });
 
     it('should have the second page starting by anything but a A', function() {
       waitForPage();
+      itemsPerPage.first().element(by.linkText('24')).click();
       nextButton.click();
       expect(items.first().getText()).not.toMatch(/^A/);
     });
@@ -40,9 +42,9 @@ describe('Category list', function() {
   });
 
   describe('items per page', function() {
-    it('should have 192 items (default value)', function() {
+    it('should have 97 items (default value)', function() {
       waitForPage();
-      expect(items.count()).toBe(192);
+      expect(items.count()).toBe(97);
     });
 
     it('should have 24 items if the 24 button is choosen', function() {
