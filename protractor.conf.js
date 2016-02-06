@@ -26,6 +26,7 @@ if (process.env.TRAVIS) {
   config.capabilities = {
     'name': 'cops-html-ui node v' + process.env.TRAVIS_NODE_VERSION,
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+    'browserName': 'chrome',
     'build': process.env.TRAVIS_BUILD_NUMBER
   };
 }
