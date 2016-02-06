@@ -1,6 +1,6 @@
 'use strict';
 
-exports.config = {
+var config = {
   onPrepare: function() {
 
     // Disable animations so e2e tests run more quickly
@@ -18,3 +18,16 @@ exports.config = {
   },
   specs: ['app/**/*.e2e.js']
 };
+
+
+if (process.env.TRAVIS) {
+  config.sauceUser = process.env.SAUCE_USERNAME;
+  config.sauceKey = process.env.SAUCE_ACCESS_KEY;
+  config.capabilities = {
+    'name': 'cops-html-ui node v' + process.env.TRAVIS_NODE_VERSION,
+    'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+    'build': process.env.TRAVIS_BUILD_NUMBER
+  };
+}
+
+exports.config = config;
