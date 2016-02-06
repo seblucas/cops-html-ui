@@ -23,12 +23,24 @@ var config = {
 if (process.env.TRAVIS) {
   config.sauceUser = process.env.SAUCE_USERNAME;
   config.sauceKey = process.env.SAUCE_ACCESS_KEY;
-  config.capabilities = {
-    'name': 'cops-html-ui node v' + process.env.TRAVIS_NODE_VERSION,
+  config.multiCapabilities = [{
+    'name': 'cops-html-ui chrome node v' + process.env.TRAVIS_NODE_VERSION,
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     'browserName': 'chrome',
     'build': process.env.TRAVIS_BUILD_NUMBER
-  };
+  },
+  {
+    'name': 'cops-html-ui firefox node v' + process.env.TRAVIS_NODE_VERSION,
+    'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+    'browserName': 'firefox',
+    'build': process.env.TRAVIS_BUILD_NUMBER
+  },
+  {
+    'name': 'cops-html-ui safari node v' + process.env.TRAVIS_NODE_VERSION,
+    'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+    'browserName': 'safari',
+    'build': process.env.TRAVIS_BUILD_NUMBER
+  }];
 }
 
 exports.config = config;
