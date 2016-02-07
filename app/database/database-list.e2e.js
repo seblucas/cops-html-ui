@@ -16,6 +16,12 @@ describe('Database list', function() {
     itemsTag = element(by.repeater('database in databases'));
   });
 
+  afterEach(function() {
+    browser.manage().logs().get('browser').then(function(browserLog) {
+        console.log('\n log: ' + require('util').inspect(browserLog));
+    });
+  });
+
   it('should have a H1 title', function() {
     waitForPage();
     expect(element(by.tagName('h1')).getText()).toEqual('All');
