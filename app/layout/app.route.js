@@ -20,6 +20,7 @@ config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'database/database-list.html',
       controller: 'databaseListController'
     })
+    // Huge hack to make e2e work with chrome on sauce (no need with local chrome)
     .state('test', {
       url: '/test',
       templateUrl: 'database/database-list.html',

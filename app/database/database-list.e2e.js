@@ -9,6 +9,7 @@ describe('Database list', function() {
   };
 
   beforeEach(function() {
+    // huge hack for unknown reason #/ won't work with chrome on sauce
     browser.get('#/test');
 
     browser.waitForAngular();
@@ -16,7 +17,7 @@ describe('Database list', function() {
     itemsTag = element(by.repeater('database in databases'));
   });
 
-  fit('should have a H1 title', function() {
+  it('should have a H1 title', function() {
     waitForPage();
     expect(element(by.tagName('h1')).getText()).toEqual('All');
   });
