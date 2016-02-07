@@ -9,7 +9,7 @@ describe('Database list', function() {
   };
 
   beforeEach(function() {
-    browser.get('#/');
+    browser.get('');
 
     browser.waitForAngular();
     items = element.all(by.repeater('database in databases'));
