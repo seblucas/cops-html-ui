@@ -20,6 +20,11 @@ config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'database/database-list.html',
       controller: 'databaseListController'
     })
+    .state('test', {
+      url: '/test',
+      templateUrl: 'database/database-list.html',
+      controller: 'databaseListController'
+    })
     .state('configuration', {
       url: '/config',
       templateUrl: 'configuration/configuration.html',
