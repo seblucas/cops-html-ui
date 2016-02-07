@@ -16,7 +16,7 @@ describe('Database list', function() {
     itemsTag = element(by.repeater('database in databases'));
   });
 
-  it('should have a H1 title', function() {
+  fit('should have a H1 title', function() {
     waitForPage();
     expect(element(by.tagName('h1')).getText()).toEqual('All');
   });
