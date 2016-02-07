@@ -12,7 +12,7 @@ var config = {
 
     browser.addMockModule('disableNgAnimate', disableNgAnimate);
   },
-  baseUrl: 'http://127.0.0.1:8086/index_protractor.html',
+  baseUrl: 'http://127.0.0.1:4321/index_protractor.html',
   capabilities: {
     'browserName': 'chrome'
   },
@@ -46,14 +46,15 @@ if (process.env.TRAVIS) {
     'platform': 'Windows 10',
     'seleniumVersion': '2.48.2',
     'build': process.env.TRAVIS_BUILD_NUMBER
-  },
+  },*/
   {
     'name': 'cops-html-ui safari node v' + process.env.TRAVIS_NODE_VERSION,
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     'browserName': 'safari',
     'platform': 'OS X 10.10',
+    'seleniumVersion': '2.48.2',
     'build': process.env.TRAVIS_BUILD_NUMBER
-  },*/
+  },
   {
     'name': 'cops-html-ui firefox node v' + process.env.TRAVIS_NODE_VERSION,
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,

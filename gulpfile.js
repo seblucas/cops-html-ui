@@ -173,7 +173,7 @@ gulp.task('protractor:index', function() {
 gulp.task('protractor:webserver:start', function () {
   connect.server({
     root: 'public',
-    port: 8086
+    port: 4321
   });
 });
 
