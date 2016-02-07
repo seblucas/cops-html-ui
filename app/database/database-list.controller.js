@@ -7,6 +7,7 @@ angular.module('Cops.database')
     Restangular.all('databases')
                .getList()
                .then(function(list) {
+      console.log(list);
       if (list.length === 1) {
         $scope.$state.go ('base.database', {db : 0});
       }
