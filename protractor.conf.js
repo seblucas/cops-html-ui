@@ -51,7 +51,6 @@ if (process.env.TRAVIS) {
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     'browserName': 'safari',
     'platform': 'OS X 10.10',
-    'seleniumVersion': '2.48.2',
     'build': process.env.TRAVIS_BUILD_NUMBER
   },
   {
