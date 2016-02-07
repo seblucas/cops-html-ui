@@ -12,10 +12,10 @@ before_install:
 
 script:
   - gulp ci
-  - 'if [ "${TRAVIS_NODE_VERSION}" = "5.1" ]; then gulp protractor ; fi'
+  - 'if [ "${TRAVIS_NODE_VERSION}" = "4.2" ]; then gulp protractor ; fi'
 
 after_script:
- - 'if [ "${TRAVIS_NODE_VERSION}" = "4.1" ]; then npm install codeclimate-test-reporter && codeclimate-test-reporter < coverage/lcov/lcov.info ; fi'
+ - 'if [ "${TRAVIS_NODE_VERSION}" = "4.2" ]; then npm install codeclimate-test-reporter && codeclimate-test-reporter < coverage/lcov/lcov.info ; fi'
 
 env:
   global:
