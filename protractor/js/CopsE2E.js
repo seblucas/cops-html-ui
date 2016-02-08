@@ -1,6 +1,11 @@
 'use strict';
 
-angular.module('CopsE2E', ['Cops', 'ngMockE2E']).run(function ($httpBackend) {
+angular.module('CopsE2E', ['Cops', 'ngMockE2E'])
+.config(function($translateProvider) {
+  // let's set the interface in english for protractor
+  $translateProvider.use('en');
+})
+.run(function ($httpBackend) {
   var getData = function(url, page, perPage) {
     var request = new XMLHttpRequest();
     request.open('GET', url, false);
