@@ -32,6 +32,14 @@ if (process.env.TRAVIS) {
     'seleniumVersion': '2.48.2',
     'build': process.env.TRAVIS_BUILD_NUMBER
   },
+  {
+    'name': 'cops-html-ui IE11 Linux node v' + process.env.TRAVIS_NODE_VERSION,
+    'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+    'browserName': 'internet explorer',
+    'platform': 'Windows 8.1',
+    'seleniumVersion': '2.48.2',
+    'build': process.env.TRAVIS_BUILD_NUMBER
+  },
   /*{
     'name': 'cops-html-ui chrome W10 node v' + process.env.TRAVIS_NODE_VERSION,
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
