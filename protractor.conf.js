@@ -10,6 +10,16 @@ var config = {
       }]);
     };
 
+    global.deleteDatabase = function() {
+      return browser.executeAsyncScript(function(cb) {
+        localforage.clear(function(err) {
+            // Run this code once the database has been entirely deleted.
+            cb(err);
+            console.log('Database is now empty.');
+        });
+      });
+    };
+
     browser.addMockModule('disableNgAnimate', disableNgAnimate);
   },
   baseUrl: 'http://127.0.0.1:4321/index_protractor.html',

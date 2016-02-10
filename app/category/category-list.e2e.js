@@ -22,7 +22,7 @@ describe('Category list', function() {
   });
 
   afterEach(function () {
-    browser.executeScript('indexedDB.deleteDatabase("cops");');
+    deleteDatabase();
   });
 
   describe('paging', function() {
