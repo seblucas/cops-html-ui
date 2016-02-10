@@ -10,7 +10,7 @@ app
 
     $scope.pageChanged = function() {
       spinnerService.show('mainSpinner');
-      controllerHelperServices.setPageSizeValue(false, $scope.itemsPerPage);
+      controllerHelperServices.setPageSizeValue(false, $scope.itemsPerPage).then(function() {});
       var params = {page: $scope.currentPage, perPage: $scope.itemsPerPage};
       if ($stateParams.letter) {
         params.letter = $stateParams.letter;
