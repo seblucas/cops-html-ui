@@ -1,10 +1,18 @@
 language: node_js
 
-node_js:
-  - "5.1"
-  - "5.0"
-  - "4.2"
-  - "0.12"
+matrix:
+  include:
+    - node_js: "5.1"
+
+    - node_js: "5.0"
+
+    - node_js: "4.2"
+      addons:
+        sauce_connect: true
+        hosts:
+          - cops-travis
+
+    - node_js: "0.12"
 
 before_install:
   - npm install -g bower
@@ -21,10 +29,7 @@ env:
   global:
     - SAUCE_USERNAME=seblucas
 
-addons:
-  sauce_connect: true
-  hosts:
-    - cops-travis
+
 
 cache:
   directories:
