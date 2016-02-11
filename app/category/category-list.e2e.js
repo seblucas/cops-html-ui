@@ -1,4 +1,5 @@
 'use strict';
+/*global deleteDatabase */
 
 describe('Category list', function() {
 
