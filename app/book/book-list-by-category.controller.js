@@ -16,7 +16,7 @@ angular.module('Cops.book')
     });
 
     $scope.pageChanged = function() {
-      controllerHelperServices.setPageSizeValue(true, $scope.itemsPerPage);
+      controllerHelperServices.setPageSizeValue(true, $scope.itemsPerPage).then(function() {});
       bookListHelperServices.loadPage(Restangular.one('databases', $stateParams.db)
                                                  .one($stateParams.cat, $stateParams.id), $scope)
                             .then(function(list) {
