@@ -33,7 +33,7 @@ app
     };
 
     $scope.gridListChange = function(newValue) {
-      controllerHelperServices.setTemplateValue(false, newValue);
+      controllerHelperServices.setTemplateValue(false, newValue).then(function() {});
     };
 
     controllerHelperServices.initControllerWithPaging(false)

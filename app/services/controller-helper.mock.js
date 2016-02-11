@@ -19,6 +19,9 @@ app.factory('controllerHelperMockServices', ['$q', function($q) {
       return deferred.promise;
     },
     setTemplateValue: function() {
+      var deferred = $q.defer();
+      deferred.resolve({});
+      return deferred.promise;
     }
   };
 }]);
