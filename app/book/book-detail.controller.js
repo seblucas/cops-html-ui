@@ -31,20 +31,11 @@ angular.module('Cops.book', ['bootstrapLightbox'])
       $scope.trustedComment = $sce.trustAsHtml(book.comment);
     });
 
-    Restangular.one('databases', $stateParams.db).one('books', $stateParams.id).getList('authors').then(function(list) {
-      $scope.authors = list;
-    });
-
-    Restangular.one('databases', $stateParams.db).one('books', $stateParams.id).getList('tags').then(function(list) {
-      $scope.tags = list;
-    });
-
-    Restangular.one('databases', $stateParams.db).one('books', $stateParams.id).getList('series').then(function(list) {
-      $scope.series = list;
-    });
-
-    Restangular.one('databases', $stateParams.db).one('books', $stateParams.id).getList('datas').then(function(list) {
-      $scope.datas = list;
+    var deps = ['authors', 'tags', 'series', 'datas'];
+    angular.forEach(deps, function(dep){
+      Restangular.one('databases', $stateParams.db).one('books', $stateParams.id).getList(dep).then(function(list) {
+        $scope[dep] = list;
+      });
     });
 
     $scope.ratings = null;
