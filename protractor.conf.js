@@ -26,6 +26,7 @@ var config = {
   capabilities: {
     'browserName': 'chrome'
   },
+  rootElement: 'html',
   specs: ['app/**/*.e2e.js']
 };
 
