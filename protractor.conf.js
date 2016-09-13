@@ -39,7 +39,7 @@ if (process.env.TRAVIS) {
     'name': 'cops-html-ui chrome Linux node v' + process.env.TRAVIS_NODE_VERSION,
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     'browserName': 'chrome',
-    'platform': 'Linux',
+    'platform': 'Windows 8.1',
     'build': process.env.TRAVIS_BUILD_NUMBER
   },
   {
