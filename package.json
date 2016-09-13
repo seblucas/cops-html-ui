@@ -9,25 +9,25 @@
   "author": "",
   "license": "GPLv2",
   "devDependencies": {
-    "gulp": "3.9.0",
+    "gulp": "3.9.1",
     "gulp-angular-templatecache": "1.8.0",
-    "gulp-bootlint": "0.7.1",
+    "gulp-bootlint": "0.8.x",
     "gulp-concat": "2.6.0",
     "gulp-connect": "2.3.1",
     "gulp-filter": "3.0.1",
-    "gulp-jshint": "2.0.0",
+    "gulp-jshint": "2.0.1",
     "gulp-protractor": "3.0.0",
     "gulp-rename": "1.2.2",
     "gulp-replace": "0.5.4",
-    "jasmine": "2.4.1",
-    "jasmine-core": "2.4.1",
-    "jshint": "2.9.1",
+    "jasmine": "2.5.1",
+    "jasmine-core": "2.5.1",
+    "jshint": "2.9.3",
     "karma": "0.13.19",
     "karma-coverage": "0.5.3",
     "karma-jasmine": "0.3.6",
     "karma-phantomjs-launcher": "0.2.3",
     "main-bower-files": "2.11.1",
     "phantomjs": "1.9.19",
-    "plato": "1.5.0"
+    "plato": "1.7.0"
   }
 }
