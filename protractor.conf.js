@@ -39,7 +39,6 @@ if (process.env.TRAVIS) {
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     'browserName': 'chrome',
     'platform': 'Linux',
-    'seleniumVersion': '2.48.2',
     'build': process.env.TRAVIS_BUILD_NUMBER
   },
   {
@@ -47,7 +46,6 @@ if (process.env.TRAVIS) {
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     'browserName': 'internet explorer',
     'platform': 'Windows 8.1',
-    'seleniumVersion': '2.48.2',
     'build': process.env.TRAVIS_BUILD_NUMBER
   },
   /*{
@@ -77,7 +75,6 @@ if (process.env.TRAVIS) {
     'name': 'cops-html-ui firefox node v' + process.env.TRAVIS_NODE_VERSION,
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     'browserName': 'firefox',
-    'seleniumVersion': '2.48.2',
     'build': process.env.TRAVIS_BUILD_NUMBER
   }];
 }
