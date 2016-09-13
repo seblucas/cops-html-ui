@@ -10,8 +10,6 @@ matrix:
         hosts:
           - cops-travis
 
-    - node_js: "0.12"
-
 before_install:
   - npm install -g bower
   - bower install
