@@ -36,14 +36,14 @@ if (process.env.TRAVIS) {
   config.sauceKey = process.env.SAUCE_ACCESS_KEY;
   config.multiCapabilities = [
   {
-    'name': 'cops-html-ui chrome Linux node v' + process.env.TRAVIS_NODE_VERSION,
+    'name': 'cops-html-ui chrome node v' + process.env.TRAVIS_NODE_VERSION,
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     'browserName': 'chrome',
     'platform': 'Windows 8.1',
     'build': process.env.TRAVIS_BUILD_NUMBER
   },
   {
-    'name': 'cops-html-ui IE11 Linux node v' + process.env.TRAVIS_NODE_VERSION,
+    'name': 'cops-html-ui IE11 node v' + process.env.TRAVIS_NODE_VERSION,
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     'browserName': 'internet explorer',
     'platform': 'Windows 8.1',
