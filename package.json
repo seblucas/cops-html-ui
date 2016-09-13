@@ -29,6 +29,6 @@
     "main-bower-files": "2.11.1",
     "phantomjs": "1.9.19",
     "plato": "1.5.0",
-    "protractor": "3.0.0"
+    "protractor": "3.3.0"
   }
 }
