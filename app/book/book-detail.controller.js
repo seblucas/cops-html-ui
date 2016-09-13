@@ -31,7 +31,7 @@ angular.module('Cops.book', ['bootstrapLightbox'])
       $scope.trustedComment = $sce.trustAsHtml(book.comment);
     });
 
-    var deps = ['authors', 'tags', 'series', 'datas'];
+    var deps = ['authors', 'tags', 'series', 'data'];
     angular.forEach(deps, function(dep){
       Restangular.one('databases', $stateParams.db).one('books', $stateParams.id).getList(dep).then(function(list) {
         $scope[dep] = list;

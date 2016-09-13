@@ -72,7 +72,7 @@ describe('bookDetailController', function(){
         httpBackend.when('GET', '/databases/0/books/4/authors').respond(authorsJson);
         httpBackend.when('GET', '/databases/0/books/4/tags').respond(tagsJson);
         httpBackend.when('GET', '/databases/0/books/4/series').respond(seriesJson);
-        httpBackend.when('GET', '/databases/0/books/4/datas').respond(datasJson);
+        httpBackend.when('GET', '/databases/0/books/4/data').respond(datasJson);
         httpBackend.when('GET', '/databases/0/books/4/ratings').respond(ratingsJson);
         Restangular = _Restangular_;
         stateParams = {db: 0, id : 4};
@@ -124,12 +124,12 @@ describe('bookDetailController', function(){
     expect(scope.series[0].name).toBe('Sherlock Holmes');
   });
 
-  it('should have the correct datas', function() {
-    httpBackend.expectGET('/databases/0/books/4/datas');
+  it('should have the correct data', function() {
+    httpBackend.expectGET('/databases/0/books/4/data');
     getController();
     httpBackend.flush();
-    expect(scope.datas.length).toBe(1);
-    expect(scope.datas[0].name).toBe('The Adventures of Sherlock Holmes - Arthur Conan Doyle');
+    expect(scope.data.length).toBe(1);
+    expect(scope.data[0].name).toBe('The Adventures of Sherlock Holmes - Arthur Conan Doyle');
   });
 
   describe('setPublicationOk', function(){
