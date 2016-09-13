@@ -2,9 +2,7 @@ language: node_js
 
 matrix:
   include:
-    - node_js: "5.1"
-
-    - node_js: "5.0"
+    - node_js: "5"
 
     - node_js: "4.2"
       addons:
@@ -27,7 +25,7 @@ after_script:
 
 env:
   global:
-    - SAUCE_USERNAME=seblucas
+    - SAUCE_USERNAME=sauce-cops-html-ui
 
 
 
