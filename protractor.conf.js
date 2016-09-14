@@ -29,6 +29,11 @@ var config = {
                 'args': ['lang=en-US']}
   },
   rootElement: 'html',
+  jasmineNodeOpts: {
+    showColors: true,
+    isVerbose: true,
+    includeStackTrace: true
+  },
   specs: ['app/**/*.e2e.js']
 };
 
