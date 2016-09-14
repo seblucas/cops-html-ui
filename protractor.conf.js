@@ -66,15 +66,14 @@ if (process.env.TRAVIS) {
     'platform': 'Windows 10',
     'seleniumVersion': '2.48.2',
     'build': process.env.TRAVIS_BUILD_NUMBER
-  },
+  },*/
   {
     'name': 'cops-html-ui safari node v' + process.env.TRAVIS_NODE_VERSION,
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     'browserName': 'safari',
-    'platform': 'OS X 10.10',
-    'seleniumVersion': '2.48.2',
+    'platform': 'OS X 10.11',
     'build': process.env.TRAVIS_BUILD_NUMBER
-  },*/
+  },
   {
     'name': 'cops-html-ui firefox node v' + process.env.TRAVIS_NODE_VERSION,
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
