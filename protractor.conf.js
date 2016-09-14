@@ -24,7 +24,9 @@ var config = {
   },
   baseUrl: 'http://127.0.0.1:4321/index_protractor.html',
   capabilities: {
-    'browserName': 'chrome'
+    'browserName': 'chrome',
+    'chromeOptions': {
+                'args': ['lang=en-US']}
   },
   rootElement: 'html',
   specs: ['app/**/*.e2e.js']
