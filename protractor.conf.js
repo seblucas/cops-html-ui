@@ -36,6 +36,7 @@ var config = {
 if (process.env.TRAVIS) {
   config.sauceUser = process.env.SAUCE_USERNAME;
   config.sauceKey = process.env.SAUCE_ACCESS_KEY;
+  config.sauceBuild = process.env.TRAVIS_BUILD_NUMBER;
   config.multiCapabilities = [
   {
     'name': 'cops-html-ui chrome node v' + process.env.TRAVIS_NODE_VERSION,
