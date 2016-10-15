@@ -63,7 +63,7 @@ if (process.env.TRAVIS) {
     'browserName': 'MicrosoftEdge',
     'platform': 'Windows 10',
     'build': process.env.TRAVIS_BUILD_NUMBER
-  },
+  },*/
   {
     'name': 'cops-html-ui safari node v' + process.env.TRAVIS_NODE_VERSION,
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
