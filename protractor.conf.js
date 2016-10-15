@@ -57,13 +57,6 @@ if (process.env.TRAVIS) {
     'platform': 'Windows 8.1',
     'build': process.env.TRAVIS_BUILD_NUMBER
   },
-  /*{
-    'name': 'cops-html-ui chrome W10 node v' + process.env.TRAVIS_NODE_VERSION,
-    'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-    'browserName': 'chrome',
-    'platform': 'Windows 10',
-    'build': process.env.TRAVIS_BUILD_NUMBER
-  },*/
   {
     'name': 'cops-html-ui Edge node v' + process.env.TRAVIS_NODE_VERSION,
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
