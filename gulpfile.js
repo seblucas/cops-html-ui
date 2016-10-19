@@ -189,7 +189,7 @@ gulp.task('webdriver_update', webdriver_update);
 
 gulp.task('protractor', ['webdriver_update', 'protractor:prepare', 'protractor:webserver:start'], function() {
 
-  gulp.src([source + '**/*.e2e.js'])
+  gulp.src([source + 'configuration/*.e2e.js', source + '**/*.e2e.js'])
     .pipe(protractor({
         configFile: 'protractor.conf.js'
   }))
