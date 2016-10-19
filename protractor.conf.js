@@ -22,6 +22,7 @@ var config = {
 
     browser.addMockModule('disableNgAnimate', disableNgAnimate);
   },
+  //seleniumArgs: ['-Dwebdriver.edge.driver=node_modules/protractor/selenium/MicrosoftWebDriver.exe'],
   baseUrl: 'http://127.0.0.1:4321/index_protractor.html',
   capabilities: {
     'browserName': 'chrome',
@@ -34,6 +35,7 @@ var config = {
     isVerbose: true,
     includeStackTrace: true
   },
+  getPageTimeout: 30000,
   specs: ['app/**/*.e2e.js']
 };
 
@@ -56,14 +58,14 @@ if (process.env.TRAVIS) {
     'browserName': 'internet explorer',
     'platform': 'Windows 8.1',
     'build': process.env.TRAVIS_BUILD_NUMBER
-  },/*
+  },
   {
     'name': 'cops-html-ui Edge node v' + process.env.TRAVIS_NODE_VERSION,
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     'browserName': 'MicrosoftEdge',
     'platform': 'Windows 10',
     'build': process.env.TRAVIS_BUILD_NUMBER
-  },*/
+  },
   {
     'name': 'cops-html-ui safari node v' + process.env.TRAVIS_NODE_VERSION,
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
