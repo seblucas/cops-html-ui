@@ -31,6 +31,7 @@ var config = {
   },
   rootElement: 'html',
   jasmineNodeOpts: {
+    defaultTimeoutInterval: 33000,
     showColors: true,
     isVerbose: true,
     includeStackTrace: true
