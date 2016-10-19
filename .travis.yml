@@ -30,3 +30,17 @@ env:
 cache:
   directories:
     - node_modules
+
+before_deploy:
+  - gulp archive
+
+deploy:
+  provider: releases
+  api_key:
+    secure: hRDnJJudpZ++GCnMD8uih9xScfYD7gWQW7RsklmUh7f1WWpqNSohyUOMWyuHw7Uh3TgjaXAGDwv0jUpAj/rnHj0C6zh2PVAAoKcg5rFo6PoJmeNxpFfQHgx3sdikUoPW1rtBmqJQNodSy+WnO2NF12YzDtgzgL83sk728HB33cI=
+  file: cops-html-ui.zip
+  on:
+    repo: seblucas/cops-html-ui
+    tags: true
+    node_js: "4.2"
+

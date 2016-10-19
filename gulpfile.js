@@ -11,6 +11,7 @@ var bootlint = require('gulp-bootlint');
 var gulpFilter = require('gulp-filter');
 var rename = require('gulp-rename');
 var replace = require('gulp-replace');
+var zip = require('gulp-zip');
 var Server = require('karma').Server;
 var templateCache = require('gulp-angular-templatecache');
 var plato = require('plato');
@@ -197,3 +198,14 @@ gulp.task('protractor', ['webdriver_update', 'protractor:prepare', 'protractor:w
 });
 
 
+gulp.task('archive', function() {
+    return gulp.src([publishdir + '/**',
+          '!' + publishdir + '/mock',    // Trick to exclude both directory
+          '!' + publishdir + '/mock/**', // and directory content
+          '!' + publishdir + '/js/angular-mocks.js',
+          '!' + publishdir + '/js/CopsE2E.js',
+          '!' + publishdir + '/index_protractor.html',
+          ])
+        .pipe(zip('cops-html-ui.zip'))
+        .pipe(gulp.dest('.'));
+});
