@@ -31,13 +31,10 @@ var config = {
   },
   rootElement: 'html',
   jasmineNodeOpts: {
-    defaultTimeoutInterval: 33000,
     showColors: true,
     isVerbose: true,
     includeStackTrace: true
   },
-  getPageTimeout: 30000,
-  allScriptsTimeout: 33000,
   specs: ['app/**/*.e2e.js']
 };
 
@@ -60,14 +57,14 @@ if (process.env.TRAVIS) {
     'browserName': 'internet explorer',
     'platform': 'Windows 8.1',
     'build': process.env.TRAVIS_BUILD_NUMBER
-  },
+  },/*
   {
     'name': 'cops-html-ui Edge node v' + process.env.TRAVIS_NODE_VERSION,
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     'browserName': 'MicrosoftEdge',
     'platform': 'Windows 10',
     'build': process.env.TRAVIS_BUILD_NUMBER
-  },
+  },*/
   {
     'name': 'cops-html-ui safari node v' + process.env.TRAVIS_NODE_VERSION,
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
