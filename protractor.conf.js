@@ -36,6 +36,7 @@ var config = {
     includeStackTrace: true
   },
   getPageTimeout: 30000,
+  allScriptsTimeout: 33000,
   specs: ['app/**/*.e2e.js']
 };
 
